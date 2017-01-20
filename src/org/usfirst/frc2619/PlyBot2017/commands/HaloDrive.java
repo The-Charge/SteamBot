@@ -41,6 +41,10 @@ public class HaloDrive extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	double rightSpeed, leftSpeed;
+    	leftSpeed = -1*Robot.oi.getLeftJoystick().getRawAxis(1) + Robot.oi.getLeftJoystick().getRawAxis(4);
+    	rightSpeed = -1*Robot.oi.getLeftJoystick().getRawAxis(1) + -1*Robot.oi.getLeftJoystick().getRawAxis(4);
+    	Robot.driveTrain.run(leftSpeed, rightSpeed);
     }
 
     // Make this return true when this Command no longer needs to run execute()
