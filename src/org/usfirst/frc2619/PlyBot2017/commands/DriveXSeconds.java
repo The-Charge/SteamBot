@@ -50,7 +50,7 @@ public class DriveXSeconds extends TimedCommand {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.driveTrain.run(0, 0);
+    	Robot.driveTrain.stop();
     }
 
     // Called when another command which requires one or more of the same
