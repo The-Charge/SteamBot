@@ -161,19 +161,18 @@ Children:
     Properties:
       Parameters: !!robotbuilder.data.properties.ParametersProperty
         default:
-        - &id005 !!robotbuilder.data.properties.ParameterDescriptor {name: timeout,
-          type: double}
+        - !!robotbuilder.data.properties.ParameterDescriptor {name: timeout, type: double}
         name: Parameters
         validators: null
         value:
-        - *id005
+        - !!robotbuilder.data.properties.ParameterDescriptor {name: timeout, type: double}
       Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Requires, type: Subsystem, validators: null, value: DriveTrain}
       Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
-        default: &id006 []
+        default: []
         name: Parameter presets
         validators: null
-        value: *id006
+        value: []
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
     Base: Timed Command
@@ -189,12 +188,28 @@ Children:
       Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Requires, type: Subsystem, validators: null, value: DriveTrain}
       Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
-        default: &id007 []
+        default: []
         name: Parameter presets
         validators: null
-        value: *id007
+        value:
+        - !!robotbuilder.data.properties.ParameterSet
+          name: TenFeet
+          parameters:
+          - {name: xFeet, type: double, value: '10'}
+        - !!robotbuilder.data.properties.ParameterSet
+          name: FiveFeet
+          parameters:
+          - {name: xFeet, type: double, value: '5'}
+        - !!robotbuilder.data.properties.ParameterSet
+          name: TwentyFeet
+          parameters:
+          - {name: xFeet, type: double, value: '20'}
+        - !!robotbuilder.data.properties.ParameterSet
+          name: FifteenFeet
+          parameters:
+          - {name: xFeet, type: double, value: '15'}
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
-        name: Button on SmartDashboard, validators: null, value: false}
+        name: Button on SmartDashboard, validators: null, value: true}
     Base: Command
     Name: DriveXFeet
   Properties: {}
