@@ -59,7 +59,7 @@ public class DriveTrain extends Subsystem {
     }
     
     public void sendFeet(double f) {
-    	Destination = getTicks() + (((f * 1.017) - 12.147) * TICKS_PER_FOOT);
+    	Destination = getTicks() + (((f * 1.017) - (12.147 / 12)) * TICKS_PER_FOOT);
     }
     
     public boolean isAtDestination() {
