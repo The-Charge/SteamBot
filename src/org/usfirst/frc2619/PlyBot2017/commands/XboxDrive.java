@@ -13,6 +13,7 @@ package org.usfirst.frc2619.PlyBot2017.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import org.usfirst.frc2619.PlyBot2017.MathUtil;
 import org.usfirst.frc2619.PlyBot2017.Robot;
 
 /**
@@ -43,9 +44,13 @@ public class XboxDrive extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	double rightSpeed, leftSpeed;
-    	leftSpeed = -1*Robot.oi.getLeftJoystick().getRawAxis(1);
-    	rightSpeed = -1*Robot.oi.getLeftJoystick().getRawAxis(5);
+    	double rightSpeed, leftSpeed, dbY = .1;
+    	int power = 3;
+    	leftSpeed = MathUtil.deadbandCheck(-1*Robot.oi.getLeftJoystick().getRawAxis(1), dbY);
+    	rightSpeed = MathUtil.deadbandCheck(-1*Robot.oi.getLeftJoystick().getRawAxis(5),dbY);
+    	leftSpeed = MathUtil.delinearize(leftSpeed, power);
+    	rightSpeed = MathUtil.delinearize(rightSpeed, power);
+    	
     	SmartDashboard.putNumber("Right Speed:", rightSpeed);
     	Robot.driveTrain.run(leftSpeed, rightSpeed);
     }
