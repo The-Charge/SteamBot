@@ -11,6 +11,8 @@
 
 package org.usfirst.frc2619.PlyBot2017.commands;
 import edu.wpi.first.wpilibj.command.Command;
+
+import org.usfirst.frc2619.PlyBot2017.MathUtil;
 import org.usfirst.frc2619.PlyBot2017.Robot;
 
 /**
@@ -41,9 +43,12 @@ public class ClaytonDrive extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	double rightSpeed, leftSpeed;
-    	leftSpeed = -1*Robot.oi.getLeftJoystick().getY() + Robot.oi.getLeftJoystick().getRawAxis(2);
-    	rightSpeed = -1*Robot.oi.getLeftJoystick().getY() + -1*Robot.oi.getLeftJoystick().getRawAxis(2);
+    	double rightSpeed, leftSpeed, dbY = .1, dbX = .2;
+    	int power = 3;
+    	leftSpeed =  MathUtil.deadbandCheck(-1*Robot.oi.getLeftJoystick().getY(), dbY) + MathUtil.deadbandCheck( Robot.oi.getLeftJoystick().getRawAxis(2), dbX);
+    	rightSpeed =  MathUtil.deadbandCheck(-1*Robot.oi.getLeftJoystick().getY(), dbY) +  MathUtil.deadbandCheck(-1*Robot.oi.getLeftJoystick().getRawAxis(2), dbX);
+    	leftSpeed = MathUtil.delinearize(leftSpeed, power);
+    	rightSpeed = MathUtil.delinearize(rightSpeed, power);
     	Robot.driveTrain.run(leftSpeed, rightSpeed);
     }
 
