@@ -11,6 +11,8 @@
 
 package org.usfirst.frc2619.PlyBot2017.commands;
 import edu.wpi.first.wpilibj.command.Command;
+
+import org.usfirst.frc2619.PlyBot2017.MathUtil;
 import org.usfirst.frc2619.PlyBot2017.Robot;
 
 /**
@@ -42,8 +44,14 @@ public class TankDrive extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	double rightSpeed, leftSpeed;
-    	leftSpeed = -1*Robot.oi.getLeftJoystick().getY();
+    	double deadBandY = .1; double deadBandX = .2;
+    	int power = 3;
+    	leftSpeed =-1*Robot.oi.getLeftJoystick().getY();
     	rightSpeed = -1*Robot.oi.getRightJoystick().getY();
+    	leftSpeed = MathUtil.deadbandCheck(leftSpeed, deadBandY);
+    	rightSpeed = MathUtil.deadbandCheck(rightSpeed, deadBandY);
+    	leftSpeed = MathUtil.delinearize(leftSpeed, power);
+    	rightSpeed = MathUtil.delinearize(rightSpeed, power);
     	Robot.driveTrain.run(leftSpeed, rightSpeed);
     }
 
