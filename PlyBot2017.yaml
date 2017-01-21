@@ -237,22 +237,6 @@ Children:
           name: TwentyFeet
           parameters:
           - {name: xFeet, type: double, value: '20'}
-        - !!robotbuilder.data.properties.ParameterSet
-          name: NegFiveFeet
-          parameters:
-          - {name: xFeet, type: double, value: '-5'}
-        - !!robotbuilder.data.properties.ParameterSet
-          name: NegTenFeet
-          parameters:
-          - {name: xFeet, type: double, value: '-10'}
-        - !!robotbuilder.data.properties.ParameterSet
-          name: NegFifteenFeet
-          parameters:
-          - {name: xFeet, type: double, value: '-15'}
-        - !!robotbuilder.data.properties.ParameterSet
-          name: NegTwentyFeet
-          parameters:
-          - {name: xFeet, type: double, value: '-20'}
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
     Base: Command

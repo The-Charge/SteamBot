@@ -80,10 +80,6 @@ public class OI {
         SmartDashboard.putData("DriveXFeet: TenFeet", new DriveXFeet(10));
         SmartDashboard.putData("DriveXFeet: FifteenFeet", new DriveXFeet(15));
         SmartDashboard.putData("DriveXFeet: TwentyFeet", new DriveXFeet(20));
-        SmartDashboard.putData("DriveXFeet: NegFiveFeet", new DriveXFeet(-5));
-        SmartDashboard.putData("DriveXFeet: NegTenFeet", new DriveXFeet(-10));
-        SmartDashboard.putData("DriveXFeet: NegFifteenFeet", new DriveXFeet(-15));
-        SmartDashboard.putData("DriveXFeet: NegTwentyFeet", new DriveXFeet(-20));
         SmartDashboard.putData("ArcadeDrive", new ArcadeDrive());
         SmartDashboard.putData("ClaytonDrive", new ClaytonDrive());
         SmartDashboard.putData("HaloDrive", new HaloDrive());
