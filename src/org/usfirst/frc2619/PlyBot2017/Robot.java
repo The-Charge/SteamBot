@@ -100,6 +100,7 @@ public class Robot extends IterativeRobot {
      * This function is called periodically during autonomous
      */
     public void autonomousPeriodic() {
+    	readAndWriteDashboardValues();
         Scheduler.getInstance().run();
     }
 
@@ -115,6 +116,7 @@ public class Robot extends IterativeRobot {
      * This function is called periodically during operator control
      */
     public void teleopPeriodic() {
+    	readAndWriteDashboardValues();
         Scheduler.getInstance().run();
     }
 
@@ -123,5 +125,10 @@ public class Robot extends IterativeRobot {
      */
     public void testPeriodic() {
         LiveWindow.run();
+    }
+    
+    public void readAndWriteDashboardValues() {
+    	Robot.driveTrain.readDefaultValues();
+    	Robot.driveTrain.writeDebugValues();
     }
 }

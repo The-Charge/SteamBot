@@ -44,7 +44,6 @@ public class XboxDrive extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.driveTrain.readDefaultValues();
     	double rightSpeed, leftSpeed, dbY = Robot.driveTrain.DEADBAND_Y;
     	int power = Robot.driveTrain.DELIN_POW;
     	leftSpeed = MathUtil.deadbandCheck(-1*Robot.oi.getLeftJoystick().getRawAxis(1), dbY);

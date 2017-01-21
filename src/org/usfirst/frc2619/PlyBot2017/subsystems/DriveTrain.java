@@ -72,6 +72,19 @@ public class DriveTrain extends Subsystem {
     	DEADBAND_TWIST = SmartDashboard.getNumber(DEADBAND_TWIST_KEY);
     }
     
+    public void writeDebugValues(){
+    	SmartDashboard.putNumber("IMU_TotalYaw", ahrs.getAngle());
+        SmartDashboard.putNumber("IMU_YawRateDPS", ahrs.getRate());
+        SmartDashboard.putBoolean("IMU_Connected", ahrs.isConnected());
+        SmartDashboard.putBoolean("IMU_IsCalibrating", ahrs.isCalibrating());
+        SmartDashboard.putNumber("IMU_Yaw", ahrs.getYaw());
+        SmartDashboard.putNumber("IMU_Pitch", ahrs.getPitch());
+        SmartDashboard.putNumber("IMU_Roll", ahrs.getRoll());
+        // Connectivity Debugging Support                                     
+        SmartDashboard.putNumber(   "IMU_Byte_Count",       ahrs.getByteCount());
+        SmartDashboard.putNumber(   "IMU_Update_Count",     ahrs.getUpdateCount());
+    }
+    
 	public void run(double leftSpeed, double rightSpeed){
 		writeDebugValues();
 		SmartDashboard.putNumber("LeftSpeed", leftSpeed);
@@ -108,19 +121,6 @@ public class DriveTrain extends Subsystem {
     
     public void stop() {
     	Robot.driveTrain.run(0, 0);
-    }
-    
-    public void writeDebugValues(){
-    	SmartDashboard.putNumber("IMU_TotalYaw", ahrs.getAngle());
-        SmartDashboard.putNumber("IMU_YawRateDPS", ahrs.getRate());
-        SmartDashboard.putBoolean("IMU_Connected", ahrs.isConnected());
-        SmartDashboard.putBoolean("IMU_IsCalibrating", ahrs.isCalibrating());
-        SmartDashboard.putNumber("IMU_Yaw", ahrs.getYaw());
-        SmartDashboard.putNumber("IMU_Pitch", ahrs.getPitch());
-        SmartDashboard.putNumber("IMU_Roll", ahrs.getRoll());
-        // Connectivity Debugging Support                                     
-        SmartDashboard.putNumber(   "IMU_Byte_Count",       ahrs.getByteCount());
-        SmartDashboard.putNumber(   "IMU_Update_Count",     ahrs.getUpdateCount());
     }
     
     public double getDegrees(){
