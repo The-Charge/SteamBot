@@ -44,8 +44,9 @@ public class ArcadeDrive extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	double rightSpeed, leftSpeed, dbX = .2, dbY = .1;
-    	int power = 3;
+    	Robot.driveTrain.readDefaultValues();
+    	double rightSpeed, leftSpeed, dbX = Robot.driveTrain.DEADBAND_X, dbY = Robot.driveTrain.DEADBAND_Y;
+    	int power = Robot.driveTrain.DELIN_POW;
     	leftSpeed = MathUtil.deadbandCheck(-1*Robot.oi.getLeftJoystick().getY(), dbY) + MathUtil.deadbandCheck(Robot.oi.getLeftJoystick().getX(), dbX);
     	rightSpeed =  MathUtil.deadbandCheck(-1*Robot.oi.getLeftJoystick().getY(), dbY) +  MathUtil.deadbandCheck(-1*Robot.oi.getLeftJoystick().getX(), dbX);
     	leftSpeed = MathUtil.delinearize(leftSpeed, power);

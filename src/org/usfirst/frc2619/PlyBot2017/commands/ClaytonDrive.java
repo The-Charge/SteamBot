@@ -43,10 +43,11 @@ public class ClaytonDrive extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	double rightSpeed, leftSpeed, dbY = .1, dbX = .2;
-    	int power = 3;
-    	leftSpeed =  MathUtil.deadbandCheck(-1*Robot.oi.getLeftJoystick().getY(), dbY) + MathUtil.deadbandCheck( Robot.oi.getLeftJoystick().getRawAxis(2), dbX);
-    	rightSpeed =  MathUtil.deadbandCheck(-1*Robot.oi.getLeftJoystick().getY(), dbY) +  MathUtil.deadbandCheck(-1*Robot.oi.getLeftJoystick().getRawAxis(2), dbX);
+    	Robot.driveTrain.readDefaultValues();
+    	double rightSpeed, leftSpeed, dbX = Robot.driveTrain.DEADBAND_X, dbTwist = Robot.driveTrain.DEADBAND_TWIST;
+    	int power = Robot.driveTrain.DELIN_POW;
+    	leftSpeed =  MathUtil.deadbandCheck(-1*Robot.oi.getLeftJoystick().getY(), dbTwist) + MathUtil.deadbandCheck( Robot.oi.getLeftJoystick().getRawAxis(2), dbX);
+    	rightSpeed =  MathUtil.deadbandCheck(-1*Robot.oi.getLeftJoystick().getY(), dbTwist) +  MathUtil.deadbandCheck(-1*Robot.oi.getLeftJoystick().getRawAxis(2), dbX);
     	leftSpeed = MathUtil.delinearize(leftSpeed, power);
     	rightSpeed = MathUtil.delinearize(rightSpeed, power);
     	Robot.driveTrain.run(leftSpeed, rightSpeed);
