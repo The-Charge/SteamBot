@@ -44,7 +44,7 @@ public class TankDrive extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	double rightSpeed, leftSpeed;
-    	double deadBandY = .1; double deadBandX = .2;
+    	double deadBandY = .1;
     	int power = 3;
     	leftSpeed =-1*Robot.oi.getLeftJoystick().getY();
     	rightSpeed = -1*Robot.oi.getRightJoystick().getY();
