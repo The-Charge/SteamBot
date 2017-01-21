@@ -42,7 +42,7 @@ public class XboxDrive extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	double rightSpeed, leftSpeed;
-    	leftSpeed = -1*Robot.oi.getLeftJoystick().getY();
+    	leftSpeed = -1*Robot.oi.getLeftJoystick().getRawAxis(1);
     	rightSpeed = -1*Robot.oi.getRightJoystick().getRawAxis(5);
     	Robot.driveTrain.run(leftSpeed, rightSpeed);
     }
