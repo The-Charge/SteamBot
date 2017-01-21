@@ -358,7 +358,10 @@ Children:
       Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Requires, type: Subsystem, validators: null, value: DriveTrain}
       Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
-        default: &id008
+        default: []
+        name: Parameter presets
+        validators: null
+        value:
         - !!robotbuilder.data.properties.ParameterSet
           name: 90Degrees
           parameters:
@@ -376,16 +379,9 @@ Children:
           parameters:
           - {name: nDegrees, type: double, value: '-90'}
         - !!robotbuilder.data.properties.ParameterSet
-          name: -180Degrees
-          parameters:
-          - {name: nDegrees, type: double, value: '-180'}
-        - !!robotbuilder.data.properties.ParameterSet
           name: -45Degrees
           parameters:
           - {name: nDegrees, type: double, value: '-45'}
-        name: Parameter presets
-        validators: null
-        value: *id008
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
     Base: Command
