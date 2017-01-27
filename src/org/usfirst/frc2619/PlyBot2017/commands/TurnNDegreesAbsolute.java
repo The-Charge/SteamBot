@@ -42,6 +42,8 @@ public class TurnNDegreesAbsolute extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	double yawInitial = Robot.driveTrain.getYaw();
+    	//Calculates the shortest path to m_nDegrees
+    	//Positive degreeChange means move to the right, negative degreeChange means move to the left
     	if (((yawInitial <= 0) && (m_nDegrees <= 0)) || ((yawInitial >= 0) && (m_nDegrees >= 0)))
     		degreeChange = m_nDegrees - yawInitial;
     	else if ((yawInitial > 0) && (m_nDegrees < 0)){
@@ -66,6 +68,7 @@ public class TurnNDegreesAbsolute extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
+    	//Runs robot until yaw is within 4 degrees
     	if (Math.abs(m_nDegrees - Robot.driveTrain.getYaw()) < 4)
     		return true;
     	else
