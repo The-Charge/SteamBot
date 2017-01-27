@@ -2,11 +2,17 @@ package org.usfirst.frc2619.PlyBot2017;
 
 public class MathUtil {
 	public static double delinearize(double input, int power) {
-		return Math.pow(input, power);
+		
+		if(input > 0)
+			return Math.pow(input - Robot.driveTrain.DEADBAND_Y, power);
+		else if (input < 0)
+			return Math.pow(input + Robot.driveTrain.DEADBAND_Y, power);
+		else
+			return 0;
 	}
 
 	public static double deadbandCheck(double input, double db) {
-
+		
 		// ---------if----- =then=
 		return Math.abs(input) < db ? 0 : input;
 		// --else-
