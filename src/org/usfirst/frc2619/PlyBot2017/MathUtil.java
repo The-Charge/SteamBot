@@ -1,20 +1,30 @@
 package org.usfirst.frc2619.PlyBot2017;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 public class MathUtil {
 	public static double delinearize(double input, int power) {
 		
 		double dbY = Robot.driveTrain.DEADBAND_Y;
+		double ret;
+		
+		SmartDashboard.putNumber("Joystick pos: ", input);
 		
 		//returns delinearized power (adjusted for deadband)
-		if(input > 0)
+		if(input > 0){
 			//this is an equation for the curve so that it starts at zero at the edge of the deadband...
-			//...and goes up cubically to (1,1)
-			return 1/(1 - dbY) * Math.pow(input - dbY, power);
-		else if (input < 0)
+			//...and goes up cubically to (1,1) - this will work even if we change the deadband
+			ret = 1/(1 - dbY) * Math.pow(input - dbY, power);
+		}else if (input < 0){
 			//this is the reverse of that equation, in order to make the negative go backward
-			return 1/(1 - dbY) * Math.pow(input + dbY, power);
-		else
-			return 0;
+			ret = 1/(1 - dbY) * Math.pow(input + dbY, power);
+		}else{
+			ret = 0;
+		}
+		
+		SmartDashboard.putNumber("power output: ", ret);
+		return ret;
+		
 	}
 
 	public static double deadbandCheck(double input, double db) {
