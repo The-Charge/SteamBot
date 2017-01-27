@@ -28,7 +28,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class DriveTrain extends Subsystem {
 	private final double TICKS_PER_FOOT = 4273;
 	
-	private double Destination;
+	private double Destination = 0;
+	private double numFeet = 0;
 	
 	public boolean isReversed = false;
 	
@@ -112,11 +113,21 @@ public class DriveTrain extends Subsystem {
     }
     
     public void sendFeet(double f) {
-    	Destination = getTicks() + (((f * 1.017) - (12.147 / 12)) * TICKS_PER_FOOT);
+    	Destination = 0;
+    	numFeet = f;
+    	Destination = getTicks() + (((numFeet * 1.017) - (12.147 / 12)) * TICKS_PER_FOOT);
+    	SmartDashboard.putNumber("Destination", Destination);
     }
     
     public boolean isAtDestination() {
-    	return getTicks() >= Destination;
+    	SmartDashboard.putNumber("getTicks()", getTicks());
+    	if (numFeet > 0)
+    	{
+        	return getTicks() >= Destination;
+    	}
+    	else {
+    		return getTicks() <= Destination;
+    	}
     }
     
     public void stop() {

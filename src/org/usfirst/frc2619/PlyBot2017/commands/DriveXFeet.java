@@ -45,7 +45,13 @@ public class DriveXFeet extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	// xFeet is the number of feet to drive (double).
-    	Robot.driveTrain.run(0.25, 0.25);
+    	if (m_xFeet > 0) {
+    		Robot.driveTrain.run(0.25, 0.25);
+    	}
+    	else {
+    		Robot.driveTrain.run(-0.25, -0.25);
+    	}
+    	
     }
 
     // Make this return true when this Command no longer needs to run execute()
