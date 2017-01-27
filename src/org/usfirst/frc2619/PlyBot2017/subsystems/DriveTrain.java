@@ -126,6 +126,11 @@ public class DriveTrain extends Subsystem {
     public double getDegrees(){
     	return ahrs.getAngle();
     }
+    
+    public double getYaw(){
+    	return ahrs.getYaw();
+    }
+    
     public void relTurn(double turnTo, double speed){
     	double leftSpeed =0, rightSpeed = 0;
     	double direction = MathUtil.calcDirection(getDegrees(), turnTo);
@@ -147,6 +152,15 @@ public class DriveTrain extends Subsystem {
     		//run(0,0);
     		SmartDashboard.putString("Direction", "none");
     	}
+    	run(leftSpeed,rightSpeed);
+	}
+    
+    public void absTurn(double degreeChange, double speed){
+    	double leftSpeed = 0, rightSpeed = 0;
+    	if (degreeChange > 0)
+    		leftSpeed = speed;
+    	else if (degreeChange < 0)
+    		rightSpeed = speed;
     	run(leftSpeed,rightSpeed);
 	}
     
