@@ -157,10 +157,14 @@ public class DriveTrain extends Subsystem {
     
     public void absTurn(double degreeChange, double speed){
     	double leftSpeed = 0, rightSpeed = 0;
-    	if (degreeChange > 0)
+    	if (degreeChange > 0){
     		leftSpeed = speed;
-    	else if (degreeChange < 0)
+    		rightSpeed = -speed;
+    	}
+    	else if (degreeChange < 0){
     		rightSpeed = speed;
+    		leftSpeed = -speed;
+    	}
     	run(leftSpeed,rightSpeed);
 	}
     

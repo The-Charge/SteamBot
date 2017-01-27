@@ -66,7 +66,7 @@ public class TurnNDegreesAbsolute extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	if (Math.abs(Robot.driveTrain.getYaw() - m_nDegrees) < 5)
+    	if (Math.abs(m_nDegrees - Robot.driveTrain.getYaw()) < 4)
     		return true;
     	else
     		return false;
