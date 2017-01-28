@@ -72,7 +72,7 @@ public class DriveTrain extends Subsystem {
     	SmartDashboard.putNumber(TURN_INNER_SPEED_KEY, TURN_INNER_SPEED);
     }
     
-    public void readDefaultValues() {
+    public void readControlValues() {
     	DELIN_POW = SmartDashboard.getInt(DELIN_POW_KEY);
     	DEADBAND_X = SmartDashboard.getNumber(DEADBAND_X_KEY);
     	DEADBAND_Y = SmartDashboard.getNumber(DEADBAND_Y_KEY);
