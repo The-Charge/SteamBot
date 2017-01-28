@@ -73,6 +73,8 @@ public class OI {
 
 
         // SmartDashboard Buttons
+        SmartDashboard.putData("ShiftLow", new ShiftLow());
+        SmartDashboard.putData("ShiftHigh", new ShiftHigh());
         SmartDashboard.putData("Autonomous Command", new AutonomousCommand());
         SmartDashboard.putData("TankDrive", new TankDrive());
         SmartDashboard.putData("DriveXSeconds", new DriveXSeconds());
