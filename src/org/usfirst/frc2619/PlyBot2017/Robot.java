@@ -130,7 +130,7 @@ public class Robot extends IterativeRobot {
     }
     
     public void readAndWriteDashboardValues() {
-    	Robot.driveTrain.readDefaultValues();
+    	Robot.driveTrain.readControlValues();
     	Robot.driveTrain.writeDebugValues();
     }
 }
