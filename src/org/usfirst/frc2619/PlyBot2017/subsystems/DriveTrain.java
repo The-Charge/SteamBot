@@ -92,15 +92,15 @@ public class DriveTrain extends Subsystem {
 		SmartDashboard.putNumber("RightSpeed", rightSpeed);
 		if(!isReversed) {
 	    	leftFrontMotor.set(leftSpeed);
-	    	leftRearMotor.set(leftSpeed);
+	    	
 	    	rightFrontMotor.set(rightSpeed);
-	    	rightRearMotor.set(rightSpeed);
+	    	
 	    }
 		else {
 			leftFrontMotor.set(-1*rightSpeed);
-	    	leftRearMotor.set(-1*rightSpeed);
+	    	
 	    	rightFrontMotor.set(-1*leftSpeed);
-	    	rightRearMotor.set(-1*leftSpeed);
+	    	
 		}
 	}
     
