@@ -11,10 +11,9 @@
 
 package org.usfirst.frc2619.PlyBot2017.commands;
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-import org.usfirst.frc2619.PlyBot2017.MathUtil;
 import org.usfirst.frc2619.PlyBot2017.Robot;
+import org.usfirst.frc2619.PlyBot2017.TheChargeDashboard;
 
 /**
  *
@@ -56,7 +55,7 @@ public class TurnNDegreesRelative extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	SmartDashboard.putNumber("FinalDegrees", finalDegrees);
+    	TheChargeDashboard.putNumber("FinalDegrees", finalDegrees);
     	Robot.driveTrain.relTurn(finalDegrees, .4);
     }
 

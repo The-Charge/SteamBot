@@ -66,7 +66,6 @@ public class RobotMap {
         driveTrainRightFrontMotor.setInverted(true);
         driveTrainRightRearMotor.setInverted(true);
         
-    // BEGIN Code added by KAEDON
      // Change Right motor to follow mode
         driveTrainRightRearMotor.changeControlMode(CANTalon.TalonControlMode.Follower);
         // Set the device to follow the front motor with encoder 
@@ -77,6 +76,5 @@ public class RobotMap {
         // Set the device to follow the front motor with encoder 
         driveTrainLeftRearMotor.set(driveTrainLeftFrontMotor.getDeviceID());
         
-    // END Code added by KAEDON
     }
 }

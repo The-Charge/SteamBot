@@ -43,8 +43,8 @@ public class TankDrive extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	double rightSpeed, leftSpeed, dbY = Robot.driveTrain.DEADBAND_Y;
-    	int power = Robot.driveTrain.DELIN_POW;
+    	double rightSpeed, leftSpeed, dbY = Robot.driveTrain.deadband_y;
+    	int power = Robot.driveTrain.delin_pow;
     	leftSpeed =-1*Robot.oi.getLeftJoystick().getY();
     	rightSpeed = -1*Robot.oi.getRightJoystick().getY();
     	leftSpeed = MathUtil.deadbandCheck(leftSpeed, dbY);
@@ -61,8 +61,7 @@ public class TankDrive extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	// TODO: Use stop instead of run 0, 0
-    	Robot.driveTrain.run(0, 0);
+    	Robot.driveTrain.stop();
     }
 
     // Called when another command which requires one or more of the same

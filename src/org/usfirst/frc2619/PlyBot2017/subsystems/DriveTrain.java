@@ -14,6 +14,7 @@ package org.usfirst.frc2619.PlyBot2017.subsystems;
 import org.usfirst.frc2619.PlyBot2017.MathUtil;
 import org.usfirst.frc2619.PlyBot2017.Robot;
 import org.usfirst.frc2619.PlyBot2017.RobotMap;
+import org.usfirst.frc2619.PlyBot2017.TheChargeDashboard;
 import org.usfirst.frc2619.PlyBot2017.commands.*;
 import com.ctre.CANTalon;
 import com.kauailabs.navx.frc.AHRS;
@@ -33,12 +34,18 @@ public class DriveTrain extends Subsystem {
 	
 	public boolean isReversed = false;
 	
-	public int DELIN_POW = 3;
-	public double DEADBAND_X = 0.2;
-	public double DEADBAND_Y = 0.1;
-	public double DEADBAND_TWIST = 0.2;
-	public double TURN_OUTER_SPEED = 0.5;
-	public double TURN_INNER_SPEED = -0.5;
+	public int delin_pow;
+	public final int DELIN_POW_DEFAULT = 3;
+	public double deadband_x;
+	public final double DEADBAND_X_DEFAULT = 0.2;
+	public double deadband_y;
+	public final double DEADBAND_Y_DEFAULT = 0.1;
+	public double deadband_twist;
+	public final double DEADBAND_TWIST_DEFAULT = 0.2;
+	public double turn_outer_speed;
+	public final double TURN_OUTER_SPEED_DEFAULT = 0.5;
+	public double turn_inner_speed;
+	public final double TURN_INNER_SPEED_DEFAULT = -0.5;
 	
 	private static final String DELIN_POW_KEY = "DELIN_POW";
 	private static final String DEADBAND_X_KEY = "DEADBAND_X";
@@ -64,40 +71,40 @@ public class DriveTrain extends Subsystem {
     // here. Call these from Commands.
     
     public void writeDefaultValues() {
-    	SmartDashboard.putNumber(DELIN_POW_KEY, DELIN_POW);
-    	SmartDashboard.putNumber(DEADBAND_X_KEY, DEADBAND_X);
-    	SmartDashboard.putNumber(DEADBAND_Y_KEY, DEADBAND_Y);
-    	SmartDashboard.putNumber(DEADBAND_TWIST_KEY, DEADBAND_TWIST);
-    	SmartDashboard.putNumber(TURN_OUTER_SPEED_KEY, TURN_OUTER_SPEED);
-    	SmartDashboard.putNumber(TURN_INNER_SPEED_KEY, TURN_INNER_SPEED);
+    	TheChargeDashboard.putNumber(DELIN_POW_KEY, DELIN_POW_DEFAULT);
+    	TheChargeDashboard.putNumber(DEADBAND_X_KEY, DEADBAND_X_DEFAULT);
+    	TheChargeDashboard.putNumber(DEADBAND_Y_KEY, DEADBAND_Y_DEFAULT);
+    	TheChargeDashboard.putNumber(DEADBAND_TWIST_KEY, DEADBAND_TWIST_DEFAULT);
+    	TheChargeDashboard.putNumber(TURN_OUTER_SPEED_KEY, TURN_OUTER_SPEED_DEFAULT);
+    	TheChargeDashboard.putNumber(TURN_INNER_SPEED_KEY, TURN_INNER_SPEED_DEFAULT);
     }
     
     public void readControlValues() {
-    	DELIN_POW = SmartDashboard.getInt(DELIN_POW_KEY);
-    	DEADBAND_X = SmartDashboard.getNumber(DEADBAND_X_KEY);
-    	DEADBAND_Y = SmartDashboard.getNumber(DEADBAND_Y_KEY);
-    	DEADBAND_TWIST = SmartDashboard.getNumber(DEADBAND_TWIST_KEY);
-    	TURN_OUTER_SPEED = SmartDashboard.getNumber(TURN_OUTER_SPEED_KEY);
-    	TURN_INNER_SPEED = SmartDashboard.getNumber(TURN_INNER_SPEED_KEY);
+    	delin_pow = SmartDashboard.getInt(DELIN_POW_KEY, DELIN_POW_DEFAULT);
+    	deadband_x = SmartDashboard.getNumber(DEADBAND_X_KEY, DEADBAND_X_DEFAULT);
+    	deadband_y = SmartDashboard.getNumber(DEADBAND_Y_KEY, DEADBAND_Y_DEFAULT);
+    	deadband_twist = SmartDashboard.getNumber(DEADBAND_TWIST_KEY, DEADBAND_TWIST_DEFAULT);
+    	turn_outer_speed = SmartDashboard.getNumber(TURN_OUTER_SPEED_KEY, TURN_OUTER_SPEED_DEFAULT);
+    	turn_inner_speed = SmartDashboard.getNumber(TURN_INNER_SPEED_KEY, TURN_INNER_SPEED_DEFAULT);
     }
     
     public void writeDebugValues(){
-    	SmartDashboard.putNumber("IMU_TotalYaw", ahrs.getAngle());
-        SmartDashboard.putNumber("IMU_YawRateDPS", ahrs.getRate());
-        SmartDashboard.putBoolean("IMU_Connected", ahrs.isConnected());
-        SmartDashboard.putBoolean("IMU_IsCalibrating", ahrs.isCalibrating());
-        SmartDashboard.putNumber("IMU_Yaw", ahrs.getYaw());
-        SmartDashboard.putNumber("IMU_Pitch", ahrs.getPitch());
-        SmartDashboard.putNumber("IMU_Roll", ahrs.getRoll());
+    	TheChargeDashboard.putNumber("IMU_TotalYaw", ahrs.getAngle());
+    	TheChargeDashboard.putNumber("IMU_YawRateDPS", ahrs.getRate());
+    	TheChargeDashboard.putBoolean("IMU_Connected", ahrs.isConnected());
+    	TheChargeDashboard.putBoolean("IMU_IsCalibrating", ahrs.isCalibrating());
+    	TheChargeDashboard.putNumber("IMU_Yaw", ahrs.getYaw());
+    	TheChargeDashboard.putNumber("IMU_Pitch", ahrs.getPitch());
+    	TheChargeDashboard.putNumber("IMU_Roll", ahrs.getRoll());
         // Connectivity Debugging Support                                     
-        SmartDashboard.putNumber(   "IMU_Byte_Count",       ahrs.getByteCount());
-        SmartDashboard.putNumber(   "IMU_Update_Count",     ahrs.getUpdateCount());
+    	TheChargeDashboard.putNumber(   "IMU_Byte_Count",       ahrs.getByteCount());
+    	TheChargeDashboard.putNumber(   "IMU_Update_Count",     ahrs.getUpdateCount());
     }
     
 	public void run(double leftSpeed, double rightSpeed){
 		writeDebugValues();
-		SmartDashboard.putNumber("LeftSpeed", leftSpeed);
-		SmartDashboard.putNumber("RightSpeed", rightSpeed);
+		TheChargeDashboard.putNumber("LeftSpeed", leftSpeed);
+		TheChargeDashboard.putNumber("RightSpeed", rightSpeed);
 		if(!isReversed) {
 	    	leftFrontMotor.set(leftSpeed);
 	    	
@@ -124,11 +131,11 @@ public class DriveTrain extends Subsystem {
     	Destination = 0;
     	numFeet = f;
     	Destination = getTicks() + (((numFeet * 1.017) - (12.147 / 12)) * TICKS_PER_FOOT);
-    	SmartDashboard.putNumber("Destination", Destination);
+    	TheChargeDashboard.putNumber("Destination", Destination);
     }
     
     public boolean isAtDestination() {
-    	SmartDashboard.putNumber("getTicks()", getTicks());
+    	TheChargeDashboard.putNumber("getTicks()", getTicks());
     	if (numFeet > 0)
     	{
         	return getTicks() >= Destination;
@@ -157,19 +164,19 @@ public class DriveTrain extends Subsystem {
     		leftSpeed = speed;
     		rightSpeed = 0;
 			//run(speed, -speed);
-			SmartDashboard.putString("Direction", "right");
+    		TheChargeDashboard.putString("Direction", "right");
     	}
     	else if(direction < 0){
     		leftSpeed = 0;
     		rightSpeed = speed;
     		//run(-speed, speed);
-    		SmartDashboard.putString("Direction", "left");
+    		TheChargeDashboard.putString("Direction", "left");
     	}
     	else{
     		leftSpeed = 0;
     		rightSpeed = 0;
     		//run(0,0);
-    		SmartDashboard.putString("Direction", "none");
+    		TheChargeDashboard.putString("Direction", "none");
     	}
     	run(leftSpeed,rightSpeed);
 	}
@@ -177,12 +184,12 @@ public class DriveTrain extends Subsystem {
     public void absTurn(double degreeChange, double speed){
     	double leftSpeed = 0, rightSpeed = 0;
     	if (degreeChange > 0){
-    		leftSpeed = TURN_OUTER_SPEED;
-    		rightSpeed = -1 * TURN_INNER_SPEED;
+    		leftSpeed = turn_outer_speed;
+    		rightSpeed = -1 * turn_inner_speed;
     	}
     	else if (degreeChange < 0){
-    		rightSpeed = TURN_OUTER_SPEED;
-    		leftSpeed = -1 * TURN_INNER_SPEED;
+    		rightSpeed = turn_outer_speed;
+    		leftSpeed = -1 * turn_inner_speed;
     	}
     	run(leftSpeed,rightSpeed);
 	}

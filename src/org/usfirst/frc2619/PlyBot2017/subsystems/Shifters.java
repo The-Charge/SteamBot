@@ -46,7 +46,7 @@ public class Shifters extends Subsystem {
         // Set the default command for a subsystem here.
         // setDefaultCommand(new MySpecialCommand());
     }
-    //BEGIN Code Added by Kaedon:
+    
     public void ShiftHigh(){
     	leftShifter.set(Value.kForward);
     	rightShifter.set(Value.kForward);
@@ -56,6 +56,5 @@ public class Shifters extends Subsystem {
     	leftShifter.set(Value.kReverse);
     	rightShifter.set(Value.kReverse);
     }
-    //END Code Added by Kaedon
 }
 

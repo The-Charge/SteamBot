@@ -36,9 +36,7 @@ public class ShiftHigh extends InstantCommand {
 
     // Called once when this command runs
     protected void initialize() {
-    	//BEGIN Code Added by Kaedon:
     	Robot.shifters.ShiftHigh();
-    	//END Code Added by Kaedon:
     }
 
 }
