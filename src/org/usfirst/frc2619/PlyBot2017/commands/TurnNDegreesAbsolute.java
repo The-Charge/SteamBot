@@ -59,6 +59,7 @@ public class TurnNDegreesAbsolute extends Command {
     		else
     			degreeChange = -360 + (m_nDegrees - yawInitial);
     	}
+    	this.setTimeout(10);
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -70,6 +71,8 @@ public class TurnNDegreesAbsolute extends Command {
     protected boolean isFinished() {
     	//Runs robot until yaw is within 4 degrees
     	if (Math.abs(m_nDegrees - Robot.driveTrain.getYaw()) < 4)
+    		return true;
+    	else if (this.isTimedOut())
     		return true;
     	else
     		return false;
