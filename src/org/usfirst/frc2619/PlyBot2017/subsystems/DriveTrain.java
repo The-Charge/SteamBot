@@ -28,7 +28,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class DriveTrain extends Subsystem {
 	private final double TICKS_PER_FOOT = 4273;
 	
-	private double Destination;
+	private double Destination = 0;
+	private double numFeet = 0;
 	
 	public boolean isReversed = false;
 	
@@ -91,15 +92,15 @@ public class DriveTrain extends Subsystem {
 		SmartDashboard.putNumber("RightSpeed", rightSpeed);
 		if(!isReversed) {
 	    	leftFrontMotor.set(leftSpeed);
-	    	leftRearMotor.set(leftSpeed);
+	    	
 	    	rightFrontMotor.set(rightSpeed);
-	    	rightRearMotor.set(rightSpeed);
+	    	
 	    }
 		else {
 			leftFrontMotor.set(-1*rightSpeed);
-	    	leftRearMotor.set(-1*rightSpeed);
+	    	
 	    	rightFrontMotor.set(-1*leftSpeed);
-	    	rightRearMotor.set(-1*leftSpeed);
+	    	
 		}
 	}
     
@@ -112,11 +113,21 @@ public class DriveTrain extends Subsystem {
     }
     
     public void sendFeet(double f) {
-    	Destination = getTicks() + (((f * 1.017) - (12.147 / 12)) * TICKS_PER_FOOT);
+    	Destination = 0;
+    	numFeet = f;
+    	Destination = getTicks() + (((numFeet * 1.017) - (12.147 / 12)) * TICKS_PER_FOOT);
+    	SmartDashboard.putNumber("Destination", Destination);
     }
     
     public boolean isAtDestination() {
-    	return getTicks() >= Destination;
+    	SmartDashboard.putNumber("getTicks()", getTicks());
+    	if (numFeet > 0)
+    	{
+        	return getTicks() >= Destination;
+    	}
+    	else {
+    		return getTicks() <= Destination;
+    	}
     }
     
     public void stop() {
@@ -126,6 +137,11 @@ public class DriveTrain extends Subsystem {
     public double getDegrees(){
     	return ahrs.getAngle();
     }
+    
+    public double getYaw(){
+    	return ahrs.getYaw();
+    }
+    
     public void relTurn(double turnTo, double speed){
     	double leftSpeed =0, rightSpeed = 0;
     	double direction = MathUtil.calcDirection(getDegrees(), turnTo);
@@ -146,6 +162,19 @@ public class DriveTrain extends Subsystem {
     		rightSpeed = 0;
     		//run(0,0);
     		SmartDashboard.putString("Direction", "none");
+    	}
+    	run(leftSpeed,rightSpeed);
+	}
+    
+    public void absTurn(double degreeChange, double speed){
+    	double leftSpeed = 0, rightSpeed = 0;
+    	if (degreeChange > 0){
+    		leftSpeed = speed;
+    		rightSpeed = -speed;
+    	}
+    	else if (degreeChange < 0){
+    		rightSpeed = speed;
+    		leftSpeed = -speed;
     	}
     	run(leftSpeed,rightSpeed);
 	}
