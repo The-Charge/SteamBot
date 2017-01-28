@@ -137,6 +137,7 @@ public class Robot extends IterativeRobot {
     public void readAndWriteDashboardValues() {
     	driveTrain.readControlValues();
     	driveTrain.writeDebugValues();
+    	shooterMotors.writeDebugValues();
     	shooterMotors.readDashboardControlValues();
     }
 }

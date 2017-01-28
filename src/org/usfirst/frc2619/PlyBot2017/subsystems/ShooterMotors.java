@@ -24,10 +24,10 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  *
  */
 public class ShooterMotors extends Subsystem {
-	private final static double SPEED_P_CONSTANT = 0.05;
-	private final static double SPEED_I_CONSTANT = 0;
+	private final static double SPEED_P_CONSTANT = 0.3;
+	private final static double SPEED_I_CONSTANT = 0.001;
 	private final static double SPEED_D_CONSTANT = 0;
-	private final static double SPEED_F_CONSTANT = 0.033;
+	private final static double SPEED_F_CONSTANT = 0.12;
 	
 	double SpeedP = SPEED_P_CONSTANT;
 	double SpeedI = SPEED_I_CONSTANT;
@@ -91,8 +91,14 @@ public class ShooterMotors extends Subsystem {
 	
 	public void set(double percentSpeed) {
 		// Sets what speed the motors will run at.
-		leftFrontMotor.setSetpoint(MAX_TICKS_PER_SECOND * percentSpeed);
-		rightFrontMotor.setSetpoint(MAX_TICKS_PER_SECOND * percentSpeed);
+		leftFrontMotor.setSetpoint(MAX_TICKS_PER_SECOND / 10 * percentSpeed);
+		rightFrontMotor.setSetpoint(MAX_TICKS_PER_SECOND / 10 * percentSpeed);
+	}
+	
+	public void writeDebugValues() {
+		SmartDashboard.putNumber("Setpoint", leftFrontMotor.getSetpoint());
+		SmartDashboard.putNumber("MotorControlSpeed", leftFrontMotor.getSpeed());
+		SmartDashboard.putNumber("MscOutput", leftFrontMotor.getOutputVoltage());
 	}
 }
 

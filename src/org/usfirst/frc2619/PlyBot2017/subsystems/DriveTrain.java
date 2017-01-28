@@ -92,6 +92,8 @@ public class DriveTrain extends Subsystem {
         // Connectivity Debugging Support                                     
         SmartDashboard.putNumber(   "IMU_Byte_Count",       ahrs.getByteCount());
         SmartDashboard.putNumber(   "IMU_Update_Count",     ahrs.getUpdateCount());
+        
+        SmartDashboard.putNumber("DriveSpeed", leftFrontMotor.getSpeed() * 10);
     }
     
 	public void run(double leftSpeed, double rightSpeed){
