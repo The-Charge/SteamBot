@@ -6,8 +6,6 @@ public class MathUtil {
 	public static double delinearize(double input, int power) {
 		double dbY = Robot.driveTrain.DEADBAND_Y;
 		double ret;
-		Robot.driveTrain.writeDefaultValues();
-		Robot.driveTrain.readDefaultValues();
 		SmartDashboard.putNumber("Joystick pos: ", input);
 		
 		//returns delinearized power (adjusted for deadband)
