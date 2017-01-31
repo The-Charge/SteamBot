@@ -96,9 +96,10 @@ public class DriveTrain extends Subsystem {
     	TheChargeDashboard.putNumber("IMU_Yaw", ahrs.getYaw());
     	TheChargeDashboard.putNumber("IMU_Pitch", ahrs.getPitch());
     	TheChargeDashboard.putNumber("IMU_Roll", ahrs.getRoll());
-        // Connectivity Debugging Support                                     
+        // Connectivity Debugging Support
     	TheChargeDashboard.putNumber(   "IMU_Byte_Count",       ahrs.getByteCount());
     	TheChargeDashboard.putNumber(   "IMU_Update_Count",     ahrs.getUpdateCount());
+        TheChargeDashboard.putNumber("DriveSpeed", leftFrontMotor.getSpeed() * 10);
     }
     
 	public void run(double leftSpeed, double rightSpeed){
