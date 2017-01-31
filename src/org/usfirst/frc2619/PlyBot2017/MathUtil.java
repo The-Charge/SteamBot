@@ -7,7 +7,11 @@ public class MathUtil {
 		double dbY = Robot.driveTrain.DEADBAND_Y;
 		double ret;
 		SmartDashboard.putNumber("Joystick pos: ", input);
+		boolean allowDelinearization = true;
+		SmartDashboard.putBoolean("Account Delinearization for deadband? ", allowDelinearization);
+		allowDelinearization = SmartDashboard.getBoolean("Account Delinearization for deadband? ");
 		
+		if(allowDelinearization == true){
 		//returns delinearized power (adjusted for deadband)
 		if(input > 0){
 			//this is an equation for the curve so that it starts at zero at the edge of the deadband...
@@ -18,6 +22,10 @@ public class MathUtil {
 			ret = 1/Math.pow(1 - dbY, power) * Math.pow(input + dbY, power);
 		}else{
 			ret = 0;
+		}
+		}else{
+			//if delin modifications are off, will return non-fixed delinearization
+			ret = Math.pow(input, power);
 		}
 		
 		SmartDashboard.putNumber("power output: ", ret);
