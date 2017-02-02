@@ -27,7 +27,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class DriveTrain extends Subsystem {
 	private final double TICKS_PER_FOOT = 4273;
-	private final int TICKS_PER_REVOLUTION = 1024;
+	private final int TICKS_PER_REVOLUTION = 1440;		// 4 x CPR
 	
 	private double Destination = 0;
 	private double numFeet = 0;
@@ -47,10 +47,18 @@ public class DriveTrain extends Subsystem {
 	private static final String DEADBAND_TWIST_KEY = "DEADBAND_TWIST";
 	private static final String TURN_OUTER_SPEED_KEY = "TURN_OUTER_SPEED";
 	private static final String TURN_INNER_SPEED_KEY = "TURN_INNER_SPEED";
+	private static final String POSITION_P_KEY = "POSITION_P";
+	private static final String POSITION_D_KEY = "POSITION_D";
+	private static final String POSITION_I_KEY = "POSITION_I";
+	private static final String POSITION_F_KEY = "POSITION_F";
+	private static final String ACCELERATION = "ACCELERATION";
+	private static final String VELOCITY = "VELOCITY";
+	private static final String DISTANCE = "DISTANCE";
 	
 	public final static double POSITION_P_CONSTANT = 0.1;
 	private final static double POSITION_I_CONSTANT = 0;
 	private final static double POSITION_D_CONSTANT = 0;
+	private final static double POSITION_F_CONSTANT = 0;
 	
 	private final static int PID_PROFILE_POSITION = 1;
 	
@@ -77,12 +85,13 @@ public class DriveTrain extends Subsystem {
     	SmartDashboard.putNumber(DEADBAND_TWIST_KEY, DEADBAND_TWIST);
     	SmartDashboard.putNumber(TURN_OUTER_SPEED_KEY, TURN_OUTER_SPEED);
     	SmartDashboard.putNumber(TURN_INNER_SPEED_KEY, TURN_INNER_SPEED);
-    	SmartDashboard.putNumber("Position P Value", POSITION_P_CONSTANT);
-    	SmartDashboard.putNumber("Position D Value", POSITION_D_CONSTANT);
-    	SmartDashboard.putNumber("Position I Value", POSITION_I_CONSTANT);
-    	SmartDashboard.putNumber("Acceleration",0);
-    	SmartDashboard.putNumber("Cruising Velocity", 0);
-    	SmartDashboard.putNumber("Distance", 0);
+    	SmartDashboard.putNumber(POSITION_P_KEY, POSITION_P_CONSTANT);
+    	SmartDashboard.putNumber(POSITION_I_KEY, POSITION_D_CONSTANT);
+    	SmartDashboard.putNumber(POSITION_D_KEY, POSITION_I_CONSTANT);
+    	SmartDashboard.putNumber(POSITION_F_KEY, POSITION_F_CONSTANT);
+    	SmartDashboard.putNumber(ACCELERATION,0);
+    	SmartDashboard.putNumber(VELOCITY, 0);
+    	SmartDashboard.putNumber(DISTANCE, 0);
     }
     
     public void readControlValues() {
@@ -214,34 +223,39 @@ public class DriveTrain extends Subsystem {
     public void MotionMagicMode (){
     	leftFrontMotor.changeControlMode(CANTalon.TalonControlMode.MotionMagic);
     	rightFrontMotor.changeControlMode(CANTalon.TalonControlMode.MotionMagic);
-    	rightRearMotor.changeControlMode(CANTalon.TalonControlMode.Follower);
-    	rightRearMotor.set(rightFrontMotor.getDeviceID());
-    	leftRearMotor.changeControlMode(CANTalon.TalonControlMode.Follower);
-    	leftRearMotor.set(leftFrontMotor.getDeviceID());
     	
     	//set position PIDF values
+    	//REQUIRES F VALUE
     	setProfile(PID_PROFILE_POSITION);
-    	double positionP = SmartDashboard.getNumber("Position P Value");
-    	double positionI = SmartDashboard.getNumber("Position I Value");
-    	double positionD = SmartDashboard.getNumber("Position D Value");
-    	leftFrontMotor.setPID(positionP, positionI, positionD);
-    	rightFrontMotor.setPID(positionP, positionI, positionD);
+    	double positionP = SmartDashboard.getNumber(POSITION_P_KEY);
+    	double positionI = SmartDashboard.getNumber(POSITION_I_KEY);
+    	double positionD = SmartDashboard.getNumber(POSITION_D_KEY);
+    	double positionF = SmartDashboard.getNumber(POSITION_F_KEY);
+    	leftFrontMotor.setPID(positionP, positionI, positionD, positionF,0,12,PID_PROFILE_POSITION);
+    	rightFrontMotor.setPID(positionP, positionI, positionD, positionF,0,12,PID_PROFILE_POSITION);
     	
-    	double acceleration = SmartDashboard.getNumber("Acceleration");
-    	double velocity = SmartDashboard.getNumber("Cruising Velocity");
-    	double distance = SmartDashboard.getNumber("Distance");
+    	double acceleration = SmartDashboard.getNumber(ACCELERATION);
+    	double velocity = SmartDashboard.getNumber(VELOCITY);
+    	double distance = SmartDashboard.getNumber(DISTANCE);
     	
+    	//gets ticks per rev??
+    	leftFrontMotor.configEncoderCodesPerRev(TICKS_PER_REVOLUTION);
+    	rightFrontMotor.configEncoderCodesPerRev(TICKS_PER_REVOLUTION);
     	//set acceleration and cruising velocity
+    	acceleration *= TICKS_PER_REVOLUTION;
+    	velocity *= TICKS_PER_REVOLUTION;
     	rightFrontMotor.setMotionMagicAcceleration(acceleration);
     	leftFrontMotor.setMotionMagicAcceleration(acceleration);
     	rightFrontMotor.setMotionMagicCruiseVelocity(velocity);
     	leftFrontMotor.setMotionMagicCruiseVelocity(velocity);
     	
     	//set target distance
+    	distance *= TICKS_PER_FOOT;
+    	sendFeet(distance);
     	rightFrontMotor.set(distance);
     	leftFrontMotor.set(distance);
     	
-    	leftFrontMotor.configEncoderCodesPerRev(TICKS_PER_REVOLUTION);
+    	//leftFrontMotor.configEncoderCodesPerRev(TICKS_PER_REVOLUTION);
     	
     }
     
