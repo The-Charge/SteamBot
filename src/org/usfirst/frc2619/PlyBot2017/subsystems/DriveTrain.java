@@ -39,7 +39,8 @@ public class DriveTrain extends Subsystem {
 	public double DEADBAND_TWIST = 0.2;
 	public double TURN_OUTER_SPEED = 0.5;
 	public double TURN_INNER_SPEED = -0.5;
-	public int CURRENT_LIMIT = 60;
+	public int CURRENT_LIMIT = 8;
+
 	
 	private static final String DELIN_POW_KEY = "DELIN_POW";
 	private static final String DEADBAND_X_KEY = "DEADBAND_X";
@@ -96,6 +97,7 @@ public class DriveTrain extends Subsystem {
         // Connectivity Debugging Support                                     
         SmartDashboard.putNumber(   "IMU_Byte_Count",       ahrs.getByteCount());
         SmartDashboard.putNumber(   "IMU_Update_Count",     ahrs.getUpdateCount());
+        SmartDashboard.putNumber("Output_Current", (RobotMap.driveTrainLeftFrontMotor.getOutputCurrent()+RobotMap.driveTrainRightFrontMotor.getOutputCurrent())/2.0);
     }
     
 	public void run(double leftSpeed, double rightSpeed){
