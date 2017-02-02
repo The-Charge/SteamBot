@@ -38,10 +38,8 @@ public class DisableCurrentLimit extends InstantCommand {
     // Called once when this command runs
     protected void initialize() {
     	//Disable current limiting
-        driveTrainLeftRearMotor.EnableCurrentLimit(false);
-        driveTrainRightRearMotor.EnableCurrentLimit(false);
-        driveTrainLeftFrontMotor.EnableCurrentLimit(false);
-        driveTrainRightFrontMotor.EnableCurrentLimit(false);
+    	Robot.driveTrain.disableCurrentLimit();
+        
     }
 
 }
