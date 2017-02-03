@@ -58,7 +58,7 @@ public class DriveTrain extends Subsystem {
 	public final static double POSITION_P_CONSTANT = 0.1;
 	private final static double POSITION_I_CONSTANT = 0;
 	private final static double POSITION_D_CONSTANT = 0;
-	private final static double POSITION_F_CONSTANT = 0;
+	private final static double POSITION_F_CONSTANT = 0.125;
 	
 	private final static int PID_PROFILE_POSITION = 1;
 	
@@ -114,6 +114,7 @@ public class DriveTrain extends Subsystem {
         // Connectivity Debugging Support                                     
         SmartDashboard.putNumber(   "IMU_Byte_Count",       ahrs.getByteCount());
         SmartDashboard.putNumber(   "IMU_Update_Count",     ahrs.getUpdateCount());
+        SmartDashboard.putNumber("Left Front Motor Error", leftFrontMotor.getError());
     }
     
 	public void run(double leftSpeed, double rightSpeed){
@@ -158,6 +159,10 @@ public class DriveTrain extends Subsystem {
     	else {
     		return getTicks() <= Destination;
     	}
+    }
+    
+    public boolean isAtPIDDestination() {
+    	return Math.abs(this.leftFrontMotor.getError()) < 1000;
     }
     
     public void stop() {
@@ -239,18 +244,18 @@ public class DriveTrain extends Subsystem {
     	double distance = SmartDashboard.getNumber(DISTANCE);
     	
     	//gets ticks per rev??
-    	leftFrontMotor.configEncoderCodesPerRev(TICKS_PER_REVOLUTION);
-    	rightFrontMotor.configEncoderCodesPerRev(TICKS_PER_REVOLUTION);
+    	//leftFrontMotor.configEncoderCodesPerRev(TICKS_PER_REVOLUTION);
+    	//rightFrontMotor.configEncoderCodesPerRev(TICKS_PER_REVOLUTION);
     	//set acceleration and cruising velocity
-    	acceleration *= TICKS_PER_REVOLUTION;
-    	velocity *= TICKS_PER_REVOLUTION;
+    	//acceleration *= TICKS_PER_REVOLUTION;
+    	//velocity *= TICKS_PER_REVOLUTION;
     	rightFrontMotor.setMotionMagicAcceleration(acceleration);
     	leftFrontMotor.setMotionMagicAcceleration(acceleration);
     	rightFrontMotor.setMotionMagicCruiseVelocity(velocity);
     	leftFrontMotor.setMotionMagicCruiseVelocity(velocity);
     	
     	//set target distance
-    	distance *= TICKS_PER_FOOT;
+    	//distance *= TICKS_PER_FOOT;
     	sendFeet(distance);
     	rightFrontMotor.set(distance);
     	leftFrontMotor.set(distance);
