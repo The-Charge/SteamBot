@@ -16,6 +16,8 @@ import org.usfirst.frc2619.PlyBot2017.Robot;
 import org.usfirst.frc2619.PlyBot2017.RobotMap;
 import org.usfirst.frc2619.PlyBot2017.commands.*;
 import com.ctre.CANTalon;
+import com.ctre.CANTalon.FeedbackDevice;
+import com.ctre.CANTalon.TalonControlMode;
 import com.kauailabs.navx.frc.AHRS;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -41,6 +43,10 @@ public class DriveTrain extends Subsystem {
 	public double TURN_OUTER_SPEED = 0.5;
 	public double TURN_INNER_SPEED = -0.5;
 	
+	public double VELOCITY = 4000;
+	public double ACCELERATION = 1000;
+	public double DISTANCE = 100000;
+	
 	private static final String DELIN_POW_KEY = "DELIN_POW";
 	private static final String DEADBAND_X_KEY = "DEADBAND_X";
 	private static final String DEADBAND_Y_KEY = "DEADBAND_Y";
@@ -51,9 +57,9 @@ public class DriveTrain extends Subsystem {
 	private static final String POSITION_D_KEY = "POSITION_D";
 	private static final String POSITION_I_KEY = "POSITION_I";
 	private static final String POSITION_F_KEY = "POSITION_F";
-	private static final String ACCELERATION = "ACCELERATION";
-	private static final String VELOCITY = "VELOCITY";
-	private static final String DISTANCE = "DISTANCE";
+	private static final String ACCELERATION_KEY = "ACCELERATION";
+	private static final String VELOCITY_KEY = "VELOCITY";
+	private static final String DISTANCE_KEY = "DISTANCE";
 	
 	public final static double POSITION_P_CONSTANT = 0.1;
 	private final static double POSITION_I_CONSTANT = 0;
@@ -89,9 +95,9 @@ public class DriveTrain extends Subsystem {
     	SmartDashboard.putNumber(POSITION_I_KEY, POSITION_D_CONSTANT);
     	SmartDashboard.putNumber(POSITION_D_KEY, POSITION_I_CONSTANT);
     	SmartDashboard.putNumber(POSITION_F_KEY, POSITION_F_CONSTANT);
-    	SmartDashboard.putNumber(ACCELERATION,0);
-    	SmartDashboard.putNumber(VELOCITY, 0);
-    	SmartDashboard.putNumber(DISTANCE, 0);
+    	SmartDashboard.putNumber(ACCELERATION_KEY, ACCELERATION);
+    	SmartDashboard.putNumber(VELOCITY_KEY, VELOCITY);
+    	SmartDashboard.putNumber(DISTANCE_KEY, DISTANCE);
     }
     
     public void readControlValues() {
@@ -114,11 +120,15 @@ public class DriveTrain extends Subsystem {
         // Connectivity Debugging Support                                     
         SmartDashboard.putNumber(   "IMU_Byte_Count",       ahrs.getByteCount());
         SmartDashboard.putNumber(   "IMU_Update_Count",     ahrs.getUpdateCount());
-        SmartDashboard.putNumber("Left Front Motor Error", leftFrontMotor.getError());
+        SmartDashboard.putNumber("LeftFrontMotorError", leftFrontMotor.getError());
+        SmartDashboard.putNumber("LeftFrontMotorSetpoint", leftFrontMotor.getSetpoint());
+        SmartDashboard.putNumber("LeftFrontMotorEncPosition", leftFrontMotor.getEncPosition());
+        SmartDashboard.putNumber("LeftFrontMotorClosedLoopError", leftFrontMotor.getClosedLoopError());
     }
     
 	public void run(double leftSpeed, double rightSpeed){
-		writeDebugValues();
+		leftFrontMotor.changeControlMode(TalonControlMode.PercentVbus);
+		rightFrontMotor.changeControlMode(TalonControlMode.PercentVbus);
 		SmartDashboard.putNumber("LeftSpeed", leftSpeed);
 		SmartDashboard.putNumber("RightSpeed", rightSpeed);
 		if(!isReversed) {
@@ -162,7 +172,7 @@ public class DriveTrain extends Subsystem {
     }
     
     public boolean isAtPIDDestination() {
-    	return Math.abs(this.leftFrontMotor.getError()) < 1000;
+    	return Math.abs(this.leftFrontMotor.getSetpoint() - this.leftFrontMotor.getEncPosition()) < 1000;
     }
     
     public void stop() {
@@ -225,7 +235,13 @@ public class DriveTrain extends Subsystem {
         // setDefaultCommand(new MySpecialCommand());
     }
     
-    public void MotionMagicMode (){
+    public void initMotionMagicMode() {
+    	leftFrontMotor.setFeedbackDevice(FeedbackDevice.QuadEncoder);
+    	rightFrontMotor.setFeedbackDevice(FeedbackDevice.QuadEncoder);
+    	
+    	leftFrontMotor.setPosition(0);
+    	rightFrontMotor.setPosition(0);
+    	
     	leftFrontMotor.changeControlMode(CANTalon.TalonControlMode.MotionMagic);
     	rightFrontMotor.changeControlMode(CANTalon.TalonControlMode.MotionMagic);
     	
@@ -236,12 +252,16 @@ public class DriveTrain extends Subsystem {
     	double positionI = SmartDashboard.getNumber(POSITION_I_KEY);
     	double positionD = SmartDashboard.getNumber(POSITION_D_KEY);
     	double positionF = SmartDashboard.getNumber(POSITION_F_KEY);
-    	leftFrontMotor.setPID(positionP, positionI, positionD, positionF,0,12,PID_PROFILE_POSITION);
-    	rightFrontMotor.setPID(positionP, positionI, positionD, positionF,0,12,PID_PROFILE_POSITION);
+    	leftFrontMotor.setProfile(PID_PROFILE_POSITION);
+    	rightFrontMotor.setProfile(PID_PROFILE_POSITION);
+    	leftFrontMotor.setPID(positionP, positionI, positionD);
+    	leftFrontMotor.setF(positionF);
+    	rightFrontMotor.setPID(positionP, positionI, positionD);
+    	rightFrontMotor.setF(positionF);
     	
-    	double acceleration = SmartDashboard.getNumber(ACCELERATION);
-    	double velocity = SmartDashboard.getNumber(VELOCITY);
-    	double distance = SmartDashboard.getNumber(DISTANCE);
+    	double acceleration = SmartDashboard.getNumber(ACCELERATION_KEY);
+    	double velocity = SmartDashboard.getNumber(VELOCITY_KEY);
+    	double distance = SmartDashboard.getNumber(DISTANCE_KEY);
     	
     	//gets ticks per rev??
     	//leftFrontMotor.configEncoderCodesPerRev(TICKS_PER_REVOLUTION);
@@ -256,12 +276,19 @@ public class DriveTrain extends Subsystem {
     	
     	//set target distance
     	//distance *= TICKS_PER_FOOT;
-    	sendFeet(distance);
-    	rightFrontMotor.set(distance);
-    	leftFrontMotor.set(distance);
+    	//sendFeet(distance);
+    	rightFrontMotor.setSetpoint(distance);
+    	leftFrontMotor.setSetpoint(distance);
     	
     	//leftFrontMotor.configEncoderCodesPerRev(TICKS_PER_REVOLUTION);
     	
+    }
+    
+    public void runMotionMagicMode() {
+    	double distance = SmartDashboard.getNumber(DISTANCE_KEY);
+    	
+    	rightFrontMotor.setSetpoint(-distance);
+    	leftFrontMotor.setSetpoint(distance);
     }
     
     private void setProfile(int profile) {

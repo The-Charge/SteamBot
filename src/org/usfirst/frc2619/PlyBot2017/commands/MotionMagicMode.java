@@ -40,12 +40,12 @@ public class MotionMagicMode extends Command {
     	//double acceleration = 10, velocity = 60;
     	// acceleration units rpm per second
     	// velocity units rpm
-    	Robot.driveTrain.MotionMagicMode();
+    	Robot.driveTrain.initMotionMagicMode();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	
+    	Robot.driveTrain.runMotionMagicMode();
     }
 
     // Make this return true when this Command no longer needs to run execute()
