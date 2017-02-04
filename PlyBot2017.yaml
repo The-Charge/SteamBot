@@ -206,10 +206,10 @@ Children:
         Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,
           name: Joystick, validators: null, value: LeftJoystick}
         Parameters: !!robotbuilder.data.properties.ParametersProperty
-          default: &id014 []
+          default: []
           name: Parameters
           validators: null
-          value: *id014
+          value: []
         Button: !!robotbuilder.data.properties.ChoicesProperty
           choices: *id011
           default: '1'
@@ -232,20 +232,20 @@ Children:
       Name: MotionMagicModeButton
     Properties:
       Number: !!robotbuilder.data.properties.ChoicesProperty
-        choices: &id015 ['0', '1', '2', '3', '4', '5']
+        choices: &id014 ['0', '1', '2', '3', '4', '5']
         default: 1
         name: Number
-        validators: &id016 [Joystick]
+        validators: &id015 [Joystick]
         value: '0'
     Base: Joystick
     Name: LeftJoystick
   - Children: []
     Properties:
       Number: !!robotbuilder.data.properties.ChoicesProperty
-        choices: *id015
+        choices: *id014
         default: 1
         name: Number
-        validators: *id016
+        validators: *id015
         value: '1'
     Base: Joystick
     Name: RightJoystick
@@ -540,7 +540,7 @@ Children:
       Commands: !!robotbuilder.data.properties.ListProperty
         default: []
         name: Commands
-        validators: &id017 [List]
+        validators: &id016 [List]
         value: []
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
@@ -561,7 +561,7 @@ Children:
       Commands: !!robotbuilder.data.properties.ListProperty
         default: []
         name: Commands
-        validators: *id017
+        validators: *id016
         value: []
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
@@ -640,6 +640,46 @@ Children:
         name: Button on SmartDashboard, validators: null, value: true}
     Base: Command
     Name: MotionMagicMode
+  - Children: []
+    Properties:
+      Parameters: !!robotbuilder.data.properties.ParametersProperty
+        default: []
+        name: Parameters
+        validators: null
+        value:
+        - !!robotbuilder.data.properties.ParameterDescriptor {name: velocity, type: double}
+        - !!robotbuilder.data.properties.ParameterDescriptor {name: acceleration,
+          type: double}
+        - !!robotbuilder.data.properties.ParameterDescriptor {name: distance, type: double}
+      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Requires, type: Subsystem, validators: null, value: DriveTrain}
+      Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
+        default: &id017
+        - !!robotbuilder.data.properties.ParameterSet
+          name: DXF_MM_20
+          parameters:
+          - {name: velocity, type: double, value: '0'}
+          - {name: acceleration, type: double, value: '0'}
+          - {name: distance, type: double, value: '20'}
+        - !!robotbuilder.data.properties.ParameterSet
+          name: DXF_MM_5
+          parameters:
+          - {name: velocity, type: double, value: '0'}
+          - {name: acceleration, type: double, value: '0'}
+          - {name: distance, type: double, value: '5'}
+        - !!robotbuilder.data.properties.ParameterSet
+          name: DXF_MM_10
+          parameters:
+          - {name: velocity, type: double, value: '0'}
+          - {name: acceleration, type: double, value: '0'}
+          - {name: distance, type: double, value: '10'}
+        name: Parameter presets
+        validators: null
+        value: *id017
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: true}
+    Base: Command
+    Name: DriveXFeetMM
   Properties: {}
   Base: Commands
   Name: Commands

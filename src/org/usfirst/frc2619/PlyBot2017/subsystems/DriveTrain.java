@@ -28,7 +28,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  *
  */
 public class DriveTrain extends Subsystem {
-	private final double TICKS_PER_FOOT = 4273;
+	private final double TICKS_PER_FOOT = 3655;
 	private final int TICKS_PER_REVOLUTION = 1440;		// 4 x CPR
 	
 	private double Destination = 0;
@@ -41,7 +41,7 @@ public class DriveTrain extends Subsystem {
 	public double DEADBAND_Y = 0.1;
 	public double DEADBAND_TWIST = 0.2;
 	public double TURN_OUTER_SPEED = 0.5;
-	public double TURN_INNER_SPEED = -0.5;
+	public double TURN_INNER_SPEED = 0.5;
 	
 	public double VELOCITY = 4000;
 	public double ACCELERATION = 1000;
@@ -239,6 +239,40 @@ public class DriveTrain extends Subsystem {
         // Set the default command for a subsystem here.
         // setDefaultCommand(new MySpecialCommand());
     }
+    
+    public void dXF_MM(double acceleration, double velocity, double distance) {
+    	leftFrontMotor.setFeedbackDevice(FeedbackDevice.QuadEncoder);
+    	rightFrontMotor.setFeedbackDevice(FeedbackDevice.QuadEncoder);
+    	
+    	leftFrontMotor.changeControlMode(CANTalon.TalonControlMode.MotionMagic);
+    	rightFrontMotor.changeControlMode(CANTalon.TalonControlMode.MotionMagic);
+    	
+    	leftFrontMotor.setPosition(0);
+    	rightFrontMotor.setPosition(0);
+    	
+    	setProfile(PID_PROFILE_POSITION);
+    	double positionP = SmartDashboard.getNumber(POSITION_P_KEY);
+    	double positionI = SmartDashboard.getNumber(POSITION_I_KEY);
+    	double positionD = SmartDashboard.getNumber(POSITION_D_KEY);
+    	double positionF = SmartDashboard.getNumber(POSITION_F_KEY);
+    	leftFrontMotor.setProfile(PID_PROFILE_POSITION);
+    	rightFrontMotor.setProfile(PID_PROFILE_POSITION);
+    	leftFrontMotor.setPID(positionP, positionI, positionD);
+    	leftFrontMotor.setF(positionF);
+    	rightFrontMotor.setPID(positionP, positionI, positionD);
+    	rightFrontMotor.setF(positionF);
+    	
+    	distance *= TICKS_PER_FOOT;
+   
+    	rightFrontMotor.setMotionMagicAcceleration(acceleration);
+    	leftFrontMotor.setMotionMagicAcceleration(acceleration);
+    	rightFrontMotor.setMotionMagicCruiseVelocity(velocity);
+    	leftFrontMotor.setMotionMagicCruiseVelocity(velocity);
+    
+    	rightFrontMotor.setSetpoint(-distance);
+    	leftFrontMotor.setSetpoint(distance);
+    }
+    
     
     public void motionMagicMode() {
     	leftFrontMotor.setFeedbackDevice(FeedbackDevice.QuadEncoder);
