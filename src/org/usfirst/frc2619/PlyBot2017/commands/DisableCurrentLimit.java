@@ -38,7 +38,7 @@ public class DisableCurrentLimit extends InstantCommand {
     // Called once when this command runs
     protected void initialize() {
     	//Disable current limiting
-    	Robot.driveTrain.enableCurrentLimit();
+    	Robot.driveTrain.disableCurrentLimit();
         
     }
 

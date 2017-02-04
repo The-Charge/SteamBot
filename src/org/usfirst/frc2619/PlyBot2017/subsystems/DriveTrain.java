@@ -97,7 +97,8 @@ public class DriveTrain extends Subsystem {
         // Connectivity Debugging Support                                     
         SmartDashboard.putNumber(   "IMU_Byte_Count",       ahrs.getByteCount());
         SmartDashboard.putNumber(   "IMU_Update_Count",     ahrs.getUpdateCount());
-        SmartDashboard.putNumber("Output_Current", (RobotMap.driveTrainLeftFrontMotor.getOutputCurrent()+RobotMap.driveTrainRightFrontMotor.getOutputCurrent())/2.0);
+        SmartDashboard.putNumber("LeftMotorOutputCurrent", leftFrontMotor.getOutputCurrent());
+        SmartDashboard.putNumber("RightMotorOutputCurrent", rightFrontMotor.getOutputCurrent());
     }
     
 	public void run(double leftSpeed, double rightSpeed){
@@ -160,12 +161,11 @@ public class DriveTrain extends Subsystem {
     }
     
     public void enableCurrentLimit(){
+    	updateCurrentLimit();
     	RobotMap.driveTrainLeftRearMotor.EnableCurrentLimit(true);
     	RobotMap.driveTrainRightRearMotor.EnableCurrentLimit(true);
     	RobotMap.driveTrainLeftFrontMotor.EnableCurrentLimit(true);
-    	RobotMap.driveTrainLeftFrontMotor.EnableCurrentLimit(true);
-        readControlValues();
-        updateCurrentLimit();
+    	RobotMap.driveTrainRightFrontMotor.EnableCurrentLimit(true);
     }
     
     public void stop() {
