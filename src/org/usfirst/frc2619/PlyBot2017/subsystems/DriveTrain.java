@@ -244,15 +244,11 @@ public class DriveTrain extends Subsystem {
     	leftFrontMotor.setFeedbackDevice(FeedbackDevice.QuadEncoder);
     	rightFrontMotor.setFeedbackDevice(FeedbackDevice.QuadEncoder);
     	
-    	
-    	
     	leftFrontMotor.changeControlMode(CANTalon.TalonControlMode.MotionMagic);
     	rightFrontMotor.changeControlMode(CANTalon.TalonControlMode.MotionMagic);
     	
     	leftFrontMotor.setPosition(0);
     	rightFrontMotor.setPosition(0);
-    	//leftFrontMotor.setSetpoint(0);
-    	//rightFrontMotor.setSetpoint(0);
     	
     	//set position PIDF values
     	//REQUIRES F VALUE
@@ -273,8 +269,6 @@ public class DriveTrain extends Subsystem {
     	double distance = SmartDashboard.getNumber(DISTANCE_KEY);
     	
     	//gets ticks per rev??
-    	//leftFrontMotor.configEncoderCodesPerRev(TICKS_PER_REVOLUTION);
-    	//rightFrontMotor.configEncoderCodesPerRev(TICKS_PER_REVOLUTION);
     	//set acceleration and cruising velocity
     	//acceleration *= TICKS_PER_REVOLUTION;
     	//velocity *= TICKS_PER_REVOLUTION;
@@ -288,37 +282,14 @@ public class DriveTrain extends Subsystem {
     	//sendFeet(distance);
     	rightFrontMotor.setSetpoint(-distance);
     	leftFrontMotor.setSetpoint(distance);
-
-    	
-    	//leftFrontMotor.configEncoderCodesPerRev(TICKS_PER_REVOLUTION);
-    	
     }
     
     public void setEncZero(){
     	leftFrontMotor.setEncPosition(0);
+    	rightFrontMotor.setEncPosition(0);
+    	leftRearMotor.setEncPosition(0);
+    	rightRearMotor.setEncPosition(0);
     }
-   /* public void runMotionMagicMode() {
-	    double acceleration = SmartDashboard.getNumber(ACCELERATION_KEY);
-    	double velocity = SmartDashboard.getNumber(VELOCITY_KEY);
-    	double distance = SmartDashboard.getNumber(DISTANCE_KEY);
-    	
-    	//gets ticks per rev??
-    	//leftFrontMotor.configEncoderCodesPerRev(TICKS_PER_REVOLUTION);
-    	//rightFrontMotor.configEncoderCodesPerRev(TICKS_PER_REVOLUTION);
-    	//set acceleration and cruising velocity
-    	//acceleration *= TICKS_PER_REVOLUTION;
-    	//velocity *= TICKS_PER_REVOLUTION;
-    	rightFrontMotor.setMotionMagicAcceleration(acceleration);
-    	leftFrontMotor.setMotionMagicAcceleration(acceleration);
-    	rightFrontMotor.setMotionMagicCruiseVelocity(velocity);
-    	leftFrontMotor.setMotionMagicCruiseVelocity(velocity);
-    	
-    	//set target distance
-    	//distance *= TICKS_PER_FOOT;
-    	//sendFeet(distance);
-    	rightFrontMotor.setSetpoint(-distance);
-    	leftFrontMotor.setSetpoint(distance);
-    }*/
     
     private void setProfile(int profile) {
 		leftFrontMotor.setProfile(profile);

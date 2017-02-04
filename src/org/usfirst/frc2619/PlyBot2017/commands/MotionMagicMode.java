@@ -42,14 +42,11 @@ public class MotionMagicMode extends Command {
     	//double acceleration = 10, velocity = 60;
     	// acceleration units rpm per second
     	// velocity units rpm
-    	//Robot.driveTrain.initMotionMagicMode();
     	Robot.driveTrain.motionMagicMode();
-    	System.out.println("MotionMagicHappens");
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	//Robot.driveTrain.motionMagicMode();
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -61,14 +58,12 @@ public class MotionMagicMode extends Command {
     protected void end() {
     	Robot.driveTrain.stop();
     	Robot.driveTrain.setEncZero();
-    	System.out.println("MotionMagicEnded");
     	
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	System.out.println("MotionMagicInterrupted");
     	end();
     }
 }
