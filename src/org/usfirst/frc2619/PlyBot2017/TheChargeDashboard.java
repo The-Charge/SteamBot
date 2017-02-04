@@ -1,5 +1,7 @@
 package org.usfirst.frc2619.PlyBot2017;
 
+import org.usfirst.frc2619.PlyBot2017.subsystems.DriveTrain;
+
 import edu.wpi.first.wpilibj.NamedSendable;
 import edu.wpi.first.wpilibj.Sendable;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -7,7 +9,18 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class TheChargeDashboard {
 
 	private static String[] whiteList = {
-			
+			DriveTrain.DELIN_POW_KEY, DriveTrain.DEADBAND_X_KEY, DriveTrain.DEADBAND_Y_KEY, DriveTrain.DEADBAND_TWIST_KEY,
+			"PowerOutput", "JoystickPosition", "Allow_Delinearization",
+			"TURN_OUTER_SPEED", "TURN_INNER_SPEED", "FinalDegrees",
+			"CURRENT_LIMIT",
+			"POSITION_P", "POSITION_I", "POSITION_D", "POSITION_F", "ACCELERATION", "VELOCITY", "DISTANCE",
+			"IMU_TotalYaw", "IMU_YawRateDPS", "IMU_Connected", "IMU_IsCalibrating", "IMU_Yaw", "IMU_Pitch", "IMU_Roll", "IMU_Byte_Count", "IMU_Update_Count",
+			"Setpoint",
+			"LeftSpeed", "RightSpeed",
+			"Direction",
+			//"ShooterSpeedP", "ShooterSpeedI", "ShooterSpeedD", "ShooterSpeedF",
+			"driveTrain",
+			"AutoMode"
 			};
 
 	public static void putNumber(String key, double value) {

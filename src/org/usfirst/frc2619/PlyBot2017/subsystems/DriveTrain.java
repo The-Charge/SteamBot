@@ -29,8 +29,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  *
  */
 public class DriveTrain extends Subsystem {
-	private final double TICKS_PER_FOOT = 4273;
-	private final int TICKS_PER_REVOLUTION = 1440;		// 4 x CPR
+	private final double TICKS_PER_FOOT = 3655;
+	private final int TICKS_PER_REVOLUTION = 1440;		// 4 x CPR WILL BE CHANGED
 	
 	private double Destination = 0;
 	private double numFeet = 0;
@@ -49,16 +49,13 @@ public class DriveTrain extends Subsystem {
 	public final double TURN_OUTER_SPEED_DEFAULT = 0.5;
 	public double turn_inner_speed;
 	public final double TURN_INNER_SPEED_DEFAULT = -0.5;
-	public int CURRENT_LIMIT = 8;
+	public int current_limit;
+	public final int CURRENT_LIMIT_DEFAULT = 40;
 	
-	public double VELOCITY = 4000;
-	public double ACCELERATION = 1000;
-	public double DISTANCE = 100000;
-	
-	private static final String DELIN_POW_KEY = "DELIN_POW";
-	private static final String DEADBAND_X_KEY = "DEADBAND_X";
-	private static final String DEADBAND_Y_KEY = "DEADBAND_Y";
-	private static final String DEADBAND_TWIST_KEY = "DEADBAND_TWIST";
+	public static final String DELIN_POW_KEY = "DELIN_POW";
+	public static final String DEADBAND_X_KEY = "DEADBAND_X";
+	public static final String DEADBAND_Y_KEY = "DEADBAND_Y";
+	public static final String DEADBAND_TWIST_KEY = "DEADBAND_TWIST";
 	
 	private static final String TURN_OUTER_SPEED_KEY = "TURN_OUTER_SPEED";
 	private static final String TURN_INNER_SPEED_KEY = "TURN_INNER_SPEED";
@@ -73,10 +70,30 @@ public class DriveTrain extends Subsystem {
 	private static final String VELOCITY_KEY = "VELOCITY";
 	private static final String DISTANCE_KEY = "DISTANCE";
 	
-	public final static double POSITION_P_CONSTANT = 0.1;
+	public final static double POSITION_P_CONSTANT = 1.6;
 	private final static double POSITION_I_CONSTANT = 0;
-	private final static double POSITION_D_CONSTANT = 0;
-	private final static double POSITION_F_CONSTANT = 0.125;
+	private final static double POSITION_D_CONSTANT = 25;
+	private final static double POSITION_F_CONSTANT = 0.17;
+	
+	public final static double VELOCITY_CONSTANT = 6000;
+	public final static double ACCELERATION_CONSTANT = 4000;
+	public final static double DISTANCE_CONSTANT = 36550;
+	
+	double position_P = POSITION_P_CONSTANT;
+	public final double POSITION_P_DEFAULT = POSITION_P_CONSTANT;
+	double position_I = POSITION_I_CONSTANT;
+	public final double POSITION_I_DEFAULT = POSITION_I_CONSTANT;
+	double position_D = POSITION_D_CONSTANT;
+	public final double POSITION_D_DEFAULT = POSITION_D_CONSTANT;
+	double position_F = POSITION_F_CONSTANT;
+	public final double POSITION_F_DEFAULT = POSITION_F_CONSTANT;
+	
+	double velocity = VELOCITY_CONSTANT;
+	public final double VELOCITY_DEFAULT = VELOCITY_CONSTANT;
+	double acceleration = ACCELERATION_CONSTANT;
+	public final double ACCELERATION_DEFAULT = ACCELERATION_CONSTANT;
+	double distance = DISTANCE_CONSTANT;
+	public final double DISTANCE_DEFAULT = DISTANCE_CONSTANT;
 	
 	private final static int PID_PROFILE_POSITION = 1;
 	
@@ -103,13 +120,14 @@ public class DriveTrain extends Subsystem {
     	TheChargeDashboard.putNumber(DEADBAND_TWIST_KEY, DEADBAND_TWIST_DEFAULT);
     	TheChargeDashboard.putNumber(TURN_OUTER_SPEED_KEY, TURN_OUTER_SPEED_DEFAULT);
     	TheChargeDashboard.putNumber(TURN_INNER_SPEED_KEY, TURN_INNER_SPEED_DEFAULT);
-    	TheChargeDashboard.putNumber(POSITION_P_KEY, POSITION_P_CONSTANT);
-    	TheChargeDashboard.putNumber(POSITION_I_KEY, POSITION_D_CONSTANT);
-    	TheChargeDashboard.putNumber(POSITION_D_KEY, POSITION_I_CONSTANT);
-    	TheChargeDashboard.putNumber(POSITION_F_KEY, POSITION_F_CONSTANT);
-    	TheChargeDashboard.putNumber(ACCELERATION_KEY, ACCELERATION);
-    	TheChargeDashboard.putNumber(VELOCITY_KEY, VELOCITY);
-    	TheChargeDashboard.putNumber(DISTANCE_KEY, DISTANCE);
+    	TheChargeDashboard.putNumber(POSITION_P_KEY, POSITION_P_DEFAULT);
+    	TheChargeDashboard.putNumber(POSITION_I_KEY, POSITION_I_DEFAULT);
+    	TheChargeDashboard.putNumber(POSITION_D_KEY, POSITION_D_DEFAULT);
+    	TheChargeDashboard.putNumber(POSITION_F_KEY, POSITION_F_DEFAULT);
+    	TheChargeDashboard.putNumber(ACCELERATION_KEY, ACCELERATION_DEFAULT);
+    	TheChargeDashboard.putNumber(VELOCITY_KEY, VELOCITY_DEFAULT);
+    	TheChargeDashboard.putNumber(DISTANCE_KEY, DISTANCE_DEFAULT);
+    	TheChargeDashboard.putNumber(CURRENT_LIMIT_KEY, CURRENT_LIMIT_DEFAULT);
     }
     
     public void readControlValues() {
@@ -119,7 +137,14 @@ public class DriveTrain extends Subsystem {
     	deadband_twist = SmartDashboard.getNumber(DEADBAND_TWIST_KEY, DEADBAND_TWIST_DEFAULT);
     	turn_outer_speed = SmartDashboard.getNumber(TURN_OUTER_SPEED_KEY, TURN_OUTER_SPEED_DEFAULT);
     	turn_inner_speed = SmartDashboard.getNumber(TURN_INNER_SPEED_KEY, TURN_INNER_SPEED_DEFAULT);
-    	CURRENT_LIMIT = SmartDashboard.getInt(CURRENT_LIMIT_KEY);
+    	current_limit = SmartDashboard.getInt(CURRENT_LIMIT_KEY, CURRENT_LIMIT_DEFAULT);
+    	position_P = SmartDashboard.getNumber(POSITION_P_KEY, POSITION_P_DEFAULT);
+    	position_I = SmartDashboard.getNumber(POSITION_I_KEY, POSITION_I_DEFAULT);
+    	position_D = SmartDashboard.getNumber(POSITION_D_KEY, POSITION_D_DEFAULT);
+    	position_F = SmartDashboard.getNumber(POSITION_F_KEY, POSITION_F_DEFAULT);
+    	acceleration = SmartDashboard.getNumber(ACCELERATION_KEY, ACCELERATION_DEFAULT);
+    	velocity = SmartDashboard.getNumber(VELOCITY_KEY, VELOCITY_DEFAULT);
+    	distance = SmartDashboard.getNumber(DISTANCE_KEY, DISTANCE_DEFAULT);
     }
     
     public void writeDebugValues(){
@@ -131,18 +156,16 @@ public class DriveTrain extends Subsystem {
     	TheChargeDashboard.putNumber("IMU_Pitch", ahrs.getPitch());
     	TheChargeDashboard.putNumber("IMU_Roll", ahrs.getRoll());
         // Connectivity Debugging Support
-    	TheChargeDashboard.putNumber(   "IMU_Byte_Count",       ahrs.getByteCount());
-    	TheChargeDashboard.putNumber(   "IMU_Update_Count",     ahrs.getUpdateCount());
-        TheChargeDashboard.putNumber("DriveSpeed", leftFrontMotor.getSpeed() * 10);
-        TheChargeDashboard.putNumber("LeftMotorOutputCurrent", leftFrontMotor.getOutputCurrent());
-        TheChargeDashboard.putNumber("RightMotorOutputCurrent", rightFrontMotor.getOutputCurrent());
+    	TheChargeDashboard.putNumber("IMU_Byte_Count", ahrs.getByteCount());
+    	TheChargeDashboard.putNumber("IMU_Update_Count", ahrs.getUpdateCount());
+        TheChargeDashboard.putNumber("Setpoint", leftFrontMotor.getSetpoint());
+		TheChargeDashboard.putNumber("LeftSpeed", leftFrontMotor.getSpeed());
+		TheChargeDashboard.putNumber("RightSpeed", rightFrontMotor.getSpeed());
     }
     
 	public void run(double leftSpeed, double rightSpeed){
 		leftFrontMotor.changeControlMode(TalonControlMode.PercentVbus);
 		rightFrontMotor.changeControlMode(TalonControlMode.PercentVbus);
-		TheChargeDashboard.putNumber("LeftSpeed", leftSpeed);
-		TheChargeDashboard.putNumber("RightSpeed", rightSpeed);
 		if(!isReversed) {
 	    	leftFrontMotor.set(leftSpeed);
 	    	
@@ -185,10 +208,10 @@ public class DriveTrain extends Subsystem {
     
     public void updateCurrentLimit(){
     	  //Set Current Limiting value from int CurrentLimit   
-        RobotMap.driveTrainLeftRearMotor.setCurrentLimit(CURRENT_LIMIT);
-        RobotMap.driveTrainRightRearMotor.setCurrentLimit(CURRENT_LIMIT);
-        RobotMap.driveTrainLeftFrontMotor.setCurrentLimit(CURRENT_LIMIT);
-        RobotMap.driveTrainRightFrontMotor.setCurrentLimit(CURRENT_LIMIT);
+        RobotMap.driveTrainLeftRearMotor.setCurrentLimit(current_limit);
+        RobotMap.driveTrainRightRearMotor.setCurrentLimit(current_limit);
+        RobotMap.driveTrainLeftFrontMotor.setCurrentLimit(current_limit);
+        RobotMap.driveTrainRightFrontMotor.setCurrentLimit(current_limit);
     }
     
     public void disableCurrentLimit(){
@@ -228,19 +251,19 @@ public class DriveTrain extends Subsystem {
     		leftSpeed = speed;
     		rightSpeed = 0;
 			//run(speed, -speed);
-    		TheChargeDashboard.putString("Direction", "right");
+    		TheChargeDashboard.putString("Direction", "Right");
     	}
     	else if(direction < 0){
     		leftSpeed = 0;
     		rightSpeed = speed;
     		//run(-speed, speed);
-    		TheChargeDashboard.putString("Direction", "left");
+    		TheChargeDashboard.putString("Direction", "Left");
     	}
     	else{
     		leftSpeed = 0;
     		rightSpeed = 0;
     		//run(0,0);
-    		TheChargeDashboard.putString("Direction", "none");
+    		TheChargeDashboard.putString("Direction", "None");
     	}
     	run(leftSpeed,rightSpeed);
 	}
@@ -282,20 +305,13 @@ public class DriveTrain extends Subsystem {
     	//set position PIDF values
     	//REQUIRES F VALUE
     	setProfile(PID_PROFILE_POSITION);
-    	double positionP = SmartDashboard.getNumber(POSITION_P_KEY);
-    	double positionI = SmartDashboard.getNumber(POSITION_I_KEY);
-    	double positionD = SmartDashboard.getNumber(POSITION_D_KEY);
-    	double positionF = SmartDashboard.getNumber(POSITION_F_KEY);
+    	
     	leftFrontMotor.setProfile(PID_PROFILE_POSITION);
     	rightFrontMotor.setProfile(PID_PROFILE_POSITION);
-    	leftFrontMotor.setPID(positionP, positionI, positionD);
-    	leftFrontMotor.setF(positionF);
-    	rightFrontMotor.setPID(positionP, positionI, positionD);
-    	rightFrontMotor.setF(positionF);
-    	
-    	double acceleration = SmartDashboard.getNumber(ACCELERATION_KEY);
-    	double velocity = SmartDashboard.getNumber(VELOCITY_KEY);
-    	double distance = SmartDashboard.getNumber(DISTANCE_KEY);
+    	leftFrontMotor.setPID(position_P, position_I, position_D);
+    	leftFrontMotor.setF(position_F);
+    	rightFrontMotor.setPID(position_P, position_I, position_D);
+    	rightFrontMotor.setF(position_F);
     	
     	//gets ticks per rev??
     	//set acceleration and cruising velocity

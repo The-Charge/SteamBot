@@ -51,7 +51,6 @@ public class XboxDrive extends Command {
     	leftSpeed = MathUtil.delinearize(leftSpeed, power);
     	rightSpeed = MathUtil.delinearize(rightSpeed, power);
     	
-    	TheChargeDashboard.putNumber("Right Speed:", rightSpeed);
     	Robot.driveTrain.run(leftSpeed, rightSpeed);
     }
 

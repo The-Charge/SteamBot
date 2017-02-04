@@ -12,6 +12,7 @@
 package org.usfirst.frc2619.PlyBot2017.subsystems;
 
 import org.usfirst.frc2619.PlyBot2017.RobotMap;
+import org.usfirst.frc2619.PlyBot2017.TheChargeDashboard;
 import org.usfirst.frc2619.PlyBot2017.commands.*;
 import com.ctre.CANTalon;
 import com.ctre.CANTalon.TalonControlMode;
@@ -61,10 +62,10 @@ public class ShooterMotors extends Subsystem {
     }
     
     public void writeDefaultDashboardValues() {
-    	SmartDashboard.putNumber("ShooterSpeedP", SPEED_P_CONSTANT);
-		SmartDashboard.putNumber("ShooterSpeedI", SPEED_I_CONSTANT);
-		SmartDashboard.putNumber("ShooterSpeedD", SPEED_D_CONSTANT);
-		SmartDashboard.putNumber("ShooterSpeedF", SPEED_F_CONSTANT);
+    	TheChargeDashboard.putNumber("ShooterSpeedP", SPEED_P_CONSTANT);
+    	TheChargeDashboard.putNumber("ShooterSpeedI", SPEED_I_CONSTANT);
+		TheChargeDashboard.putNumber("ShooterSpeedD", SPEED_D_CONSTANT);
+		TheChargeDashboard.putNumber("ShooterSpeedF", SPEED_F_CONSTANT);
 	}
 
 	public void readDashboardControlValues() {
@@ -93,12 +94,6 @@ public class ShooterMotors extends Subsystem {
 		// Sets what speed the motors will run at.
 		leftFrontMotor.setSetpoint(MAX_TICKS_PER_SECOND * percentSpeed);
 		rightFrontMotor.setSetpoint(MAX_TICKS_PER_SECOND * percentSpeed);
-	}
-	
-	public void writeDebugValues() {
-		SmartDashboard.putNumber("Setpoint", leftFrontMotor.getSetpoint());
-		SmartDashboard.putNumber("MotorControlSpeed", leftFrontMotor.getSpeed());
-		SmartDashboard.putNumber("MscOutput", leftFrontMotor.getOutputVoltage());
 	}
 }
 
