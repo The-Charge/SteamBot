@@ -13,6 +13,8 @@ package org.usfirst.frc2619.PlyBot2017.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc2619.PlyBot2017.Robot;
 
+import com.ctre.CANTalon;
+
 /**
  *
  */
@@ -40,12 +42,14 @@ public class MotionMagicMode extends Command {
     	//double acceleration = 10, velocity = 60;
     	// acceleration units rpm per second
     	// velocity units rpm
-    	Robot.driveTrain.initMotionMagicMode();
+    	//Robot.driveTrain.initMotionMagicMode();
+    	Robot.driveTrain.motionMagicMode();
+    	System.out.println("MotionMagicHappens");
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.driveTrain.runMotionMagicMode();
+    	//Robot.driveTrain.motionMagicMode();
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -56,11 +60,15 @@ public class MotionMagicMode extends Command {
     // Called once after isFinished returns true
     protected void end() {
     	Robot.driveTrain.stop();
+    	Robot.driveTrain.setEncZero();
+    	System.out.println("MotionMagicEnded");
+    	
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	System.out.println("MotionMagicInterrupted");
     	end();
     }
 }

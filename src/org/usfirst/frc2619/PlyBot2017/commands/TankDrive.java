@@ -63,10 +63,12 @@ public class TankDrive extends Command {
     protected void end() {
     	// TODO: Use stop instead of run 0, 0
     	Robot.driveTrain.run(0, 0);
+    	System.out.println("TankDriveEnded");
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
     	end();
+    	System.out.println("TankDriveInterrupted");
     } }

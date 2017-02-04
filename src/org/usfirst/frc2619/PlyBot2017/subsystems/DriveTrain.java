@@ -172,7 +172,12 @@ public class DriveTrain extends Subsystem {
     }
     
     public boolean isAtPIDDestination() {
-    	return Math.abs(this.leftFrontMotor.getSetpoint() - this.leftFrontMotor.getEncPosition()) < 1000;
+    	/*if(leftFrontMotor.getSetpoint() == 0){
+    		motionMagicMode();
+    		return false;
+    	}
+    	else*/
+    	return (this.leftFrontMotor.getEncPosition() > 1000) && (Math.abs(this.leftFrontMotor.getSetpoint() - this.leftFrontMotor.getEncPosition()) < 1000);
     }
     
     public void stop() {
@@ -235,15 +240,19 @@ public class DriveTrain extends Subsystem {
         // setDefaultCommand(new MySpecialCommand());
     }
     
-    public void initMotionMagicMode() {
+    public void motionMagicMode() {
     	leftFrontMotor.setFeedbackDevice(FeedbackDevice.QuadEncoder);
     	rightFrontMotor.setFeedbackDevice(FeedbackDevice.QuadEncoder);
     	
-    	leftFrontMotor.setPosition(0);
-    	rightFrontMotor.setPosition(0);
+    	
     	
     	leftFrontMotor.changeControlMode(CANTalon.TalonControlMode.MotionMagic);
     	rightFrontMotor.changeControlMode(CANTalon.TalonControlMode.MotionMagic);
+    	
+    	leftFrontMotor.setPosition(0);
+    	rightFrontMotor.setPosition(0);
+    	//leftFrontMotor.setSetpoint(0);
+    	//rightFrontMotor.setSetpoint(0);
     	
     	//set position PIDF values
     	//REQUIRES F VALUE
@@ -277,19 +286,39 @@ public class DriveTrain extends Subsystem {
     	//set target distance
     	//distance *= TICKS_PER_FOOT;
     	//sendFeet(distance);
-    	rightFrontMotor.setSetpoint(distance);
+    	rightFrontMotor.setSetpoint(-distance);
     	leftFrontMotor.setSetpoint(distance);
+
     	
     	//leftFrontMotor.configEncoderCodesPerRev(TICKS_PER_REVOLUTION);
     	
     }
     
-    public void runMotionMagicMode() {
+    public void setEncZero(){
+    	leftFrontMotor.setEncPosition(0);
+    }
+   /* public void runMotionMagicMode() {
+	    double acceleration = SmartDashboard.getNumber(ACCELERATION_KEY);
+    	double velocity = SmartDashboard.getNumber(VELOCITY_KEY);
     	double distance = SmartDashboard.getNumber(DISTANCE_KEY);
     	
+    	//gets ticks per rev??
+    	//leftFrontMotor.configEncoderCodesPerRev(TICKS_PER_REVOLUTION);
+    	//rightFrontMotor.configEncoderCodesPerRev(TICKS_PER_REVOLUTION);
+    	//set acceleration and cruising velocity
+    	//acceleration *= TICKS_PER_REVOLUTION;
+    	//velocity *= TICKS_PER_REVOLUTION;
+    	rightFrontMotor.setMotionMagicAcceleration(acceleration);
+    	leftFrontMotor.setMotionMagicAcceleration(acceleration);
+    	rightFrontMotor.setMotionMagicCruiseVelocity(velocity);
+    	leftFrontMotor.setMotionMagicCruiseVelocity(velocity);
+    	
+    	//set target distance
+    	//distance *= TICKS_PER_FOOT;
+    	//sendFeet(distance);
     	rightFrontMotor.setSetpoint(-distance);
     	leftFrontMotor.setSetpoint(distance);
-    }
+    }*/
     
     private void setProfile(int profile) {
 		leftFrontMotor.setProfile(profile);
