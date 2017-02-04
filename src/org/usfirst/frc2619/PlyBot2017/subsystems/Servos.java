@@ -16,6 +16,7 @@ import org.usfirst.frc2619.PlyBot2017.commands.*;
 import edu.wpi.first.wpilibj.Servo;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
 /**
@@ -38,7 +39,8 @@ public class Servos extends Subsystem {
     
     public static void servoRun(double input){
     	
-    	input = input/2.0 + 1;
+    	input = (input + 1)/2.0;
+    	SmartDashboard.putNumber("Servo rotation", input);
     	servo.set(input);
     	
     }

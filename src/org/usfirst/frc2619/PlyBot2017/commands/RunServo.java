@@ -44,7 +44,8 @@ public class RunServo extends Command {
     protected void execute() {
     	double output = Robot.oi.getButtonBox().getRawAxis(3);
     	Servos.servoRun(output);
-    }
+    }    	    	
+
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
