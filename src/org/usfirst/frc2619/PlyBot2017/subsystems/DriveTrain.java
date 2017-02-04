@@ -292,6 +292,40 @@ public class DriveTrain extends Subsystem {
         // setDefaultCommand(new MySpecialCommand());
     }
     
+    public void dXF_MM(double acceleration, double velocity, double distance) {
+    	leftFrontMotor.setFeedbackDevice(FeedbackDevice.QuadEncoder);
+    	rightFrontMotor.setFeedbackDevice(FeedbackDevice.QuadEncoder);
+    	
+    	leftFrontMotor.changeControlMode(CANTalon.TalonControlMode.MotionMagic);
+    	rightFrontMotor.changeControlMode(CANTalon.TalonControlMode.MotionMagic);
+    	
+    	leftFrontMotor.setPosition(0);
+    	rightFrontMotor.setPosition(0);
+    	
+    	setProfile(PID_PROFILE_POSITION);
+    	double positionP = SmartDashboard.getNumber(POSITION_P_KEY);
+    	double positionI = SmartDashboard.getNumber(POSITION_I_KEY);
+    	double positionD = SmartDashboard.getNumber(POSITION_D_KEY);
+    	double positionF = SmartDashboard.getNumber(POSITION_F_KEY);
+    	leftFrontMotor.setProfile(PID_PROFILE_POSITION);
+    	rightFrontMotor.setProfile(PID_PROFILE_POSITION);
+    	leftFrontMotor.setPID(positionP, positionI, positionD);
+    	leftFrontMotor.setF(positionF);
+    	rightFrontMotor.setPID(positionP, positionI, positionD);
+    	rightFrontMotor.setF(positionF);
+    	
+    	distance *= TICKS_PER_FOOT;
+   
+    	rightFrontMotor.setMotionMagicAcceleration(acceleration);
+    	leftFrontMotor.setMotionMagicAcceleration(acceleration);
+    	rightFrontMotor.setMotionMagicCruiseVelocity(velocity);
+    	leftFrontMotor.setMotionMagicCruiseVelocity(velocity);
+    
+    	rightFrontMotor.setSetpoint(-distance);
+    	leftFrontMotor.setSetpoint(distance);
+    }
+    
+    
     public void motionMagicMode() {
     	leftFrontMotor.setFeedbackDevice(FeedbackDevice.QuadEncoder);
     	rightFrontMotor.setFeedbackDevice(FeedbackDevice.QuadEncoder);
