@@ -37,6 +37,7 @@ public class ESOff extends InstantCommand {
 
     // Called once when this command runs
     protected void initialize() {
+    	Robot.electricalSolenoid.offES();
     }
 
 }

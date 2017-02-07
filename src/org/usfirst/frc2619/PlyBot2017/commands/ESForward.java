@@ -37,6 +37,7 @@ public class ESForward extends InstantCommand {
 
     // Called once when this command runs
     protected void initialize() {
+    	Robot.electricalSolenoid.fwdES();
     }
 
 }
