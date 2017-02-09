@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc2619.SteamBot2017.Robot;
+import org.usfirst.frc2619.SteamBot2017.RobotMap;
 
 /**
  *
@@ -47,8 +48,22 @@ public class RunLed extends Command {
     	int choice = (int)SmartDashboard.getNumber("LEDOutput");
     	
     	//bitmapping
-    	
-    	
+    	if((choice & 0b0001) == 0b0001)
+    		RobotMap.ledBoardLedOutput0.set(true);
+    	else
+    		RobotMap.ledBoardLedOutput0.set(false);
+    	if((choice & 0b0010) == 0b0010)
+    		RobotMap.ledBoardLedOutput1.set(true);
+    	else
+    		RobotMap.ledBoardLedOutput1.set(false);
+    	if((choice & 0b0100) == 0b0100)
+    		RobotMap.ledBoardLedOutput2.set(true);
+    	else
+    		RobotMap.ledBoardLedOutput2.set(false);
+    	if((choice & 0b1000) == 0b1000)
+    		RobotMap.ledBoardLedOutput3.set(true);
+    	else
+    		RobotMap.ledBoardLedOutput3.set(false);
     	
     }
 

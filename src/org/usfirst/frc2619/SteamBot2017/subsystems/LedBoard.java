@@ -56,8 +56,8 @@ public class LedBoard extends Subsystem {
     
     public void onLED(){
     	
-    	ledSpike.set(Relay.Value.kOn);
-    	
+    	ledSpike.set(Relay.Value.kForward);
+
     }
     
     public void initDefaultCommand() {
