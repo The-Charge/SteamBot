@@ -119,9 +119,6 @@ public class OI {
         SmartDashboard.putData("DriveXFeetMM: DXF_MM_20", new DriveXFeetMM(0, 0, 20));
         SmartDashboard.putData("DriveXFeetMM: DXF_MM_5", new DriveXFeetMM(0, 0, 5));
         SmartDashboard.putData("DriveXFeetMM: DXF_MM_10", new DriveXFeetMM(0, 0, 10));
-        SmartDashboard.putData("RunServo", new RunServo());
-        SmartDashboard.putData("ESForward", new ESForward());
-        SmartDashboard.putData("ESOff", new ESOff());
         SmartDashboard.putData("RunShooter", new RunShooter());
         SmartDashboard.putData("OpenDoors", new OpenDoors());
         SmartDashboard.putData("CloseDoors", new CloseDoors());
