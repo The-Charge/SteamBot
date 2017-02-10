@@ -19,6 +19,7 @@ public class TheChargeDashboard {
 			"LeftSpeed", "RightSpeed",
 			"Direction",
 			//"ShooterSpeedP", "ShooterSpeedI", "ShooterSpeedD", "ShooterSpeedF",
+			"PickupSpeedP", "PickupSpeedI", "PickupSpeedD", "PickupSpeedF",
 			"driveTrain",
 			"AutoMode"
 			};
