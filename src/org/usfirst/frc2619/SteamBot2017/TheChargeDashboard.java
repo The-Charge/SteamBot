@@ -11,7 +11,7 @@ public class TheChargeDashboard {
 	private static String[] whiteList = {
 			DriveTrain.DELIN_POW_KEY, DriveTrain.DEADBAND_X_KEY, DriveTrain.DEADBAND_Y_KEY, DriveTrain.DEADBAND_TWIST_KEY,
 			"PowerOutput", "JoystickPosition", "Allow_Delinearization",
-			"TURN_OUTER_SPEED", "TURN_INNER_SPEED", "FinalDegrees",
+			"TURN_OUTER_SPEED", "TURN_INNER_SPEED", "TURN_ANGLE", "FinalDegrees",
 			"CURRENT_LIMIT",
 			"POSITION_P", "POSITION_I", "POSITION_D", "POSITION_F", "ACCELERATION", "VELOCITY", "DISTANCE",
 			"IMU_TotalYaw", "IMU_YawRateDPS", "IMU_Connected", "IMU_IsCalibrating", "IMU_Yaw", "IMU_Pitch", "IMU_Roll", "IMU_Byte_Count", "IMU_Update_Count",
