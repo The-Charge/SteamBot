@@ -58,6 +58,7 @@ public class RopeClimber extends Subsystem {
     //RUN
     public void run(double motorSpeed){
 		ropeMotor1.set(motorSpeed);
+		ropeMotor2.set(-motorSpeed);
 	}
     
     
@@ -70,7 +71,7 @@ public class RopeClimber extends Subsystem {
     //SET MOTOR MODES
     public void setMotorModes(){
     	ropeMotor1.changeControlMode(TalonControlMode.PercentVbus);
-		ropeMotor2.changeControlMode(TalonControlMode.Follower);
+		ropeMotor2.changeControlMode(TalonControlMode.PercentVbus);
     }
     
     

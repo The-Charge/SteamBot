@@ -652,7 +652,8 @@ Children:
     Properties:
       Parameters: !!robotbuilder.data.properties.ParametersProperty
         default:
-        - !!robotbuilder.data.properties.ParameterDescriptor {name: timeout, type: double}
+        - &id018 !!robotbuilder.data.properties.ParameterDescriptor {name: timeout,
+          type: double}
         name: Parameters
         validators: null
         value:
@@ -1173,24 +1174,6 @@ Children:
         validators: null
         value: []
       Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
-        name: Requires, type: Subsystem, validators: null, value: RopeClimber}
-      Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
-        default: []
-        name: Parameter presets
-        validators: null
-        value: []
-      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
-        name: Button on SmartDashboard, validators: null, value: true}
-    Base: Command
-    Name: ClimbRopeTimed
-  - Children: []
-    Properties:
-      Parameters: !!robotbuilder.data.properties.ParametersProperty
-        default: []
-        name: Parameters
-        validators: null
-        value: []
-      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Requires, type: Subsystem, validators: null, value: CameraLights}
       Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
         default: []
@@ -1309,6 +1292,30 @@ Children:
         validators: null, value: 180.0}
     Base: PID Command
     Name: TurnNDegreesAbsolutePID
+  - Children: []
+    Properties:
+      Parameters: !!robotbuilder.data.properties.ParametersProperty
+        default:
+        - *id018
+        name: Parameters
+        validators: null
+        value:
+        - *id018
+      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Requires, type: Subsystem, validators: null, value: RopeClimber}
+      Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
+        default: &id019
+        - !!robotbuilder.data.properties.ParameterSet
+          name: Time
+          parameters:
+          - {name: timeout, type: double, value: '0.5'}
+        name: Parameter presets
+        validators: null
+        value: *id019
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: true}
+    Base: Timed Command
+    Name: ClimbRobotTimed
   Properties: {}
   Base: Commands
   Name: Commands
