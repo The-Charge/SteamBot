@@ -45,10 +45,10 @@ public class Shifters extends Subsystem {
 	}
 
 	public void ShiftHigh() {
-		solenoid.set(true);
+		solenoid.set(false);
 	}
 
 	public void ShiftLow() {
-		solenoid.set(false);
+		solenoid.set(true);
 	}
 }
