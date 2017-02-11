@@ -25,10 +25,10 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  *
  */
 public class Indexer extends Subsystem {
-	private final static double INDEX_P_CONSTANT = 0;
-	private final static double INDEX_I_CONSTANT = 0;
+	private final static double INDEX_P_CONSTANT = 0.3;
+	private final static double INDEX_I_CONSTANT = 0.001;
 	private final static double INDEX_D_CONSTANT = 0;
-	private final static double INDEX_F_CONSTANT = 0.1;
+	private final static double INDEX_F_CONSTANT = 0.12;
 	
 	double SpeedP = INDEX_P_CONSTANT;
 	double SpeedI = INDEX_I_CONSTANT;
@@ -61,10 +61,10 @@ public class Indexer extends Subsystem {
     }
     
     public void writeDefaultDashboardValues() {
-    	SmartDashboard.putNumber("IndexerSpeedP", INDEX_P_CONSTANT);
-    	SmartDashboard.putNumber("IndexerSpeedI", INDEX_I_CONSTANT);
-    	SmartDashboard.putNumber("IndexerSpeedD", INDEX_D_CONSTANT);
-    	SmartDashboard.putNumber("IndexerSpeedF", INDEX_F_CONSTANT);
+    	TheChargeDashboard.putNumber("IndexerSpeedP", INDEX_P_CONSTANT);
+    	TheChargeDashboard.putNumber("IndexerSpeedI", INDEX_I_CONSTANT);
+    	TheChargeDashboard.putNumber("IndexerSpeedD", INDEX_D_CONSTANT);
+    	TheChargeDashboard.putNumber("IndexerSpeedF", INDEX_F_CONSTANT);
 	}
 
 	public void readDashboardControlValues() {
@@ -78,9 +78,9 @@ public class Indexer extends Subsystem {
 	}
 	
 	public void writeDebugValues(){
-		SmartDashboard.putNumber("IndexerSetPoint", indexerMotor.getSetpoint());
-		SmartDashboard.putNumber("IndexerError", indexerMotor.getError());
-		SmartDashboard.putNumber("IndexMeasuredValue", indexerMotor.getEncVelocity());
+		TheChargeDashboard.putNumber("IndexerSetPoint", indexerMotor.getSetpoint());
+		TheChargeDashboard.putNumber("IndexerError", indexerMotor.getError());
+		TheChargeDashboard.putNumber("IndexMeasuredValue", indexerMotor.getEncVelocity());
 	}
 	
 	public void initSpeedPercentageMode() {

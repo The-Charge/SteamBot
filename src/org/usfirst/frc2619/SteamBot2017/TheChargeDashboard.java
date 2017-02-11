@@ -19,6 +19,7 @@ public class TheChargeDashboard {
 			"LeftSpeed", "RightSpeed",
 			"Direction",
 			//"ShooterSpeedP", "ShooterSpeedI", "ShooterSpeedD", "ShooterSpeedF",
+			"IndexerSpeedP" , "IndexerSpeedI", "IndexerSpeedD", "IndexerSpeedF",// "IndexerSetPoint", "IndexerError", "IndexMeasuredValue",
 			"driveTrain",
 			"AutoMode"
 			};
