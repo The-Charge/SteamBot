@@ -1271,16 +1271,16 @@ Children:
       Continuous: !!robotbuilder.data.properties.BooleanProperty {default: false,
         name: Continuous, validators: null, value: true}
       Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
-        default: &id018 []
+        default: []
         name: Parameter presets
         validators: null
-        value: *id018
+        value: []
       Tolerance: !!robotbuilder.data.properties.DoubleProperty {default: 0.2, name: Tolerance,
         validators: null, value: 1.0}
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
       I: !!robotbuilder.data.properties.DoubleProperty {default: 0, name: I, validators: null,
-        value: 1.0E-5}
+        value: 0.0}
       Period: !!robotbuilder.data.properties.DoubleProperty {default: 0.02, name: Period,
         validators: null, value: 0.02}
       Minimum Input: !!robotbuilder.data.properties.DoubleProperty {default: 0, name: Minimum Input,
@@ -1290,7 +1290,7 @@ Children:
       Minimum Output: !!robotbuilder.data.properties.DoubleProperty {default: -1,
         name: Minimum Output, validators: null, value: -0.5}
       P: !!robotbuilder.data.properties.DoubleProperty {default: 1, name: P, validators: null,
-        value: 0.01765}
+        value: 0.02}
       Input: !!robotbuilder.data.properties.TypeSelectionProperty
         default: None
         name: Input
