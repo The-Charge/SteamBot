@@ -371,7 +371,7 @@ public class DriveTrain extends Subsystem {
     	leftFrontMotor.setSetpoint(distance);
     }
     
-    public void setEncZero(){
+    public void setEncZero() {
     	leftFrontMotor.setEncPosition(0);
     	rightFrontMotor.setEncPosition(0);
     	leftRearMotor.setEncPosition(0);

@@ -19,10 +19,12 @@ public class TheChargeDashboard {
 			"LeftSpeed", "RightSpeed",
 			"Direction",
 			"ShooterSpeedP", "ShooterSpeedI", "ShooterSpeedD", "ShooterSpeedF",
-			"PickupSpeedP", "PickupSpeedI", "PickupSpeedD", "PickupSpeedF",
+			"PickupSpeedP", "PickupSpeedI", "PickupSpeedD", "PickupSpeedF", //"PickupSetpoint", "PickupMotorControlSpeed", "PickupMscOutput", "PickupMotorVelocity",
 			"IndexerSpeedP" , "IndexerSpeedI", "IndexerSpeedD", "IndexerSpeedF", //"IndexerSetPoint", "IndexerError", "IndexMeasuredValue",
 			"driveTrain",
-			"AutoMode"
+			"AutoMode",
+			"CANLightRed", "CANLightGreen", "CANLightBlue",
+			"LEDOutput"
 			};
 
 	public static void putNumber(String key, double value) {

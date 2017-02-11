@@ -77,12 +77,6 @@ public class Indexer extends Subsystem {
 		indexerMotor.setPID(SpeedP, SpeedI, SpeedD, SpeedF, 0, 0, 0);
 	}
 	
-	public void writeDebugValues(){
-		TheChargeDashboard.putNumber("IndexerSetPoint", indexerMotor.getSetpoint());
-		TheChargeDashboard.putNumber("IndexerError", indexerMotor.getError());
-		TheChargeDashboard.putNumber("IndexMeasuredValue", indexerMotor.getEncVelocity());
-	}
-	
 	public void initSpeedPercentageMode() {
 		indexerMotor.changeControlMode(TalonControlMode.Speed);
 		
@@ -96,5 +90,10 @@ public class Indexer extends Subsystem {
 		indexerMotor.setSetpoint(MAX_TICKS_PER_SECOND * percentSpeed);
 	}
 	
+	public void writeDebugValues(){
+		TheChargeDashboard.putNumber("IndexerSetPoint", indexerMotor.getSetpoint());
+		TheChargeDashboard.putNumber("IndexerError", indexerMotor.getError());
+		TheChargeDashboard.putNumber("IndexMeasuredValue", indexerMotor.getEncVelocity());
+	}
 }
 

@@ -61,7 +61,6 @@ public class DriveXFeetMM extends Command {
     protected void end() {
     	Robot.driveTrain.stop();
     	Robot.driveTrain.setEncZero();
-    	
     }
 
     // Called when another command which requires one or more of the same

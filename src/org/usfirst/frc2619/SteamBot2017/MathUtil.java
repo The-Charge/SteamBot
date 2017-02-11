@@ -15,7 +15,6 @@ public class MathUtil {
         TheChargeDashboard.putBoolean(ALLOW_DELINEARIZATION_KEY, Allow_Delinearization);
 		Allow_Delinearization = SmartDashboard.getBoolean(ALLOW_DELINEARIZATION_KEY, ALLOW_DELINEARIZATION_DEFAULT);
 		
-		
 		if(Allow_Delinearization == true) {
 		//returns delinearized power (adjusted for deadband)
 			if(input > 0) {
@@ -39,14 +38,10 @@ public class MathUtil {
 		
 		TheChargeDashboard.putNumber("PowerOutput", ret);
 		return ret;
-		
 	}
 
 	public static double deadbandCheck(double input, double db) {
-		
-		// ---------if----- =then=
 		return Math.abs(input) < db ? 0 : input;
-		// --else-
 	}
 	public static double calcDirection(double current, double desired) {
 		current = Math.toRadians(current);

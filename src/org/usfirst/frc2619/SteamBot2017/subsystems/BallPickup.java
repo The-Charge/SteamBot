@@ -91,10 +91,10 @@ public class BallPickup extends Subsystem {
 	}
     
     public void writeDebugValues() {
-    	SmartDashboard.putNumber("PickupSetpoint", pickupMotor.getSetpoint());
-    	SmartDashboard.putNumber("PickupMotorControlSpeed", pickupMotor.getSpeed());
-    	SmartDashboard.putNumber("PickupMscOutput", pickupMotor.getOutputVoltage());
-    	SmartDashboard.putNumber("PickupMotorVelocity", pickupMotor.getEncVelocity());
+    	TheChargeDashboard.putNumber("PickupSetpoint", pickupMotor.getSetpoint());
+    	TheChargeDashboard.putNumber("PickupMotorControlSpeed", pickupMotor.getSpeed());
+    	TheChargeDashboard.putNumber("PickupMscOutput", pickupMotor.getOutputVoltage());
+    	TheChargeDashboard.putNumber("PickupMotorVelocity", pickupMotor.getEncVelocity());
     }
 }
 

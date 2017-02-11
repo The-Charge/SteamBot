@@ -37,10 +37,8 @@ public class OffCANLights extends InstantCommand {
 
     // Called once when this command runs
     protected void initialize() {
-    	
     	Robot.cANLights.LightOff();
     	Robot.cANLights.displayCANLightValues();
-    	
     }
 
 }

@@ -50,8 +50,5 @@ public class AllianceColor extends InstantCommand {
         	Robot.cANLights.LightRun(255, 255, 0);
             Robot.cANLights.displayCANLightValues(255, 255, 0); // yellow
         }
-    	
-    
-
-}
+    }
 }

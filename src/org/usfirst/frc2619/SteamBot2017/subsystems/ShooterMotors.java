@@ -89,5 +89,9 @@ public class ShooterMotors extends Subsystem {
 		// Sets what speed the motors will run at.
 		motor.setSetpoint(MAX_TICKS_PER_SECOND * percentSpeed);
 	}
+	
+	public void writeDebugValues() {
+		
+	}
 }
 
