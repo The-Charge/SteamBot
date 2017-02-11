@@ -389,6 +389,22 @@ Children:
         value: []
     Base: Subsystem
     Name: Indexer
+  - Children: []
+    Properties:
+      Default command parameters: !!robotbuilder.data.properties.ParametersProperty
+        default: []
+        name: Default command parameters
+        validators: null
+        value: []
+      Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Default Command, type: Command, validators: null, value: None}
+      Constants: !!robotbuilder.data.properties.ConstantsProperty
+        default: []
+        name: Constants
+        validators: null
+        value: []
+    Base: Subsystem
+    Name: CANLights
   Properties: {}
   Base: Subsystems
   Name: Subsystems
@@ -1300,22 +1316,112 @@ Children:
         name: Parameters
         validators: null
         value:
-        - *id018
+        - !!robotbuilder.data.properties.ParameterDescriptor {name: timeout, type: double}
       Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Requires, type: Subsystem, validators: null, value: RopeClimber}
       Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
-        default: &id019
+        default: []
+        name: Parameter presets
+        validators: null
+        value:
         - !!robotbuilder.data.properties.ParameterSet
           name: Time
           parameters:
           - {name: timeout, type: double, value: '0.5'}
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: true}
+    Base: Timed Command
+    Name: ClimbRobotTimed
+  - Children: []
+    Properties:
+      Parameters: !!robotbuilder.data.properties.ParametersProperty
+        default: []
+        name: Parameters
+        validators: null
+        value: []
+      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Requires, type: Subsystem, validators: null, value: CANLights}
+      Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
+        default: &id019 []
         name: Parameter presets
         validators: null
         value: *id019
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
-    Base: Timed Command
-    Name: ClimbRobotTimed
+    Base: Instant Command
+    Name: AllianceColor
+  - Children: []
+    Properties:
+      Parameters: !!robotbuilder.data.properties.ParametersProperty
+        default: []
+        name: Parameters
+        validators: null
+        value: []
+      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Requires, type: Subsystem, validators: null, value: CANLights}
+      Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
+        default: &id020 []
+        name: Parameter presets
+        validators: null
+        value: *id020
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: true}
+    Base: Command
+    Name: Blink
+  - Children: []
+    Properties:
+      Parameters: !!robotbuilder.data.properties.ParametersProperty
+        default: []
+        name: Parameters
+        validators: null
+        value: []
+      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Requires, type: Subsystem, validators: null, value: CANLights}
+      Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
+        default: &id021 []
+        name: Parameter presets
+        validators: null
+        value: *id021
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: true}
+    Base: Command
+    Name: ChargeColors
+  - Children: []
+    Properties:
+      Parameters: !!robotbuilder.data.properties.ParametersProperty
+        default: []
+        name: Parameters
+        validators: null
+        value: []
+      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Requires, type: Subsystem, validators: null, value: CANLights}
+      Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
+        default: &id022 []
+        name: Parameter presets
+        validators: null
+        value: *id022
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: true}
+    Base: Instant Command
+    Name: OffCANLights
+  - Children: []
+    Properties:
+      Parameters: !!robotbuilder.data.properties.ParametersProperty
+        default: []
+        name: Parameters
+        validators: null
+        value: []
+      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Requires, type: Subsystem, validators: null, value: CANLights}
+      Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
+        default: &id023 []
+        name: Parameter presets
+        validators: null
+        value: *id023
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: true}
+    Base: Command
+    Name: RunCANLights
   Properties: {}
   Base: Commands
   Name: Commands
