@@ -133,7 +133,9 @@ public class OI {
         SmartDashboard.putData("OffCameraLights", new OffCameraLights());
         SmartDashboard.putData("RunPickup", new RunPickup());
         SmartDashboard.putData("RunIndexer", new RunIndexer());
-        SmartDashboard.putData("TurnNDegreesAbsolutePID", new TurnNDegreesAbsolutePID());
+        SmartDashboard.putData("TurnNDegreesAbsolutePID: FortyFive", new TurnNDegreesAbsolutePID(45));
+        SmartDashboard.putData("TurnNDegreesAbsolutePID: NegFortyFive", new TurnNDegreesAbsolutePID(-45));
+        SmartDashboard.putData("TurnNDegreesAbsolutePID: OneEighty", new TurnNDegreesAbsolutePID(180));
         SmartDashboard.putData("ClimbRobotTimed: Time", new ClimbRobotTimed(0.5));
         SmartDashboard.putData("AllianceColor", new AllianceColor());
         SmartDashboard.putData("Blink", new Blink());
