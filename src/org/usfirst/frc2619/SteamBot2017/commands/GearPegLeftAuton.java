@@ -46,9 +46,9 @@ public class GearPegLeftAuton extends CommandGroup {
     	
     	addSequential(new ShiftLow());
     	addSequential(new DriveXFeetMM(2));
-    	addSequential(new TurnNDegreesAbsolutePID(-45));
+    	addSequential(new TurnNDegreesAbsolutePID(-30));
     	addSequential(new DriveXFeetMM(5.7));
-    	addSequential(new TurnNDegreesAbsolutePID(45));
+    	addSequential(new TurnNDegreesAbsolutePID(60));
     	addSequential(new DriveXFeetMM(3));
     } 
 }

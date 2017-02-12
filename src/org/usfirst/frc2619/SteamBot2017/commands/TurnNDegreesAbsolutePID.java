@@ -72,6 +72,7 @@ public class TurnNDegreesAbsolutePID extends PIDCommand {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	getPIDController().setSetpoint(m_Angle);
     }
 
     // Called repeatedly when this Command is scheduled to run
