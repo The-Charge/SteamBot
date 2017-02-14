@@ -13,6 +13,8 @@ package org.usfirst.frc2619.SteamBot2017.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc2619.SteamBot2017.Robot;
 
+import com.ctre.CANTalon.TalonControlMode;
+
 /**
  *
  */
@@ -49,6 +51,7 @@ public class DriveXFeetMM extends Command {
 		m_velocity = 6000;
 		m_acceleration = 4000;
 		Robot.driveTrain.dXF_MM(m_acceleration, m_velocity, m_distance);
+		Robot.driveTrain.setControlMode(TalonControlMode.MotionMagic);
 	}
 
 	// Called repeatedly when this Command is scheduled to run

@@ -13,6 +13,8 @@ package org.usfirst.frc2619.SteamBot2017.commands;
 import edu.wpi.first.wpilibj.command.TimedCommand;
 import org.usfirst.frc2619.SteamBot2017.Robot;
 
+import com.ctre.CANTalon.TalonControlMode;
+
 /**
  *
  */
@@ -36,6 +38,7 @@ public class DriveXSeconds extends TimedCommand {
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
+		Robot.driveTrain.setControlMode(TalonControlMode.PercentVbus);
 
 	}
 

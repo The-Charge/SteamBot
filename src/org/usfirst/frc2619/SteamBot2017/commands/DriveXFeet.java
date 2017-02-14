@@ -13,6 +13,8 @@ package org.usfirst.frc2619.SteamBot2017.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc2619.SteamBot2017.Robot;
 
+import com.ctre.CANTalon.TalonControlMode;
+
 /**
  *
  */
@@ -40,6 +42,7 @@ public class DriveXFeet extends Command {
 	// Called just before this Command runs the first time
 	protected void initialize() {
 		Robot.driveTrain.sendFeet(m_xFeet);
+		Robot.driveTrain.setControlMode(TalonControlMode.PercentVbus);
 	}
 
 	// Called repeatedly when this Command is scheduled to run

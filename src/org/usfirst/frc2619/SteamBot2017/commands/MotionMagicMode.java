@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc2619.SteamBot2017.Robot;
 
 import com.ctre.CANTalon;
+import com.ctre.CANTalon.TalonControlMode;
 
 /**
  *
@@ -43,6 +44,7 @@ public class MotionMagicMode extends Command {
 		// acceleration units rpm per second
 		// velocity units rpm
 		Robot.driveTrain.motionMagicMode();
+		Robot.driveTrain.setControlMode(TalonControlMode.MotionMagic);
 	}
 
 	// Called repeatedly when this Command is scheduled to run

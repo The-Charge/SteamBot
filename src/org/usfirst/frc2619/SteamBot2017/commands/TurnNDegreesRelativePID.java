@@ -15,6 +15,8 @@ import edu.wpi.first.wpilibj.command.PIDCommand;
 import org.usfirst.frc2619.SteamBot2017.Robot;
 import org.usfirst.frc2619.SteamBot2017.RobotMap;
 
+import com.ctre.CANTalon.TalonControlMode;
+
 /**
  *
  */
@@ -77,6 +79,7 @@ public class TurnNDegreesRelativePID extends PIDCommand {
     	initialAngle = RobotMap.driveTrainAHRS.getAngle();
     	RobotMap.driveTrainAHRS.setAngleAdjustment(-initialAngle);
     	getPIDController().setSetpoint(m_Angle);
+    	Robot.driveTrain.setControlMode(TalonControlMode.PercentVbus);
     }
 
     // Called repeatedly when this Command is scheduled to run

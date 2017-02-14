@@ -15,6 +15,8 @@ import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc2619.SteamBot2017.Robot;
 import org.usfirst.frc2619.SteamBot2017.TheChargeDashboard;
 
+import com.ctre.CANTalon.TalonControlMode;
+
 /**
  *
  */
@@ -52,6 +54,7 @@ public class TurnNDegreesRelative extends Command {
 		}
 		finalDegrees = dif;
 		this.setTimeout(3);
+		Robot.driveTrain.setControlMode(TalonControlMode.PercentVbus);
 	}
 
 	// Called repeatedly when this Command is scheduled to run
