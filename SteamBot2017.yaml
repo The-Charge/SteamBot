@@ -1307,7 +1307,7 @@ Children:
         default: None
         name: Input
         type: PIDSource
-        validators: &id020 [TypeDropdownSelected]
+        validators: &id019 [TypeDropdownSelected]
         value: DriveTrain AnalogGyro 1
       Maximum Output: !!robotbuilder.data.properties.DoubleProperty {default: 1, name: Maximum Output,
         validators: null, value: 0.5}
@@ -1315,7 +1315,7 @@ Children:
         default: None
         name: Output
         type: PIDOutput
-        validators: &id021 [TypeDropdownSelected]
+        validators: &id020 [TypeDropdownSelected]
         value: DriveTrain LeftFrontMotor
       Maximum Input: !!robotbuilder.data.properties.DoubleProperty {default: 5, name: Maximum Input,
         validators: null, value: 180.0}
@@ -1514,9 +1514,9 @@ Children:
         validators: null
         value:
         - !!robotbuilder.data.properties.ParameterSet
-          name: QuarterSpeed
+          name: '0.1'
           parameters:
-          - {name: Speed, type: double, value: '0.25'}
+          - {name: Speed, type: double, value: '0.1'}
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
     Base: Command
@@ -1538,14 +1538,14 @@ Children:
       Continuous: !!robotbuilder.data.properties.BooleanProperty {default: false,
         name: Continuous, validators: null, value: true}
       Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
-        default: &id019
+        default: []
+        name: Parameter presets
+        validators: null
+        value:
         - !!robotbuilder.data.properties.ParameterSet
           name: '90'
           parameters:
           - {name: Angle, type: double, value: '90'}
-        name: Parameter presets
-        validators: null
-        value: *id019
       Tolerance: !!robotbuilder.data.properties.DoubleProperty {default: 0.2, name: Tolerance,
         validators: null, value: 1.0}
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
@@ -1566,7 +1566,7 @@ Children:
         default: None
         name: Input
         type: PIDSource
-        validators: *id020
+        validators: *id019
         value: DriveTrain AnalogGyro 1
       Maximum Output: !!robotbuilder.data.properties.DoubleProperty {default: 1, name: Maximum Output,
         validators: null, value: 0.5}
@@ -1574,7 +1574,7 @@ Children:
         default: None
         name: Output
         type: PIDOutput
-        validators: *id021
+        validators: *id020
         value: DriveTrain LeftFrontMotor
       Maximum Input: !!robotbuilder.data.properties.DoubleProperty {default: 5, name: Maximum Input,
         validators: null, value: 360.0}
