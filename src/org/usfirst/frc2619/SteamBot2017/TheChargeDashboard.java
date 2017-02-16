@@ -25,7 +25,8 @@ public class TheChargeDashboard {
 			"driveTrain",
 			"AutoMode",
 			"CANLightRed", "CANLightGreen", "CANLightBlue",
-			"LEDOutput"
+			"LEDOutput",
+			"ForwardFactor", "TurnFactor", "TargetLeftSpeed", "TargetRightSpeed"
 			};
 
 	public static void putNumber(String key, double value) {

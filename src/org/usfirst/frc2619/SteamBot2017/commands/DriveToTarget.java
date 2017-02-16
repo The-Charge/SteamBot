@@ -12,6 +12,7 @@
 package org.usfirst.frc2619.SteamBot2017.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc2619.SteamBot2017.Robot;
+import org.usfirst.frc2619.SteamBot2017.TheChargeDashboard;
 
 /**
  *
@@ -43,6 +44,31 @@ public class DriveToTarget extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	double forwardFactor = Robot.vision.getDistanceToTargetInFeet() / 10;
+    	double turnFactor = Robot.vision.getRobotAngleOffsetInDegrees() / 20;
+    	
+    	forwardFactor = (forwardFactor > 0 ? Math.min(1, forwardFactor) : Math.max(-1, forwardFactor));
+    	turnFactor = (turnFactor > 0 ? Math.min(1, turnFactor) : Math.max(-1, turnFactor));
+    	
+    	TheChargeDashboard.putNumber("ForwardFactor", forwardFactor);
+    	TheChargeDashboard.putNumber("TurnFactor", turnFactor);
+    	
+    	double leftSpeed = turnFactor + forwardFactor;
+    	double rightSpeed = -turnFactor + forwardFactor;
+    	
+    	leftSpeed = (leftSpeed > 0 ? Math.min(1, leftSpeed) : Math.max(-1, leftSpeed));
+    	rightSpeed = (rightSpeed > 0 ? Math.min(1, rightSpeed) : Math.max(-1, rightSpeed));
+    	
+    	TheChargeDashboard.putNumber("TargetLeftSpeed", leftSpeed);
+    	TheChargeDashboard.putNumber("TargetRightSpeed", rightSpeed);
+    	
+    	int leftSign = (int) Math.signum(leftSpeed);
+    	int rightSign = (int) Math.signum(rightSpeed);
+		double minSpeed = 0.15;
+		double finalLeftSpeed = leftSign * Math.max(minSpeed, Math.abs(leftSpeed));
+		double finalRightSpeed = rightSign * Math.max(minSpeed, Math.abs(rightSpeed));
+		
+		Robot.driveTrain.run(finalLeftSpeed, finalRightSpeed);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -52,10 +78,12 @@ public class DriveToTarget extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	Robot.driveTrain.stop();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	end();
     }
 }
