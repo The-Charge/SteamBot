@@ -44,7 +44,7 @@ public class DriveToTarget extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	double absMaxSpeed = 0.5;
+    	double absMaxSpeed = 0.3;
     	
     	double forwardFactor = Robot.vision.getDistanceToTargetInFeet() / 10;
     	double turnFactor = Robot.vision.getRobotAngleOffsetInDegrees() / 20;
@@ -75,7 +75,18 @@ public class DriveToTarget extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return !Robot.vision.hasTarget() || Robot.vision.getDistanceToTargetInFeet() < m_distanceFromTarget;
+    	if (!Robot.vision.hasTarget()) {
+    		System.out.println("No Target");
+    		return true;
+    	}
+    	else if (Robot.vision.getDistanceToTargetInFeet() < m_distanceFromTarget) {
+    		System.out.println("Close Enough");
+    		return true;
+    	}
+    	else {
+    		return false;
+    	}
+        //return !Robot.vision.hasTarget() || Robot.vision.getDistanceToTargetInFeet() < m_distanceFromTarget;
     }
 
     // Called once after isFinished returns true
