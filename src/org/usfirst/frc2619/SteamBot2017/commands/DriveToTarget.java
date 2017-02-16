@@ -44,6 +44,8 @@ public class DriveToTarget extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	double absMaxSpeed = 0.5;
+    	
     	double forwardFactor = Robot.vision.getDistanceToTargetInFeet() / 10;
     	double turnFactor = Robot.vision.getRobotAngleOffsetInDegrees() / 20;
     	
@@ -56,8 +58,8 @@ public class DriveToTarget extends Command {
     	double leftSpeed = turnFactor + forwardFactor;
     	double rightSpeed = -turnFactor + forwardFactor;
     	
-    	leftSpeed = (leftSpeed > 0 ? Math.min(1, leftSpeed) : Math.max(-1, leftSpeed));
-    	rightSpeed = (rightSpeed > 0 ? Math.min(1, rightSpeed) : Math.max(-1, rightSpeed));
+    	leftSpeed = (leftSpeed > 0 ? Math.min(absMaxSpeed, leftSpeed) : Math.max(-absMaxSpeed, leftSpeed));
+    	rightSpeed = (rightSpeed > 0 ? Math.min(absMaxSpeed, rightSpeed) : Math.max(-absMaxSpeed, rightSpeed));
     	
     	TheChargeDashboard.putNumber("TargetLeftSpeed", leftSpeed);
     	TheChargeDashboard.putNumber("TargetRightSpeed", rightSpeed);
