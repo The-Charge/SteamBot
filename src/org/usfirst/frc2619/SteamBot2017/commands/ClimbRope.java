@@ -40,6 +40,7 @@ public class ClimbRope extends Command {
 	protected void initialize() {
 		Robot.ropeClimber.setMotorModes();
 		Robot.ropeClimber.currentLimiting();
+		this.setTimeout(2);
 	}
 
 	// Called repeatedly when this Command is scheduled to run
@@ -49,7 +50,7 @@ public class ClimbRope extends Command {
 
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
-		return !Robot.ropeClimber.checkDI();
+		return this.isTimedOut() && !Robot.ropeClimber.checkDI();
 	}
 
 	// Called once after isFinished returns true
