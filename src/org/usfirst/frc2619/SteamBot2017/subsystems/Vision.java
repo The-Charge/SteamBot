@@ -64,7 +64,7 @@ public class Vision extends Subsystem {
     }
     
     public double getQuality() {
-    	return table.getDouble("Quality");
+    	return table.getDouble("Quality", 0);
     }
     
     public boolean hasTarget() {
