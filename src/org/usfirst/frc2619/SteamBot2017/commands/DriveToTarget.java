@@ -46,8 +46,8 @@ public class DriveToTarget extends Command {
     protected void execute() {
     	double absMaxSpeed = 0.3;
     	
-    	double forwardFactor = Robot.vision.getDistanceToTargetInFeet() / 10;
-    	double turnFactor = Robot.vision.getRobotAngleOffsetInDegrees() / 20;
+    	double forwardFactor = Robot.vision.getDistanceToTargetInFeet() / 5;
+    	double turnFactor = Robot.vision.getRobotAngleOffsetInDegrees() / 10;
     	
     	forwardFactor = (forwardFactor > 0 ? Math.min(1, forwardFactor) : Math.max(-1, forwardFactor));
     	turnFactor = (turnFactor > 0 ? Math.min(1, turnFactor) : Math.max(-1, turnFactor));
