@@ -1032,6 +1032,12 @@ Children:
           - {name: velocity, type: double, value: '0'}
           - {name: acceleration, type: double, value: '0'}
           - {name: distance, type: double, value: '10'}
+        - !!robotbuilder.data.properties.ParameterSet
+          name: DXF_MM_-5
+          parameters:
+          - {name: velocity, type: double, value: '0'}
+          - {name: acceleration, type: double, value: '0'}
+          - {name: distance, type: double, value: '-5'}
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
     Base: Command
@@ -1664,15 +1670,15 @@ Children:
         validators: null
         value: []
       Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
-        default: &id021 []
+        default: []
         name: Parameter presets
         validators: null
-        value: *id021
+        value: []
       Commands: !!robotbuilder.data.properties.ListProperty
-        default: &id022 []
+        default: []
         name: Commands
         validators: *id017
-        value: *id022
+        value: []
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
     Base: Command Group
@@ -1685,19 +1691,19 @@ Children:
         validators: null
         value: []
       Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
-        default: &id023 []
+        default: &id021 []
         name: Parameter presets
         validators: null
-        value: *id023
+        value: *id021
       Commands: !!robotbuilder.data.properties.ListProperty
-        default: &id024 []
+        default: &id022 []
         name: Commands
         validators: *id017
-        value: *id024
+        value: *id022
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
     Base: Command Group
-    Name: Command Group 1
+    Name: DeliverGear
   Properties: {}
   Base: Commands
   Name: Commands

@@ -264,7 +264,7 @@ public class DriveTrain extends Subsystem {
 	}
 
 	public boolean isAtPIDDestination() {
-		return (this.leftFrontMotor.getEncPosition() > 1000)
+		return (this.leftFrontMotor.getEncPosition() > 1000 || this.leftFrontMotor.getEncPosition() < -1000)
 				&& (Math.abs(this.leftFrontMotor.getSetpoint() - this.leftFrontMotor.getEncPosition()) < 1000);
 	}
 
