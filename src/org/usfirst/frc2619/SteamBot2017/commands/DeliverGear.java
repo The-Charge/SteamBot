@@ -49,14 +49,9 @@ public class DeliverGear extends CommandGroup {
     	addSequential(new TimedCommand(0.25));
     	addSequential(new ExtendPlunger());
     	addSequential(new TimedCommand(0.25));
-    	addSequential(new DeliverGearFinalStep());
+    	addSequential(new DriveXFeetMM(-2));
+		addSequential(new RetractPlunger());
+		addSequential(new TimedCommand(0.25));
 		addSequential(new CloseDoors());
-    } 
-    
-    private class DeliverGearFinalStep extends CommandGroup {
-    	DeliverGearFinalStep() {
-    		addParallel(new DriveXFeetMM(-2));
-    		addParallel(new RetractPlunger());
-    	}
     }
 }

@@ -68,8 +68,8 @@ public class RopeClimber extends Subsystem {
 	}
 
 	// CHECK DI
-	public boolean checkDI() {
-		return ropeDI.get();
+	public boolean isAtPlate() {
+		return !ropeDI.get();
 	}
 
 	// CURRENT LIMIT
