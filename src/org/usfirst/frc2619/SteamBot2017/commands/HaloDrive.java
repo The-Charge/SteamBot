@@ -53,13 +53,6 @@ public class HaloDrive extends Command {
 		double dbX = Robot.driveTrain.deadband_x;
 		double dbY = Robot.driveTrain.deadband_y;
 		double power = Robot.driveTrain.delin_pow;
-		/*leftSpeed = MathUtil.deadbandCheck(-1 * Robot.oi.getLeftJoystick().getRawAxis(1), dbY)
-				+ MathUtil.deadbandCheck(Robot.oi.getLeftJoystick().getRawAxis(4), dbX);
-		rightSpeed = MathUtil.deadbandCheck(-1 * Robot.oi.getLeftJoystick().getRawAxis(1), dbY)
-				+ MathUtil.deadbandCheck(-1 * Robot.oi.getLeftJoystick().getRawAxis(4), dbX);
-		leftSpeed = MathUtil.delinearize(leftSpeed, power);
-		rightSpeed = MathUtil.delinearize(rightSpeed, power);
-		*/
 		
 		double forward = MathUtil.deadbandCheck(-1 * Robot.oi.getLeftJoystick().getRawAxis(1), dbY);
 		double turn = MathUtil.deadbandCheck(Robot.oi.getLeftJoystick().getRawAxis(4), dbX);

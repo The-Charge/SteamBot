@@ -53,13 +53,7 @@ public class ClaytonDrive extends Command {
 		double dbTwist = Robot.driveTrain.deadband_twist;
 		double dbY = Robot.driveTrain.deadband_y;
 		double power = Robot.driveTrain.delin_pow;
-		/*leftSpeed = MathUtil.deadbandCheck(-1 * Robot.oi.getLeftJoystick().getY(), dbY)
-				+ MathUtil.deadbandCheck(Robot.oi.getLeftJoystick().getRawAxis(2), dbTwist);
-		rightSpeed = MathUtil.deadbandCheck(-1 * Robot.oi.getLeftJoystick().getY(), dbY)
-				+ MathUtil.deadbandCheck(-1 * Robot.oi.getLeftJoystick().getRawAxis(2), dbTwist);
-		leftSpeed = MathUtil.delinearize(leftSpeed, power);
-		rightSpeed = MathUtil.delinearize(rightSpeed, power);
-		*/
+		
 		double forward = MathUtil.deadbandCheck(-1 * Robot.oi.getLeftJoystick().getY(), dbY);
 		double turn = MathUtil.deadbandCheck(Robot.oi.getLeftJoystick().getRawAxis(2), dbTwist);
 		forward = MathUtil.delinearize(forward, power);
