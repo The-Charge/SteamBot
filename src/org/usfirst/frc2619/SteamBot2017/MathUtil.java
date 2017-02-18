@@ -7,7 +7,7 @@ public class MathUtil {
 	public static final boolean ALLOW_DELINEARIZATION_DEFAULT = true;
 	public static final String ALLOW_DELINEARIZATION_KEY = "Allow_Delinearization";
 
-	public static double delinearize(double input, int power) {
+	public static double delinearize(double input, double power) {
 		double dbY = Robot.driveTrain.deadband_y;
 		double ret;
 		Allow_Delinearization = false;
