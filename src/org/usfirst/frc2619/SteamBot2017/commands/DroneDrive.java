@@ -61,8 +61,8 @@ public class DroneDrive extends Command {
 		rightSpeed = MathUtil.delinearize(rightSpeed, power);
 		*/
 		
-		double turn = MathUtil.deadbandCheck(-1 * Robot.oi.getLeftJoystick().getRawAxis(0), dbX);
-		double forward = MathUtil.deadbandCheck(Robot.oi.getLeftJoystick().getRawAxis(5), dbY);
+		double turn = MathUtil.deadbandCheck(Robot.oi.getLeftJoystick().getRawAxis(0), dbX);
+		double forward = MathUtil.deadbandCheck(-1 * Robot.oi.getLeftJoystick().getRawAxis(5), dbY);
 		forward = MathUtil.delinearize(forward, power);
 		turn = MathUtil.delinearize(turn, power);
 		leftSpeed = forward + turn;
