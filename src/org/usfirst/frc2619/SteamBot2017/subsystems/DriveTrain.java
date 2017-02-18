@@ -53,6 +53,8 @@ public class DriveTrain extends Subsystem {
 	public final double CURRENT_LIMIT_DEFAULT = 40;
 	public double turn_angle;
 	public final double TURN_ANGLE_DEFAULT = 0;
+	public static boolean Allow_Delinearization;
+	public static final boolean ALLOW_DELINEARIZATION_DEFAULT = false;
 
 	public static final String DELIN_POW_KEY = "DELIN_POW";
 	public static final String DEADBAND_X_KEY = "DEADBAND_X";
@@ -71,6 +73,8 @@ public class DriveTrain extends Subsystem {
 	private static final String ACCELERATION_KEY = "ACCELERATION";
 	private static final String VELOCITY_KEY = "VELOCITY";
 	private static final String DISTANCE_KEY = "DISTANCE";
+	
+	public static final String ALLOW_DELINEARIZATION_KEY = "Allow_Delinearization";
 	
 	private static final String SPEED_P_KEY = "SPEED_P";
 	private static final String SPEED_D_KEY = "SPEED_D";
@@ -159,6 +163,7 @@ public class DriveTrain extends Subsystem {
 		TheChargeDashboard.putNumber(SPEED_F_KEY, SPEED_F_DEFAULT);
 		TheChargeDashboard.putNumber(CURRENT_LIMIT_KEY, CURRENT_LIMIT_DEFAULT);
 		TheChargeDashboard.putNumber(TURN_ANGLE_KEY, TURN_ANGLE_DEFAULT);
+		TheChargeDashboard.putBoolean(ALLOW_DELINEARIZATION_KEY, Allow_Delinearization);
 	}
 
 	public void readControlValues() {
@@ -181,6 +186,7 @@ public class DriveTrain extends Subsystem {
 		speedD = SmartDashboard.getNumber(SPEED_D_KEY, SPEED_D_DEFAULT);
 		speedF = SmartDashboard.getNumber(SPEED_F_KEY, SPEED_F_DEFAULT);
 		turn_angle = SmartDashboard.getNumber(TURN_ANGLE_KEY, TURN_ANGLE_DEFAULT);
+		Allow_Delinearization = SmartDashboard.getBoolean(ALLOW_DELINEARIZATION_KEY, ALLOW_DELINEARIZATION_DEFAULT);
 	}
 
 	public void writeDebugValues() {
