@@ -56,7 +56,7 @@ Children:
           validators: [AnalogInput]
           value: '0'
       Base: AnalogGyro
-      Name: AnalogGyro 1
+      Name: DoNotUse
     Properties:
       Default command parameters: !!robotbuilder.data.properties.ParametersProperty
         default: []
@@ -1259,7 +1259,7 @@ Children:
         name: Input
         type: PIDSource
         validators: &id019 [TypeDropdownSelected]
-        value: DriveTrain AnalogGyro 1
+        value: DriveTrain DoNotUse
       Maximum Output: !!robotbuilder.data.properties.DoubleProperty {default: 1, name: Maximum Output,
         validators: null, value: 0.5}
       Output: !!robotbuilder.data.properties.TypeSelectionProperty
@@ -1518,7 +1518,7 @@ Children:
         name: Input
         type: PIDSource
         validators: *id019
-        value: DriveTrain AnalogGyro 1
+        value: DriveTrain DoNotUse
       Maximum Output: !!robotbuilder.data.properties.DoubleProperty {default: 1, name: Maximum Output,
         validators: null, value: 0.5}
       Output: !!robotbuilder.data.properties.TypeSelectionProperty

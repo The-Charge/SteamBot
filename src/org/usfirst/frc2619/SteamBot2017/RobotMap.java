@@ -35,7 +35,7 @@ public class RobotMap {
     public static CANTalon driveTrainRightFrontMotor;
     public static CANTalon driveTrainRightRearMotor;
     public static CANTalon driveTrainLeftRearMotor;
-    public static AnalogGyro driveTrainAnalogGyro1;
+    public static AnalogGyro driveTrainDoNotUse;
     public static Solenoid shiftersSolenoid;
     public static CANTalon shooterMotorsMotor;
     public static Solenoid gearPlungerPlunger;
@@ -70,9 +70,9 @@ public class RobotMap {
         driveTrainLeftRearMotor = new CANTalon(10);
         LiveWindow.addActuator("DriveTrain", "LeftRearMotor", driveTrainLeftRearMotor);
         
-        driveTrainAnalogGyro1 = new AnalogGyro(0);
-        LiveWindow.addSensor("DriveTrain", "AnalogGyro 1", driveTrainAnalogGyro1);
-        driveTrainAnalogGyro1.setSensitivity(0.007);
+        driveTrainDoNotUse = new AnalogGyro(0);
+        LiveWindow.addSensor("DriveTrain", "DoNotUse", driveTrainDoNotUse);
+        driveTrainDoNotUse.setSensitivity(0.007);
         shiftersSolenoid = new Solenoid(0, 0);
         LiveWindow.addActuator("Shifters", "Solenoid", shiftersSolenoid);
         
