@@ -78,18 +78,7 @@ public class DriveToTarget extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	if (!Robot.vision.hasTarget()) {
-    		System.out.println("No Target");
-    		return true;
-    	}
-    	else if (Robot.vision.getDistanceToTargetInFeet() < m_distanceFromTarget) {
-    		System.out.println("Close Enough");
-    		return true;
-    	}
-    	else {
-    		return false;
-    	}
-        //return !Robot.vision.hasTarget() || Robot.vision.getDistanceToTargetInFeet() < m_distanceFromTarget;
+    	return !Robot.vision.hasTarget() || Robot.vision.getDistanceToTargetInFeet() < m_distanceFromTarget;
     }
 
     // Called once after isFinished returns true
