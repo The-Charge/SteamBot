@@ -91,9 +91,8 @@ public class Robot extends IterativeRobot {
 		shooterMotors.writeDefaultDashboardValues();
 		ballPickup.writeDefaultDashboardValues();
 		indexer.writeDefaultDashboardValues();
-
-		chooser.addDefault("Forward Back 5", new DriveForwardBack5());
-		chooser.addObject("Back Forward 5", new DriveBackForward5());
+		ledBoard.writeDefaultDashboardValues();
+		
 		TheChargeDashboard.putData("AutoMode", chooser);
 	}
 

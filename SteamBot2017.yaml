@@ -684,7 +684,7 @@ Children:
     Properties:
       Parameters: !!robotbuilder.data.properties.ParametersProperty
         default:
-        - &id018 !!robotbuilder.data.properties.ParameterDescriptor {name: timeout,
+        - &id017 !!robotbuilder.data.properties.ParameterDescriptor {name: timeout,
           type: double}
         name: Parameters
         validators: null
@@ -701,57 +701,6 @@ Children:
         name: Button on SmartDashboard, validators: null, value: true}
     Base: Timed Command
     Name: DriveXSeconds
-  - Children: []
-    Properties:
-      Parameters: !!robotbuilder.data.properties.ParametersProperty
-        default: []
-        name: Parameters
-        validators: null
-        value:
-        - !!robotbuilder.data.properties.ParameterDescriptor {name: xFeet, type: double}
-      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
-        name: Requires, type: Subsystem, validators: null, value: DriveTrain}
-      Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
-        default: []
-        name: Parameter presets
-        validators: null
-        value:
-        - !!robotbuilder.data.properties.ParameterSet
-          name: FiveFeet
-          parameters:
-          - {name: xFeet, type: double, value: '5'}
-        - !!robotbuilder.data.properties.ParameterSet
-          name: TenFeet
-          parameters:
-          - {name: xFeet, type: double, value: '10'}
-        - !!robotbuilder.data.properties.ParameterSet
-          name: FifteenFeet
-          parameters:
-          - {name: xFeet, type: double, value: '15'}
-        - !!robotbuilder.data.properties.ParameterSet
-          name: TwentyFeet
-          parameters:
-          - {name: xFeet, type: double, value: '20'}
-        - !!robotbuilder.data.properties.ParameterSet
-          name: NegFiveFeet
-          parameters:
-          - {name: xFeet, type: double, value: '-5'}
-        - !!robotbuilder.data.properties.ParameterSet
-          name: NegTenFeet
-          parameters:
-          - {name: xFeet, type: double, value: '-10'}
-        - !!robotbuilder.data.properties.ParameterSet
-          name: NegFifteenFeet
-          parameters:
-          - {name: xFeet, type: double, value: '-15'}
-        - !!robotbuilder.data.properties.ParameterSet
-          name: NegTwentyFeet
-          parameters:
-          - {name: xFeet, type: double, value: '-20'}
-      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
-        name: Button on SmartDashboard, validators: null, value: true}
-    Base: Command
-    Name: DriveXFeet
   - Children: []
     Properties:
       Parameters: !!robotbuilder.data.properties.ParametersProperty
@@ -842,142 +791,6 @@ Children:
         name: Button on SmartDashboard, validators: null, value: true}
     Base: Command
     Name: XboxDrive
-  - Children: []
-    Properties:
-      Parameters: !!robotbuilder.data.properties.ParametersProperty
-        default: []
-        name: Parameters
-        validators: null
-        value:
-        - !!robotbuilder.data.properties.ParameterDescriptor {name: nDegrees, type: double}
-      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
-        name: Requires, type: Subsystem, validators: null, value: DriveTrain}
-      Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
-        default: []
-        name: Parameter presets
-        validators: null
-        value:
-        - !!robotbuilder.data.properties.ParameterSet
-          name: 90Degrees
-          parameters:
-          - {name: nDegrees, type: double, value: '90'}
-        - !!robotbuilder.data.properties.ParameterSet
-          name: 180Degrees
-          parameters:
-          - {name: nDegrees, type: double, value: '180'}
-        - !!robotbuilder.data.properties.ParameterSet
-          name: 45Degrees
-          parameters:
-          - {name: nDegrees, type: double, value: '45'}
-        - !!robotbuilder.data.properties.ParameterSet
-          name: -90Degrees
-          parameters:
-          - {name: nDegrees, type: double, value: '-90'}
-        - !!robotbuilder.data.properties.ParameterSet
-          name: -45Degrees
-          parameters:
-          - {name: nDegrees, type: double, value: '-45'}
-      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
-        name: Button on SmartDashboard, validators: null, value: true}
-    Base: Command
-    Name: TurnNDegreesRelative
-  - Children: []
-    Properties:
-      Parameters: !!robotbuilder.data.properties.ParametersProperty
-        default: []
-        name: Parameters
-        validators: null
-        value: []
-      Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
-        default: []
-        name: Parameter presets
-        validators: null
-        value: []
-      Commands: !!robotbuilder.data.properties.ListProperty
-        default: []
-        name: Commands
-        validators: &id017 [List]
-        value: []
-      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
-        name: Button on SmartDashboard, validators: null, value: true}
-    Base: Command Group
-    Name: DriveForwardBack5
-  - Children: []
-    Properties:
-      Parameters: !!robotbuilder.data.properties.ParametersProperty
-        default: []
-        name: Parameters
-        validators: null
-        value: []
-      Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
-        default: []
-        name: Parameter presets
-        validators: null
-        value: []
-      Commands: !!robotbuilder.data.properties.ListProperty
-        default: []
-        name: Commands
-        validators: *id017
-        value: []
-      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
-        name: Button on SmartDashboard, validators: null, value: true}
-    Base: Command Group
-    Name: DriveBackForward5
-  - Children: []
-    Properties:
-      Parameters: !!robotbuilder.data.properties.ParametersProperty
-        default: []
-        name: Parameters
-        validators: null
-        value:
-        - !!robotbuilder.data.properties.ParameterDescriptor {name: nDegrees, type: double}
-      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
-        name: Requires, type: Subsystem, validators: null, value: DriveTrain}
-      Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
-        default: []
-        name: Parameter presets
-        validators: null
-        value:
-        - !!robotbuilder.data.properties.ParameterSet
-          name: 45Degrees
-          parameters:
-          - {name: nDegrees, type: double, value: '45'}
-        - !!robotbuilder.data.properties.ParameterSet
-          name: 90Degrees
-          parameters:
-          - {name: nDegrees, type: double, value: '90'}
-        - !!robotbuilder.data.properties.ParameterSet
-          name: 135Degrees
-          parameters:
-          - {name: nDegrees, type: double, value: '135'}
-        - !!robotbuilder.data.properties.ParameterSet
-          name: 180Degrees
-          parameters:
-          - {name: nDegrees, type: double, value: '180'}
-        - !!robotbuilder.data.properties.ParameterSet
-          name: -45Degrees
-          parameters:
-          - {name: nDegrees, type: double, value: '-45'}
-        - !!robotbuilder.data.properties.ParameterSet
-          name: -90Degrees
-          parameters:
-          - {name: nDegrees, type: double, value: '-90'}
-        - !!robotbuilder.data.properties.ParameterSet
-          name: -135Degrees
-          parameters:
-          - {name: nDegrees, type: double, value: '-135'}
-        - !!robotbuilder.data.properties.ParameterSet
-          name: -180Degrees
-          parameters:
-          - {name: nDegrees, type: double, value: '-180'}
-        - !!robotbuilder.data.properties.ParameterSet
-          name: 0Degrees
-          parameters:
-          - {name: nDegrees, type: double, value: '0'}
-      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
-        name: Button on SmartDashboard, validators: null, value: true}
-    Base: Command
-    Name: TurnNDegreesAbsolute
   - Children: []
     Properties:
       Parameters: !!robotbuilder.data.properties.ParametersProperty
@@ -1347,7 +1160,7 @@ Children:
     Properties:
       Parameters: !!robotbuilder.data.properties.ParametersProperty
         default:
-        - *id018
+        - *id017
         name: Parameters
         validators: null
         value:
@@ -1472,7 +1285,7 @@ Children:
       Commands: !!robotbuilder.data.properties.ListProperty
         default: []
         name: Commands
-        validators: *id017
+        validators: &id018 [List]
         value: []
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
@@ -1493,7 +1306,7 @@ Children:
       Commands: !!robotbuilder.data.properties.ListProperty
         default: []
         name: Commands
-        validators: *id017
+        validators: *id018
         value: []
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
@@ -1514,7 +1327,7 @@ Children:
       Commands: !!robotbuilder.data.properties.ListProperty
         default: []
         name: Commands
-        validators: *id017
+        validators: *id018
         value: []
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
@@ -1677,7 +1490,7 @@ Children:
       Commands: !!robotbuilder.data.properties.ListProperty
         default: []
         name: Commands
-        validators: *id017
+        validators: *id018
         value: []
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
@@ -1691,15 +1504,15 @@ Children:
         validators: null
         value: []
       Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
-        default: &id021 []
+        default: []
         name: Parameter presets
         validators: null
-        value: *id021
+        value: []
       Commands: !!robotbuilder.data.properties.ListProperty
-        default: &id022 []
+        default: []
         name: Commands
-        validators: *id017
-        value: *id022
+        validators: *id018
+        value: []
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
     Base: Command Group
