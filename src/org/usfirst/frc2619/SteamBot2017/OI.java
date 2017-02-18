@@ -53,7 +53,11 @@ public class OI {
     public JoystickButton drive2Seconds;
     public JoystickButton invertDriveButton;
     public JoystickButton motionMagicModeButton;
+    public JoystickButton shiftLowButton;
+    public JoystickButton shiftLow2;
+    public JoystickButton shiftHigh2;
     public Joystick leftJoystick;
+    public JoystickButton shiftHighButton;
     public Joystick rightJoystick;
     public JoystickButton runShooterButton;
     public JoystickButton runPickupButton;
@@ -72,8 +76,16 @@ public class OI {
         runShooterButton.whileHeld(new RunShooter());
         rightJoystick = new Joystick(1);
         
+        shiftHighButton = new JoystickButton(rightJoystick, 2);
+        shiftHighButton.whenPressed(new ShiftHigh());
         leftJoystick = new Joystick(0);
         
+        shiftHigh2 = new JoystickButton(leftJoystick, 6);
+        shiftHigh2.whenPressed(new ShiftHigh());
+        shiftLow2 = new JoystickButton(leftJoystick, 5);
+        shiftLow2.whenPressed(new ShiftLow());
+        shiftLowButton = new JoystickButton(leftJoystick, 2);
+        shiftLowButton.whenPressed(new ShiftLow());
         motionMagicModeButton = new JoystickButton(leftJoystick, 5);
         motionMagicModeButton.whenPressed(new MotionMagicMode());
         invertDriveButton = new JoystickButton(leftJoystick, 4);
@@ -88,38 +100,16 @@ public class OI {
         SmartDashboard.putData("Autonomous Command", new AutonomousCommand());
         SmartDashboard.putData("TankDrive", new TankDrive());
         SmartDashboard.putData("DriveXSeconds", new DriveXSeconds());
-        SmartDashboard.putData("DriveXFeet: FiveFeet", new DriveXFeet(5));
-        SmartDashboard.putData("DriveXFeet: TenFeet", new DriveXFeet(10));
-        SmartDashboard.putData("DriveXFeet: FifteenFeet", new DriveXFeet(15));
-        SmartDashboard.putData("DriveXFeet: TwentyFeet", new DriveXFeet(20));
-        SmartDashboard.putData("DriveXFeet: NegFiveFeet", new DriveXFeet(-5));
-        SmartDashboard.putData("DriveXFeet: NegTenFeet", new DriveXFeet(-10));
-        SmartDashboard.putData("DriveXFeet: NegFifteenFeet", new DriveXFeet(-15));
-        SmartDashboard.putData("DriveXFeet: NegTwentyFeet", new DriveXFeet(-20));
+        SmartDashboard.putData("InvertDrive", new InvertDrive());
         SmartDashboard.putData("ArcadeDrive", new ArcadeDrive());
         SmartDashboard.putData("ClaytonDrive", new ClaytonDrive());
         SmartDashboard.putData("HaloDrive", new HaloDrive());
         SmartDashboard.putData("XboxDrive", new XboxDrive());
-        SmartDashboard.putData("TurnNDegreesRelative: 90Degrees", new TurnNDegreesRelative(90));
-        SmartDashboard.putData("TurnNDegreesRelative: 180Degrees", new TurnNDegreesRelative(180));
-        SmartDashboard.putData("TurnNDegreesRelative: 45Degrees", new TurnNDegreesRelative(45));
-        SmartDashboard.putData("TurnNDegreesRelative: -90Degrees", new TurnNDegreesRelative(-90));
-        SmartDashboard.putData("TurnNDegreesRelative: -45Degrees", new TurnNDegreesRelative(-45));
-        SmartDashboard.putData("DriveForwardBack5", new DriveForwardBack5());
-        SmartDashboard.putData("DriveBackForward5", new DriveBackForward5());
-        SmartDashboard.putData("TurnNDegreesAbsolute: 45Degrees", new TurnNDegreesAbsolute(45));
-        SmartDashboard.putData("TurnNDegreesAbsolute: 90Degrees", new TurnNDegreesAbsolute(90));
-        SmartDashboard.putData("TurnNDegreesAbsolute: 135Degrees", new TurnNDegreesAbsolute(135));
-        SmartDashboard.putData("TurnNDegreesAbsolute: 180Degrees", new TurnNDegreesAbsolute(180));
-        SmartDashboard.putData("TurnNDegreesAbsolute: -45Degrees", new TurnNDegreesAbsolute(-45));
-        SmartDashboard.putData("TurnNDegreesAbsolute: -90Degrees", new TurnNDegreesAbsolute(-90));
-        SmartDashboard.putData("TurnNDegreesAbsolute: -135Degrees", new TurnNDegreesAbsolute(-135));
-        SmartDashboard.putData("TurnNDegreesAbsolute: -180Degrees", new TurnNDegreesAbsolute(-180));
-        SmartDashboard.putData("TurnNDegreesAbsolute: 0Degrees", new TurnNDegreesAbsolute(0));
         SmartDashboard.putData("MotionMagicMode", new MotionMagicMode());
         SmartDashboard.putData("DriveXFeetMM: DXF_MM_20", new DriveXFeetMM(0, 0, 20));
         SmartDashboard.putData("DriveXFeetMM: DXF_MM_5", new DriveXFeetMM(0, 0, 5));
         SmartDashboard.putData("DriveXFeetMM: DXF_MM_10", new DriveXFeetMM(0, 0, 10));
+        SmartDashboard.putData("DriveXFeetMM: DXF_MM_-5", new DriveXFeetMM(0, 0, -5));
         SmartDashboard.putData("RunShooter", new RunShooter());
         SmartDashboard.putData("OpenDoors", new OpenDoors());
         SmartDashboard.putData("CloseDoors", new CloseDoors());
@@ -150,6 +140,8 @@ public class OI {
         SmartDashboard.putData("EnableCurrentLimit", new EnableCurrentLimit());
         SmartDashboard.putData("DisableCurrentLimit", new DisableCurrentLimit());
         SmartDashboard.putData("DriveToTarget: 2", new DriveToTarget(2));
+        SmartDashboard.putData("DeliverGearWithVision", new DeliverGearWithVision());
+        SmartDashboard.putData("DeliverGear", new DeliverGear());
 
     // END AUTOGENERATED CODE, SOURCE=ROBOTBUILDER ID=CONSTRUCTORS
 	}
