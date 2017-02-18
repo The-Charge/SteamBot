@@ -53,7 +53,11 @@ public class OI {
     public JoystickButton drive2Seconds;
     public JoystickButton invertDriveButton;
     public JoystickButton motionMagicModeButton;
+    public JoystickButton shiftLowButton;
+    public JoystickButton shiftLow2;
+    public JoystickButton shiftHigh2;
     public Joystick leftJoystick;
+    public JoystickButton shiftHighButton;
     public Joystick rightJoystick;
     public JoystickButton runShooterButton;
     public JoystickButton runPickupButton;
@@ -72,8 +76,16 @@ public class OI {
         runShooterButton.whileHeld(new RunShooter());
         rightJoystick = new Joystick(1);
         
+        shiftHighButton = new JoystickButton(rightJoystick, 2);
+        shiftHighButton.whenPressed(new ShiftHigh());
         leftJoystick = new Joystick(0);
         
+        shiftHigh2 = new JoystickButton(leftJoystick, 6);
+        shiftHigh2.whenPressed(new ShiftHigh());
+        shiftLow2 = new JoystickButton(leftJoystick, 5);
+        shiftLow2.whenPressed(new ShiftLow());
+        shiftLowButton = new JoystickButton(leftJoystick, 2);
+        shiftLowButton.whenPressed(new ShiftLow());
         motionMagicModeButton = new JoystickButton(leftJoystick, 5);
         motionMagicModeButton.whenPressed(new MotionMagicMode());
         invertDriveButton = new JoystickButton(leftJoystick, 4);
@@ -88,6 +100,7 @@ public class OI {
         SmartDashboard.putData("Autonomous Command", new AutonomousCommand());
         SmartDashboard.putData("TankDrive", new TankDrive());
         SmartDashboard.putData("DriveXSeconds", new DriveXSeconds());
+        SmartDashboard.putData("InvertDrive", new InvertDrive());
         SmartDashboard.putData("ArcadeDrive", new ArcadeDrive());
         SmartDashboard.putData("ClaytonDrive", new ClaytonDrive());
         SmartDashboard.putData("HaloDrive", new HaloDrive());
