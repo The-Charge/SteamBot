@@ -1,19 +1,17 @@
 package org.usfirst.frc2619.SteamBot2017;
 
+import org.usfirst.frc2619.SteamBot2017.subsystems.DriveTrain;
+
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class MathUtil {
-	public static boolean Allow_Delinearization;
-	public static final boolean ALLOW_DELINEARIZATION_DEFAULT = true;
-	public static final String ALLOW_DELINEARIZATION_KEY = "Allow_Delinearization";
-
 	public static double delinearize(double input, double power) {
+		return delinearize(input, power, DriveTrain.Allow_Delinearization);
+	}
+	public static double delinearize(double input, double power, boolean Allow_Delinearization) {
 		double dbY = Robot.driveTrain.deadband_y;
 		double ret;
-		Allow_Delinearization = false;
 		TheChargeDashboard.putNumber("JoystickPosition", input);
-		TheChargeDashboard.putBoolean(ALLOW_DELINEARIZATION_KEY, Allow_Delinearization);
-		Allow_Delinearization = SmartDashboard.getBoolean(ALLOW_DELINEARIZATION_KEY, ALLOW_DELINEARIZATION_DEFAULT);
 
 		if (Allow_Delinearization == true) {
 			// returns delinearized power (adjusted for deadband)
@@ -22,11 +20,11 @@ public class MathUtil {
 				// at the edge of the deadband...
 				// ...and goes up cubically to (1,1) - this will work even if we
 				// change the deadband
-				ret = 1 / Math.pow(1 - dbY, power) * Math.pow(input - dbY, power);
+				ret = Math.pow(input - dbY, power) / Math.pow(1 - dbY, power);
 			} else if (input < 0) {
 				// this is the reverse of that equation, in order to make the
 				// negative go backward
-				ret = 1 / Math.pow(1 - dbY, power) * Math.pow(input + dbY, power);
+				ret = Math.pow(input + dbY, power) / Math.pow(1 - dbY, power);
 			} else {
 				ret = 0;
 			}

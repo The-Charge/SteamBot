@@ -48,6 +48,7 @@ public class DeliverGearWithVision extends CommandGroup {
     	addSequential(new OnCameraLights());
     	addSequential(new TimedCommand(0.5));
     	addSequential(new DriveToTarget(2));
+    	addSequential(new OffCameraLights());
     	addSequential(new DriveToCurrent(0.1));
     	addSequential(new DeliverGear());
     } 
