@@ -72,8 +72,8 @@ public class CANLights extends Subsystem {
 	}
 
 	public void blink() {
-		cANLight.writeRegister(1, 0.5, SmartDashboard.getInt("CANLightRed"), SmartDashboard.getInt("CANLightGreen"),
-				SmartDashboard.getInt("CANLightBlue")); // current
+		cANLight.writeRegister(1, 0.5, (int)SmartDashboard.getNumber("CANLightRed", 0), (int)SmartDashboard.getNumber("CANLightGreen", 0),
+				(int)SmartDashboard.getNumber("CANLightBlue", 0)); // current
 		cANLight.writeRegister(2, 0.5, 0, 0, 0); // off
 		cANLight.cycle(1, 2);
 	}
