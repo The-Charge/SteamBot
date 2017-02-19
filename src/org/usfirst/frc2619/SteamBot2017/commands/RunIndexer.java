@@ -51,7 +51,6 @@ public class RunIndexer extends Command {
 
 	// Called once after isFinished returns true
 	protected void end() {
-		Robot.indexer.set(0);
 	}
 
 	// Called when another command which requires one or more of the same
