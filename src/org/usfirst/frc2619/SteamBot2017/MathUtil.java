@@ -13,7 +13,7 @@ public class MathUtil {
 		double ret;
 		TheChargeDashboard.putNumber("JoystickPosition", input);
 
-		if (Allow_Delinearization == true) {
+		if (DriveTrain.Allow_Delinearization) {
 			// returns delinearized power (adjusted for deadband)
 			if (input > 0) {
 				// this is an equation for the curve so that it starts at zero
@@ -32,7 +32,6 @@ public class MathUtil {
 			// if delin modifications are off, will return non-fixed
 			// delinearization
 			ret = Math.pow(input, power);
-			ret = input;
 		}
 
 		TheChargeDashboard.putNumber("PowerOutput", ret);

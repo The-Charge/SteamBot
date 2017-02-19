@@ -42,7 +42,7 @@ public class DriveTrain extends Subsystem {
 	public double deadband_x;
 	public final double DEADBAND_X_DEFAULT = 0.2;
 	public double deadband_y;
-	public final double DEADBAND_Y_DEFAULT = 0.1;
+	public final double DEADBAND_Y_DEFAULT = 0.2;
 	public double deadband_twist;
 	public final double DEADBAND_TWIST_DEFAULT = 0.2;
 	public double turn_outer_speed;
@@ -54,7 +54,7 @@ public class DriveTrain extends Subsystem {
 	public double turn_angle;
 	public final double TURN_ANGLE_DEFAULT = 0;
 	public static boolean Allow_Delinearization;
-	public static final boolean ALLOW_DELINEARIZATION_DEFAULT = false;
+	public static final boolean ALLOW_DELINEARIZATION_DEFAULT = true;
 
 	public static final String DELIN_POW_KEY = "DELIN_POW";
 	public static final String DEADBAND_X_KEY = "DEADBAND_X";
