@@ -21,7 +21,7 @@ public class TheChargeDashboard {
 			//"Direction",
 			//"ShooterSpeedP", "ShooterSpeedI", "ShooterSpeedD", "ShooterSpeedF",
 			//"PickupSpeedP", "PickupSpeedI", "PickupSpeedD", "PickupSpeedF", //"PickupSetpoint", "PickupMotorControlSpeed", "PickupMscOutput", "PickupMotorVelocity",
-			//"IndexerSpeedP" , "IndexerSpeedI", "IndexerSpeedD", "IndexerSpeedF", //"IndexerSetPoint", "IndexerError", "IndexMeasuredValue",
+			/*"IndexerSpeedP" , "IndexerSpeedI", "IndexerSpeedD", "IndexerSpeedF", //"IndexerSetPoint", "IndexerError", "IndexMeasuredValue",*/ "IndexerDI",
 			"driveTrain",
 			//"AutoMode",
 			//"CANLightRed", "CANLightGreen", "CANLightBlue",

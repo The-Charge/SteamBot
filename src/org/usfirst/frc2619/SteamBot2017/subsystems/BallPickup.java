@@ -84,7 +84,13 @@ public class BallPickup extends Subsystem {
 
 	public void set(double percentSpeed) {
 		// Sets what speed the motors will run at.
+		pickupMotor.enable();
 		pickupMotor.setSetpoint(MAX_TICKS_PER_SECOND * percentSpeed);
+	}
+	
+	public void stop() {
+		pickupMotor.setSetpoint(0);
+		pickupMotor.disable();
 	}
 
 	public void writeDebugValues() {
