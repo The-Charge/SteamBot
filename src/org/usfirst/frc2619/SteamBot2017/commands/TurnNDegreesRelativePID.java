@@ -78,6 +78,7 @@ public class TurnNDegreesRelativePID extends PIDCommand {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	this.setTimeout(1.5);
     	previousControlMode = Robot.driveTrain.getControlMode();
     	initialAngle = RobotMap.driveTrainAHRS.getAngle();
     	RobotMap.driveTrainAHRS.setAngleAdjustment(-initialAngle);
@@ -91,7 +92,7 @@ public class TurnNDegreesRelativePID extends PIDCommand {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	return getPIDController().onTarget();
+    	return isTimedOut() && getPIDController().onTarget();
     }
 
     // Called once after isFinished returns true

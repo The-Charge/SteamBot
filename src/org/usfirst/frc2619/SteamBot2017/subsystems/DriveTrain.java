@@ -53,7 +53,7 @@ public class DriveTrain extends Subsystem {
 	public final double CURRENT_LIMIT_DEFAULT = 40;
 	public double turn_angle;
 	public final double TURN_ANGLE_DEFAULT = 0;
-	public static boolean Allow_Delinearization;
+	public static boolean Allow_Delinearization = true;
 	public static final boolean ALLOW_DELINEARIZATION_DEFAULT = true;
 
 	public static final String DELIN_POW_KEY = "DELIN_POW";
