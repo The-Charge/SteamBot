@@ -85,7 +85,7 @@ public class OI {
         climbRopeOverrideBtn = new JoystickButton(buttonBox, 6);
         climbRopeOverrideBtn.whenPressed(new ClimbRobotTimed(0));
         climbRopeBtn = new JoystickButton(buttonBox, 5);
-        climbRopeBtn.whenPressed(new ClimbRope());
+        climbRopeBtn.whileHeld(new ClimbRope());
         retractPlungerBtn = new JoystickButton(buttonBox, 10);
         retractPlungerBtn.whenReleased(new RetractPlunger());
         extendPlungerBtn = new JoystickButton(buttonBox, 10);
