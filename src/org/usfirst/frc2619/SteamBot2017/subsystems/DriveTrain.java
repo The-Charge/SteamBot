@@ -21,6 +21,7 @@ import com.ctre.CANTalon.TalonControlMode;
 import com.kauailabs.navx.frc.AHRS;
 
 import edu.wpi.first.wpilibj.AnalogGyro;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -204,6 +205,7 @@ public class DriveTrain extends Subsystem {
 		TheChargeDashboard.putNumber("LeftSpeed", leftFrontMotor.getSpeed());
 		TheChargeDashboard.putNumber("RightSpeed", rightFrontMotor.getSpeed());
 		TheChargeDashboard.putNumber("LeftCurrent", leftFrontMotor.getOutputCurrent());
+		SmartDashboard.putNumber("Timer.getMatchTime()", Timer.getMatchTime());
 	}
 
 	public void run(double leftSpeed, double rightSpeed) {

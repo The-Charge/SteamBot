@@ -10,8 +10,11 @@
 
 package org.usfirst.frc2619.SteamBot2017.commands;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
+
 import org.usfirst.frc2619.SteamBot2017.Robot;
+import org.usfirst.frc2619.SteamBot2017.TheChargeDashboard;
 
 /**
  *
@@ -40,17 +43,25 @@ public class ClimbRope extends Command {
 	protected void initialize() {
 		Robot.ropeClimber.setMotorModes();
 		Robot.ropeClimber.currentLimiting();
-		this.setTimeout(2);
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		Robot.ropeClimber.run(FULL_SPEED);
+		double time = Timer.getMatchTime();
+		if (time <= 30 && !Robot.ropeClimber.isAtPlate()){
+			Robot.ropeClimber.run(FULL_SPEED);
+			TheChargeDashboard.putString("ClimbRope", "Can Climb");
+			
+		}
+		else {
+			TheChargeDashboard.putString("ClimbRope", "Cannot Climb");
+			end();
+		}
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
-		return this.isTimedOut() && Robot.ropeClimber.isAtPlate();
+		return false;
 	}
 
 	// Called once after isFinished returns true

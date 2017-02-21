@@ -88,7 +88,7 @@ public class TurnNDegreesAbsolutePID extends PIDCommand {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	return isTimedOut() && getPIDController().onTarget();
+    	return isTimedOut() || getPIDController().onTarget();
     }
 
     // Called once after isFinished returns true
