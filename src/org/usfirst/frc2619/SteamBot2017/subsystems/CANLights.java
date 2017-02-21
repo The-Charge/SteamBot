@@ -10,12 +10,14 @@
 
 package org.usfirst.frc2619.SteamBot2017.subsystems;
 
+import org.usfirst.frc2619.SteamBot2017.Robot;
 import org.usfirst.frc2619.SteamBot2017.RobotMap;
 import org.usfirst.frc2619.SteamBot2017.TheChargeDashboard;
 import org.usfirst.frc2619.SteamBot2017.commands.*;
 
 import com.mindsensors.CANLight;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -72,9 +74,24 @@ public class CANLights extends Subsystem {
 	}
 
 	public void blink() {
-		cANLight.writeRegister(1, 0.5, (int)SmartDashboard.getNumber("CANLightRed", 0), (int)SmartDashboard.getNumber("CANLightGreen", 0),
-				(int)SmartDashboard.getNumber("CANLightBlue", 0)); // current
+		cANLight.writeRegister(1, 0.5, (int)SmartDashboard.getNumber("CANLightRed", 0), (int)SmartDashboard.getNumber("CANLightGreen", 0), (int)SmartDashboard.getNumber("CANLightBlue", 0)); // current
 		cANLight.writeRegister(2, 0.5, 0, 0, 0); // off
 		cANLight.cycle(1, 2);
 	}
+	public void colorAlliance(){
+		
+		DriverStation ds = DriverStation.getInstance();
+		if (ds.getAlliance() == DriverStation.Alliance.Red) {
+			Robot.cANLights.LightRun(255, 0, 0);
+			Robot.cANLights.displayCANLightValues(255, 0, 0);
+		} else if (ds.getAlliance() == DriverStation.Alliance.Blue) {
+			Robot.cANLights.LightRun(0, 0, 255);
+			Robot.cANLights.displayCANLightValues(0, 0, 255);
+		} else if (ds.getAlliance() == DriverStation.Alliance.Invalid) {
+			Robot.cANLights.LightRun(255, 255, 0);
+			Robot.cANLights.displayCANLightValues(255, 255, 0); // yellow
+		}
+		
+	}
+	
 }

@@ -41,6 +41,7 @@ public class ClimbRope extends Command {
 		Robot.ropeClimber.setMotorModes();
 		Robot.ropeClimber.currentLimiting();
 		this.setTimeout(2);
+		Robot.cANLights.LightRun(0, 255, 0);
 	}
 
 	// Called repeatedly when this Command is scheduled to run

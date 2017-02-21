@@ -40,16 +40,7 @@ public class AllianceColor extends InstantCommand {
 	// Called once when this command runs
 	protected void initialize() {
 
-		DriverStation ds = DriverStation.getInstance();
-		if (ds.getAlliance() == DriverStation.Alliance.Red) {
-			Robot.cANLights.LightRun(255, 0, 0);
-			Robot.cANLights.displayCANLightValues(255, 0, 0);
-		} else if (ds.getAlliance() == DriverStation.Alliance.Blue) {
-			Robot.cANLights.LightRun(0, 0, 255);
-			Robot.cANLights.displayCANLightValues(0, 0, 255);
-		} else if (ds.getAlliance() == DriverStation.Alliance.Invalid) {
-			Robot.cANLights.LightRun(255, 255, 0);
-			Robot.cANLights.displayCANLightValues(255, 255, 0); // yellow
-		}
+		Robot.cANLights.colorAlliance();
+		
 	}
 }
