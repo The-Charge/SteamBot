@@ -96,6 +96,12 @@ public class Robot extends IterativeRobot {
 		indexer.writeDefaultDashboardValues();
 		ledBoard.writeDefaultDashboardValues();
 		
+		chooser.addDefault("GearPegMiddleAuton", new GearPegMiddleAuton());
+		chooser.addObject("GearPegLeftAutonBlue", new GearPegLeftAutonBlue());
+		chooser.addObject("GearPegRightAutonBlue", new GearPegRightAutonBlue());
+		chooser.addObject("GearPegLeftAutonRed", new GearPegLeftAutonRed());
+		chooser.addObject("GearPegRightAutonRed", new GearPegRightAutonRed());
+		
 		TheChargeDashboard.putData("AutoMode", chooser);
 	}
 

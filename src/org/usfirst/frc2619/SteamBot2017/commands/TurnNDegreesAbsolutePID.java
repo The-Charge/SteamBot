@@ -76,6 +76,7 @@ public class TurnNDegreesAbsolutePID extends PIDCommand {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	this.setTimeout(1.5);
     	previousControlMode = Robot.driveTrain.getControlMode();
     	getPIDController().setSetpoint(m_Angle);
     	Robot.driveTrain.setControlMode(TalonControlMode.PercentVbus);
@@ -87,7 +88,7 @@ public class TurnNDegreesAbsolutePID extends PIDCommand {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	return getPIDController().onTarget();
+    	return isTimedOut() || getPIDController().onTarget();
     }
 
     // Called once after isFinished returns true

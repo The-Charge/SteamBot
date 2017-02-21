@@ -150,8 +150,8 @@ public class OI {
         SmartDashboard.putData("ChargeColors", new ChargeColors());
         SmartDashboard.putData("OffCANLights", new OffCANLights());
         SmartDashboard.putData("RunCANLights", new RunCANLights());
-        SmartDashboard.putData("GearPegRightAuton", new GearPegRightAuton());
-        SmartDashboard.putData("GearPegLeftAuton", new GearPegLeftAuton());
+        SmartDashboard.putData("GearPegRightAutonBlue", new GearPegRightAutonBlue());
+        SmartDashboard.putData("GearPegLeftAutonRed", new GearPegLeftAutonRed());
         SmartDashboard.putData("GearPegMiddleAuton", new GearPegMiddleAuton());
         SmartDashboard.putData("DriveToCurrent: 0.1", new DriveToCurrent(0.1));
         SmartDashboard.putData("TurnNDegreesRelativePID: 90", new TurnNDegreesRelativePID(90));

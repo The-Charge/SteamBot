@@ -48,19 +48,19 @@ public class Vision extends Subsystem {
     }
     
     public double getDistanceToTargetInFeet() {
-    	return table.getNumber("Distance");
+    	return table.getNumber("Distance", 0);
     }
     
     public double getRobotAngleOffsetInDegrees() {
-    	return table.getNumber("RobotAngle");
+    	return table.getNumber("RobotAngle", 0);
     }
     
     public double getTargetAngleOffsetInDegrees() {
-    	return table.getNumber("TargetAngle");
+    	return table.getNumber("TargetAngle", 0);
     }
     
     public int getImageCount() {
-    	return table.getInt("ImageCount");
+    	return table.getInt("ImageCount", 0);
     }
     
     public double getQuality() {
