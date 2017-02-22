@@ -48,7 +48,7 @@ public class ClimbRope extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
 		double time = Timer.getMatchTime();
-		if (time <= 30 && !Robot.ropeClimber.isAtPlate()){
+		if (/*time <= 30 && */!Robot.ropeClimber.isAtPlate()){
 			Robot.ropeClimber.run(FULL_SPEED);
 			TheChargeDashboard.putString("ClimbRope", "Can Climb");
 			

@@ -552,7 +552,7 @@ Children:
           validators: null
           value: whenPressed
       Base: Joystick Button
-      Name: Joystick Button 1
+      Name: Turn180Btn
     Properties:
       Number: !!robotbuilder.data.properties.ChoicesProperty
         choices: &id017 ['0', '1', '2', '3', '4', '5']

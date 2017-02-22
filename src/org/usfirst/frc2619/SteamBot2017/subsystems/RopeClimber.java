@@ -52,8 +52,8 @@ public class RopeClimber extends Subsystem {
 
 	// RUN
 	public void run(double motorSpeed) {
-		ropeMotor1.set(motorSpeed);
-		ropeMotor2.set(-motorSpeed);
+		ropeMotor1.set(-motorSpeed);
+		ropeMotor2.set(motorSpeed);
 	}
 
 	// STOP
