@@ -94,4 +94,47 @@ public class CANLights extends Subsystem {
 		
 	}
 	
+	public int[] hslToRGB(int h, int s, int l){
+		
+		int r, g, b;
+		r = 127;
+		g = r;
+		b = g;
+		int chroma = (1 - Math.abs(2 * l - 1)) * s;
+			h = (h + 1) * 180;
+			int x1 = h/60;
+			int x2 = chroma * (Math.abs(x1 % 2 - 1));
+			if(x2 < 1 && x2 >= 0){
+				r = chroma;
+				g = x2;
+				b = 0;
+			}else if(x2 < 2 && x2 >= 1){
+				r = x2;
+				g = chroma;
+				b = 0;
+			}else if(x2 < 3 && x2 >= 2){
+				r = 0;
+				g = chroma;
+				b = x2;
+			}else if(x2 < 4 && x2 >= 3){
+				r = 0;
+				g = x2;
+				b = chroma;
+			}else if(x2 < 5 && x2 >= 4){
+				r = x2;
+				g = 0;
+				b = chroma;
+			}else if(x2 <= 6 && x2 >= 5){
+				r = chroma;
+				g = 0;
+				b = x2;
+			}
+			
+			int[]rgb = {r, g, b};
+			return rgb;
+		
+		
+		
+	}
+	
 }
