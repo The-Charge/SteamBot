@@ -94,16 +94,16 @@ public class CANLights extends Subsystem {
 		
 	}
 	
-	public int[] hslToRGB(int h, int s, int l){
+	public int[] hslToRGB(double h, double s, double l){
 		
-		int r, g, b;
+		double r, g, b;
 		r = 127;
 		g = r;
 		b = g;
-		int chroma = (1 - Math.abs(2 * l - 1)) * s;
+		int chroma = (int) ((1 - Math.abs(2 * l - 1)) * s);
 			h = (h + 1) * 180;
-			int x1 = h/60;
-			int x2 = chroma * (Math.abs(x1 % 2 - 1));
+			int x1 = (int) (h/60);
+			double x2 = chroma * (Math.abs(x1 % 2 - 1));
 			if(x2 < 1 && x2 >= 0){
 				r = chroma;
 				g = x2;
@@ -130,11 +130,15 @@ public class CANLights extends Subsystem {
 				b = x2;
 			}
 			
-			int[]rgb = {r, g, b};
+			int[]rgb = {(int)r, (int)g, (int)b};
 			return rgb;
 		
 		
 		
+	}
+	
+	public void LightRun(int[] rgb) {
+		cANLight.showRGB(rgb[0], rgb[1], rgb[2]);
 	}
 	
 }
