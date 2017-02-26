@@ -24,7 +24,7 @@ public class TheChargeDashboard {
 			/*"IndexerSpeedP" , "IndexerSpeedI", "IndexerSpeedD", "IndexerSpeedF", //"IndexerSetPoint", "IndexerError", "IndexMeasuredValue",*/ "IndexerDI",
 			"driveTrain",
 			//"AutoMode",
-			//"CANLightRed", "CANLightGreen", "CANLightBlue",
+			"CANLightRed", "CANLightGreen", "CANLightBlue", "CANLightHue",
 			"LEDOutput",
 			"ForwardFactor", "TurnFactor", "TargetLeftSpeed", "TargetRightSpeed"
 			};

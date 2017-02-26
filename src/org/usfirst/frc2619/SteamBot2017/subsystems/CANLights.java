@@ -96,40 +96,42 @@ public class CANLights extends Subsystem {
 	
 	public int[] hslToRGB(double h, double s, double l){
 		
-		double r, g, b;
-		r = 127;
-		g = r;
-		b = g;
-		int chroma = (int) ((1 - Math.abs(2 * l - 1)) * s);
+		double r = 0, g = 0, b = 0;
+		double chroma =  0.8;	// 0.8 * saturation (int) -> 0.8
 			h = (h + 1) * 180;
-			int x1 = (int) (h/60);
-			double x2 = chroma * (Math.abs(x1 % 2 - 1));
-			if(x2 < 1 && x2 >= 0){
-				r = chroma;
+			double x1 = (h/60);		// [0,6]
+			double x2 = chroma * (1-Math.abs((x1 % 2 )- 1));	// chroma * 0 or 1 -> .8 or 0
+			double m = 0.2;
+			if(x1 < 1 && x1 >= 0){	//x2 == 0
+				r = chroma;		//255
 				g = x2;
 				b = 0;
-			}else if(x2 < 2 && x2 >= 1){
+			}else if(x1 < 2 && x1 >= 1){	//x2 == 1
 				r = x2;
-				g = chroma;
+				g = chroma;		//255
 				b = 0;
-			}else if(x2 < 3 && x2 >= 2){
+			}else if(x1 < 3 && x1 >= 2){	// x2 == 2
 				r = 0;
-				g = chroma;
+				g = chroma;		//255
 				b = x2;
-			}else if(x2 < 4 && x2 >= 3){
+			}else if(x1 < 4 && x1 >= 3){	// x2 == 3
 				r = 0;
 				g = x2;
-				b = chroma;
-			}else if(x2 < 5 && x2 >= 4){
+				b = chroma;		//255
+			}else if(x1 < 5 && x1 >= 4){	// x2 == 4
 				r = x2;
 				g = 0;
-				b = chroma;
-			}else if(x2 <= 6 && x2 >= 5){
-				r = chroma;
+				b = chroma;		//255
+			}else if(x1 <= 6 && x1 >= 5){	// x2 == 5 || x2 == 6
+				r = chroma;		// 255
 				g = 0;
 				b = x2;
 			}
-			
+			r = (r+m)*255;
+			g = (g+m)*255;
+			b = (b+m)*255;
+			displayCANLightValues((int)r,(int)g,(int)b);
+			TheChargeDashboard.putNumber("CANLightHue", h);
 			int[]rgb = {(int)r, (int)g, (int)b};
 			return rgb;
 		
