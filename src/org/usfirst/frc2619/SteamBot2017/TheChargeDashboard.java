@@ -24,10 +24,10 @@ public class TheChargeDashboard {
 			"IndexerSpeedP" , "IndexerSpeedI", "IndexerSpeedD", "IndexerSpeedF", //"IndexerSetPoint", "IndexerError", "IndexMeasuredValue", "IndexerDI",
 			"driveTrain",
 			"AutoMode",
-			//"CANLightRed", "CANLightGreen", "CANLightBlue",
+			"CANLightRed", "CANLightGreen", "CANLightBlue", "CANLightHue",
 			"LEDOutput",
 			"ForwardFactor", "TurnFactor", "TargetLeftSpeed", "TargetRightSpeed",
-			"ClimbRope"
+			"ClimbRopeDebug"
 			};
 
 	public static void putNumber(String key, double value) {

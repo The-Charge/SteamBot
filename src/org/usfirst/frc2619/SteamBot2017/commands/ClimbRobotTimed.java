@@ -38,6 +38,7 @@ public class ClimbRobotTimed extends TimedCommand {
 	// Called just before this Command runs the first time
 	protected void initialize() {
 		Robot.ropeClimber.setMotorModes();
+		Robot.cANLights.LightRun(0, 255, 0);
 
 	}
 

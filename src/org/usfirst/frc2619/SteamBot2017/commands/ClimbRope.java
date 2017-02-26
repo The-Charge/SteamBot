@@ -43,6 +43,7 @@ public class ClimbRope extends Command {
 	protected void initialize() {
 		Robot.ropeClimber.setMotorModes();
 		Robot.ropeClimber.currentLimiting();
+		Robot.cANLights.LightRun(0, 255, 0);
 	}
 
 	// Called repeatedly when this Command is scheduled to run
@@ -50,11 +51,11 @@ public class ClimbRope extends Command {
 		double time = Timer.getMatchTime();
 		if (/*time <= 30 && */!Robot.ropeClimber.isAtPlate()){
 			Robot.ropeClimber.run(FULL_SPEED);
-			TheChargeDashboard.putString("ClimbRope", "Can Climb");
+			TheChargeDashboard.putString("ClimbRopeDebug", "Can Climb");
 			
 		}
 		else {
-			TheChargeDashboard.putString("ClimbRope", "Cannot Climb");
+			TheChargeDashboard.putString("ClimbRopeDebug", "Cannot Climb");
 			end();
 		}
 	}
