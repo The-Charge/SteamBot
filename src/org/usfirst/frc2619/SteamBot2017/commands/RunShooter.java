@@ -43,7 +43,9 @@ public class RunShooter extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
 		if (Robot.oi.buttonBox.getRawButton(15)) {
-			Robot.shooterMotors.set(Robot.oi.buttonBox.getRawAxis(0));
+			double upperConstraint = 0.9;
+			double lowerConstraint = 0.7;
+			Robot.shooterMotors.set((Robot.oi.buttonBox.getRawAxis(0) * ((upperConstraint - lowerConstraint) / 2)) + ((upperConstraint + lowerConstraint) / 2));
 		}
 		else {
 			Robot.shooterMotors.set(FULL_SPEED);
