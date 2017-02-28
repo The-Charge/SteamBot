@@ -11,6 +11,8 @@
 package org.usfirst.frc2619.SteamBot2017.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 import org.usfirst.frc2619.SteamBot2017.Robot;
 
 /**
@@ -43,6 +45,7 @@ public class RunIndexer extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
 		Robot.indexer.set(Robot.oi.buttonBox.getRawAxis(4));
+		SmartDashboard.putNumber("IndexerPotValue", Robot.oi.buttonBox.getRawAxis(4));
 		//Robot.indexer.set(FULL_SPEED);
 	}
 
