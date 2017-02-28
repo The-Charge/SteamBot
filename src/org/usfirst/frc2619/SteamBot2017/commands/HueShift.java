@@ -41,7 +41,7 @@ public class HueShift extends Command {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		double h = Robot.oi.buttonBox.getRawAxis(4);
+		double h = Robot.oi.buttonBox.getRawAxis(3);
 		int[] color = Robot.cANLights.hslToRGB(h, 1, 0.6);
 		Robot.cANLights.LightRun(color);
 	}
