@@ -82,10 +82,10 @@ public class RobotMap {
         shooterMotorsMotor = new CANTalon(7);
         LiveWindow.addActuator("ShooterMotors", "Motor", shooterMotorsMotor);
         
-        gearPlungerPlunger = new Solenoid(0, 1);
+        gearPlungerPlunger = new Solenoid(0, 2);
         LiveWindow.addActuator("GearPlunger", "Plunger", gearPlungerPlunger);
         
-        gearDoorsDoors = new Solenoid(0, 2);
+        gearDoorsDoors = new Solenoid(0, 1);
         LiveWindow.addActuator("GearDoors", "Doors", gearDoorsDoors);
         
         ledBoardLedSpike = new Relay(1);

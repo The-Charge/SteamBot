@@ -139,7 +139,7 @@ Children:
           default: '0'
           name: Output Channel (Solenoid)
           validators: *id004
-          value: '1'
+          value: '2'
         Output PCM (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
           choices: *id005
           default: '0'
@@ -171,7 +171,7 @@ Children:
           default: '0'
           name: Output Channel (Solenoid)
           validators: *id004
-          value: '2'
+          value: '1'
         Output PCM (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
           choices: *id005
           default: '0'
@@ -844,7 +844,7 @@ Children:
           validators: null
           value:
           - !!robotbuilder.data.properties.ValuedParameterDescriptor {name: timeout,
-            type: double, value: '0'}
+            type: double, value: '0.5'}
         Button: !!robotbuilder.data.properties.ChoicesProperty
           choices: *id014
           default: '1'
