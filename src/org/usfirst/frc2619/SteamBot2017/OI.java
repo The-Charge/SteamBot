@@ -80,9 +80,9 @@ public class OI {
 
         buttonBox = new Joystick(2);
         
-        raddOffBtn = new JoystickButton(buttonBox, 13);
+        raddOffBtn = new JoystickButton(buttonBox, 11);
         raddOffBtn.whenReleased(new OffLed());
-        raddOnBtn = new JoystickButton(buttonBox, 13);
+        raddOnBtn = new JoystickButton(buttonBox, 11);
         raddOnBtn.whenPressed(new OnLed());
         offCameraLightsBtn = new JoystickButton(buttonBox, 12);
         offCameraLightsBtn.whenReleased(new OffCameraLights());
