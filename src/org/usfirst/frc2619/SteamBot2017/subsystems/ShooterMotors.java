@@ -23,10 +23,10 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  *
  */
 public class ShooterMotors extends Subsystem {
-	private final static double SPEED_P_CONSTANT = 0.0;
+	private final static double SPEED_P_CONSTANT = 0.001;
 	private final static double SPEED_I_CONSTANT = 0.0;
 	private final static double SPEED_D_CONSTANT = 0.0;
-	private final static double SPEED_F_CONSTANT = 0.0;
+	private final static double SPEED_F_CONSTANT = 0.024;
 
 	double SpeedP = SPEED_P_CONSTANT;
 	double SpeedI = SPEED_I_CONSTANT;
