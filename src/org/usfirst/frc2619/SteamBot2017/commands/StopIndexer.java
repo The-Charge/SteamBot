@@ -46,7 +46,7 @@ public class StopIndexer extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return Robot.indexer.isAtDI();
+        return !Robot.indexer.isAtDI();
     }
 
     // Called once after isFinished returns true

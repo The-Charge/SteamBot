@@ -23,10 +23,10 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  *
  */
 public class BallPickup extends Subsystem {
-	private final static double PICKUP_P_CONSTANT = 0.3;
-	private final static double PICKUP_I_CONSTANT = 0.001;
+	private final static double PICKUP_P_CONSTANT = 0.001;
+	private final static double PICKUP_I_CONSTANT = 0.0;
 	private final static double PICKUP_D_CONSTANT = 0.0;
-	private final static double PICKUP_F_CONSTANT = 0.12;
+	private final static double PICKUP_F_CONSTANT = 0.075;
 
 	double SpeedP = PICKUP_P_CONSTANT;
 	double SpeedI = PICKUP_I_CONSTANT;

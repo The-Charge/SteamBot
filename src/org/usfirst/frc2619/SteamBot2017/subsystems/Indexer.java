@@ -24,10 +24,10 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  *
  */
 public class Indexer extends Subsystem {
-	private final static double INDEX_P_CONSTANT = 0.3;
-	private final static double INDEX_I_CONSTANT = 0.001;
+	private final static double INDEX_P_CONSTANT = 0.001;
+	private final static double INDEX_I_CONSTANT = 0.0;
 	private final static double INDEX_D_CONSTANT = 0;
-	private final static double INDEX_F_CONSTANT = 0.12;
+	private final static double INDEX_F_CONSTANT = 3.7;
 
 	double SpeedP = INDEX_P_CONSTANT;
 	double SpeedI = INDEX_I_CONSTANT;
