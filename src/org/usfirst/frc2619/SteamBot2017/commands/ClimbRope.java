@@ -51,11 +51,10 @@ public class ClimbRope extends Command {
 		double time = Timer.getMatchTime();
 		if (/*time <= 30 && */!Robot.ropeClimber.isAtPlate()){
 			Robot.ropeClimber.run(FULL_SPEED);
-			TheChargeDashboard.putString("ClimbRopeDebug", "Can Climb");
-			
+			//TheChargeDashboard.putString("ClimbRopeDebug", "Can Climb");
 		}
 		else {
-			TheChargeDashboard.putString("ClimbRopeDebug", "Cannot Climb");
+			//TheChargeDashboard.putString("ClimbRopeDebug", "Cannot Climb");
 			end();
 		}
 	}

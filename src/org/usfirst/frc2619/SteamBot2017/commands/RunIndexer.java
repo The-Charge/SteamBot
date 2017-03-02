@@ -44,9 +44,9 @@ public class RunIndexer extends Command {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		Robot.indexer.set(Robot.oi.buttonBox.getRawAxis(4));
-		SmartDashboard.putNumber("IndexerPotValue", Robot.oi.buttonBox.getRawAxis(4));
-		//Robot.indexer.set(FULL_SPEED);
+		//Robot.indexer.set(Robot.oi.buttonBox.getRawAxis(4));
+		//SmartDashboard.putNumber("IndexerPotValue", Robot.oi.buttonBox.getRawAxis(4));
+		Robot.indexer.set(SPEED);
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

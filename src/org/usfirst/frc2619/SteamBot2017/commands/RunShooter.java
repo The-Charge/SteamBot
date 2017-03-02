@@ -54,7 +54,6 @@ public class RunShooter extends Command {
 		else {
 			Robot.shooterMotors.set(SPEED);
 		}
-		
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
