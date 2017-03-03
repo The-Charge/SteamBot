@@ -46,12 +46,14 @@ public class GearPegLeftAutonBlue extends CommandGroup {
     	addSequential(new ShiftLow());
     	addSequential(new DriveXFeetMM(9));
     	addSequential(new TurnNDegreesAbsolutePID(60));
-    	addSequential(new DeliverGearWithVision());
-    	addSequential(new DriveXFeetMM(-4));
+    	//addSequential(new DeliverGearWithVision());
+    	addSequential(new DriveToCurrent(0.1));
+    	addSequential(new DeliverGear());
+    	/*addSequential(new DriveXFeetMM(-4));
     	addSequential(new TurnNDegreesAbsolutePID(150));
     	addSequential(new DriveXFeetMM(6));
     	addSequential(new DriveToCurrent(0.1));
-    	addSequential(new RunShooter());
+    	addSequential(new RunShooter());*/
  
     } 
 }

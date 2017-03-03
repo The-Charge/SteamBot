@@ -46,6 +46,8 @@ public class GearPegRightAutonBlue extends CommandGroup {
     	addSequential(new ShiftLow());
     	addSequential(new DriveXFeetMM(9));
     	addSequential(new TurnNDegreesAbsolutePID(-60));
-    	addSequential(new DeliverGearWithVision());
+    	//addSequential(new DeliverGearWithVision());
+    	addSequential(new DriveToCurrent(0.1));
+    	addSequential(new DeliverGear());
     } 
 }
