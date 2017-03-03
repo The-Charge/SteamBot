@@ -1797,7 +1797,7 @@ Children:
         - !!robotbuilder.data.properties.ParameterSet
           name: Time
           parameters:
-          - {name: timeout, type: double, value: '0.5'}
+          - {name: timeout, type: double, value: '0.1'}
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
     Base: Timed Command

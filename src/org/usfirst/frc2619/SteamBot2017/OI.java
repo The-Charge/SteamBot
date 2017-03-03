@@ -174,7 +174,7 @@ public class OI {
         SmartDashboard.putData("TurnNDegreesAbsolutePID: FortyFive", new TurnNDegreesAbsolutePID(45));
         SmartDashboard.putData("TurnNDegreesAbsolutePID: NegFortyFive", new TurnNDegreesAbsolutePID(-45));
         SmartDashboard.putData("TurnNDegreesAbsolutePID: OneEighty", new TurnNDegreesAbsolutePID(180));
-        SmartDashboard.putData("ClimbRobotTimed: Time", new ClimbRobotTimed(0.5));
+        SmartDashboard.putData("ClimbRobotTimed: Time", new ClimbRobotTimed(0.1));
         SmartDashboard.putData("AllianceColor", new AllianceColor());
         SmartDashboard.putData("Blink", new Blink());
         SmartDashboard.putData("ChargeColors", new ChargeColors());
