@@ -46,7 +46,12 @@ public class RunPickup extends Command {
 	protected void execute() {
 		//Robot.ballPickup.set(Robot.oi.buttonBox.getRawAxis(0));
 		//SmartDashboard.putNumber("PickupPotValue", Robot.oi.buttonBox.getRawAxis(0));
-		Robot.ballPickup.set(SPEED);
+		if (Robot.oi.rightJoystick.getRawButton(11)) {
+			Robot.ballPickup.set(-SPEED);
+		}
+		else {
+			Robot.ballPickup.set(SPEED);
+		}
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

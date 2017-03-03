@@ -46,7 +46,12 @@ public class RunIndexer extends Command {
 	protected void execute() {
 		//Robot.indexer.set(Robot.oi.buttonBox.getRawAxis(4));
 		//SmartDashboard.putNumber("IndexerPotValue", Robot.oi.buttonBox.getRawAxis(4));
-		Robot.indexer.set(SPEED);
+		if (Robot.oi.rightJoystick.getRawButton(10)) {
+			Robot.indexer.set(-SPEED);
+		}
+		else {
+			Robot.indexer.set(SPEED);
+		}
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
