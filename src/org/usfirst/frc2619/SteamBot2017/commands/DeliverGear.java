@@ -49,7 +49,7 @@ public class DeliverGear extends CommandGroup {
     	addSequential(new TimedCommand(0.75));
     	addSequential(new ExtendPlunger());
     	addSequential(new TimedCommand(0.75));
-    	addSequential(new DriveXFeetMM(500, 500, -2));
+    	addSequential(new DriveXFeetMM(500, 500, -5));
     	addSequential(new RetractPlunger());
 		addSequential(new TimedCommand(0.25));
 		addSequential(new CloseDoors());
