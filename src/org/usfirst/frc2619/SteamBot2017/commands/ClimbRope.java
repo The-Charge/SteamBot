@@ -44,6 +44,7 @@ public class ClimbRope extends Command {
 		Robot.ropeClimber.setMotorModes();
 		Robot.ropeClimber.currentLimiting();
 		Robot.cANLights.LightRun(0, 255, 0);
+		Robot.ledBoard.bitmap(3);
 	}
 
 	// Called repeatedly when this Command is scheduled to run
@@ -67,6 +68,8 @@ public class ClimbRope extends Command {
 	// Called once after isFinished returns true
 	protected void end() {
 		Robot.ropeClimber.stop();
+		Robot.ledBoard.bitmapRandom();
+		Robot.cANLights.colorAlliance();
 	}
 
 	// Called when another command which requires one or more of the same

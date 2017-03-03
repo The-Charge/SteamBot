@@ -38,6 +38,7 @@ public class CloseDoors extends InstantCommand {
 	// Called once when this command runs
 	protected void initialize() {
 		Robot.gearDoors.closeDoors();
+		Robot.cANLights.colorAlliance();
 	}
 
 }

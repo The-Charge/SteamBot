@@ -49,6 +49,7 @@ public class ClimbRobotTimed extends TimedCommand {
 	// Called once after isFinished returns true
 	protected void end() {
 		Robot.ropeClimber.stop();
+		Robot.cANLights.colorAlliance();
 	}
 
 	// Called when another command which requires one or more of the same

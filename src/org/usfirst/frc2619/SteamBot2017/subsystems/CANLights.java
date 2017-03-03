@@ -78,6 +78,13 @@ public class CANLights extends Subsystem {
 		cANLight.writeRegister(2, 0.5, 0, 0, 0); // off
 		cANLight.cycle(1, 2);
 	}
+	
+	public void blink(int r, int g, int b) {
+		cANLight.writeRegister(1, 0.5, r, g, b); // current
+		cANLight.writeRegister(2,  0.5,  0,  0,  0); // off
+		cANLight.cycle(1,  2);
+	}
+	
 	public void colorAlliance(){
 		
 		DriverStation ds = DriverStation.getInstance();

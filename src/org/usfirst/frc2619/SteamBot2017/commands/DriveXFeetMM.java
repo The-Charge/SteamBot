@@ -50,6 +50,8 @@ public class DriveXFeetMM extends Command {
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
+		Robot.ledBoard.bitmap(1);
+		Robot.cANLights.colorAlliance();
 		previousControlMode = Robot.driveTrain.getControlMode();
 		m_velocity = 6000;
 		m_acceleration = 4000;
@@ -70,6 +72,7 @@ public class DriveXFeetMM extends Command {
 		Robot.driveTrain.stop();
 		Robot.driveTrain.setEncZero();
 		Robot.driveTrain.setControlMode(previousControlMode);
+		Robot.ledBoard.bitmapRandom();
 	}
 
 	// Called when another command which requires one or more of the same

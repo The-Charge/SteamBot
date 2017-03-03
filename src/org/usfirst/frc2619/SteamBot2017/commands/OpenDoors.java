@@ -38,6 +38,7 @@ public class OpenDoors extends InstantCommand {
 	// Called once when this command runs
 	protected void initialize() {
 		Robot.gearDoors.openDoors();
+		Robot.cANLights.LightRun(128, 0, 128);
 	}
 
 }
