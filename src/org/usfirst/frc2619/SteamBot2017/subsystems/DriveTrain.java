@@ -205,7 +205,7 @@ public class DriveTrain extends Subsystem {
 		TheChargeDashboard.putNumber("LeftSpeed", leftFrontMotor.getSpeed());
 		TheChargeDashboard.putNumber("RightSpeed", rightFrontMotor.getSpeed());
 		TheChargeDashboard.putNumber("LeftCurrent", leftFrontMotor.getOutputCurrent());
-		SmartDashboard.putNumber("Timer.getMatchTime()", Timer.getMatchTime());
+		//SmartDashboard.putNumber("Timer.getMatchTime()", Timer.getMatchTime());
 	}
 
 	public void run(double leftSpeed, double rightSpeed) {

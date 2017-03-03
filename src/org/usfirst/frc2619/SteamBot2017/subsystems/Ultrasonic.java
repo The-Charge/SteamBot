@@ -55,8 +55,8 @@ public class Ultrasonic extends Subsystem {
     
     public void writeUSDebug(){
     	
-    	SmartDashboard.putDouble("UltrasonicVolts", this.getVolts());
-    	SmartDashboard.putDouble("UltrasonicFeet", this.getFeet());
+    	//SmartDashboard.putDouble("UltrasonicVolts", this.getVolts());
+    	//SmartDashboard.putDouble("UltrasonicFeet", this.getFeet());
     	//vbakfhajthia
     }
     

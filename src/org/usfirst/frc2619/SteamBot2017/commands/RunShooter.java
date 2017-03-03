@@ -49,7 +49,7 @@ public class RunShooter extends Command {
 			double upperConstraint = SPEED + OFFSET > 1 ? 1 : SPEED + OFFSET;
 			double lowerConstraint = SPEED - OFFSET < 0 ? 0 : SPEED - OFFSET;
 			Robot.shooterMotors.set((-Robot.oi.buttonBox.getRawAxis(0) * ((upperConstraint - lowerConstraint) / 2)) + ((upperConstraint + lowerConstraint) / 2));
-			SmartDashboard.putNumber("ShooterPotValue", (-Robot.oi.buttonBox.getRawAxis(0) * ((upperConstraint - lowerConstraint) / 2)) + ((upperConstraint + lowerConstraint) / 2));
+			//SmartDashboard.putNumber("ShooterPotValue", (-Robot.oi.buttonBox.getRawAxis(0) * ((upperConstraint - lowerConstraint) / 2)) + ((upperConstraint + lowerConstraint) / 2));
 		}
 		else {
 			Robot.shooterMotors.set(SPEED);
