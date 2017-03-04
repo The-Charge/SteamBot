@@ -99,7 +99,7 @@ public class OI {
         driveToWinBtn = new JoystickButton(buttonBox, 8);
         driveToWinBtn.whenPressed(new DriveToTarget(0));
         climbRopeOverrideBtn = new JoystickButton(buttonBox, 6);
-        climbRopeOverrideBtn.whenPressed(new ClimbRobotTimed(0.5));
+        climbRopeOverrideBtn.whenPressed(new ClimbRobotTimed(0.05));
         climbRopeBtn = new JoystickButton(buttonBox, 5);
         climbRopeBtn.whileHeld(new ClimbRope());
         retractPlungerBtn = new JoystickButton(buttonBox, 10);

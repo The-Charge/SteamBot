@@ -1020,7 +1020,7 @@ Children:
           validators: null
           value:
           - !!robotbuilder.data.properties.ValuedParameterDescriptor {name: timeout,
-            type: double, value: '0.5'}
+            type: double, value: '0.05'}
         Button: !!robotbuilder.data.properties.ChoicesProperty
           choices: *id014
           default: '1'
