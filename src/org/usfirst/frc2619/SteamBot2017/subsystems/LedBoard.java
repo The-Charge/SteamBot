@@ -104,6 +104,24 @@ public class LedBoard extends Subsystem {
 		if (choice == 11) {
 			choice = 0;
 		}
+		
+		// bitmapping
+		if ((choice & 0b0001) == 0b0001)
+			RobotMap.ledBoardLedOutput0.set(true);
+		else
+			RobotMap.ledBoardLedOutput0.set(false);
+		if ((choice & 0b0010) == 0b0010)
+			RobotMap.ledBoardLedOutput1.set(true);
+		else
+			RobotMap.ledBoardLedOutput1.set(false);
+		if ((choice & 0b0100) == 0b0100)
+			RobotMap.ledBoardLedOutput2.set(true);
+		else
+			RobotMap.ledBoardLedOutput2.set(false);
+		if ((choice & 0b1000) == 0b1000)
+			RobotMap.ledBoardLedOutput3.set(true);
+		else
+			RobotMap.ledBoardLedOutput3.set(false);
 	}
 
 	public void offLED() {
