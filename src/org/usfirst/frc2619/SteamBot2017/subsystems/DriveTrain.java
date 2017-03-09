@@ -270,7 +270,11 @@ public class DriveTrain extends Subsystem {
 		RobotMap.driveTrainLeftFrontMotor.EnableCurrentLimit(true);
 		RobotMap.driveTrainRightFrontMotor.EnableCurrentLimit(true);
 	}
-
+	
+	public void resetYaw(){
+		RobotMap.driveTrainAHRS.reset();
+	}
+	
 	public boolean isAtPIDDestination() {
 		return (this.leftFrontMotor.getEncPosition() > 1000 || this.leftFrontMotor.getEncPosition() < -1000)
 				&& (Math.abs(this.leftFrontMotor.getSetpoint() - this.leftFrontMotor.getEncPosition()) < 1000);
