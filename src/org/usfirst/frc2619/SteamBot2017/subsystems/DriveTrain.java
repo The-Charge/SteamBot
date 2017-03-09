@@ -271,8 +271,8 @@ public class DriveTrain extends Subsystem {
 		RobotMap.driveTrainRightFrontMotor.EnableCurrentLimit(true);
 	}
 	
-	public void resetYaw(){
-		RobotMap.driveTrainAHRS.reset();
+	public void zeroYaw(){
+		RobotMap.driveTrainAHRS.zeroYaw();
 	}
 	
 	public boolean isAtPIDDestination() {
