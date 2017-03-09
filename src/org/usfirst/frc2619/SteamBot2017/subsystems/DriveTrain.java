@@ -38,6 +38,9 @@ public class DriveTrain extends Subsystem {
 
 	public boolean isReversed = false;
 
+	//public float driveLockAngle;
+	public boolean driveLocked = false;
+	
 	public double delin_pow;
 	public final double DELIN_POW_DEFAULT = 1;
 	public double deadband_x;
@@ -211,6 +214,11 @@ public class DriveTrain extends Subsystem {
 	public void run(double leftSpeed, double rightSpeed) {
 		leftFrontMotor.changeControlMode(TalonControlMode.PercentVbus);
 		rightFrontMotor.changeControlMode(TalonControlMode.PercentVbus);
+		if(driveLocked == true){
+			double avSpeed = (leftSpeed + rightSpeed) / 2.0;
+			leftSpeed = avSpeed;
+			rightSpeed = avSpeed;
+		}
 		if (!isReversed) {
 			leftFrontMotor.set(leftSpeed);
 
