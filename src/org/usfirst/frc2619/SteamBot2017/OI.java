@@ -123,7 +123,7 @@ public class OI {
         right180Btn = new JoystickButton(rightJoystick, 3);
         right180Btn.whenPressed(new TurnNDegreesRelativePID(180));
         rightInvertBtn = new JoystickButton(rightJoystick, 2);
-        rightInvertBtn.whileHeld(new InvertDrive());
+        rightInvertBtn.whenPressed(new InvertDrive());
         rightPickupBtn = new JoystickButton(rightJoystick, 1);
         rightPickupBtn.whileHeld(new RunPickup());
         rightShiftHighButton = new JoystickButton(rightJoystick, 5);
@@ -139,7 +139,7 @@ public class OI {
         leftShiftLowButton = new JoystickButton(leftJoystick, 4);
         leftShiftLowButton.whenPressed(new ShiftLow());
         leftInvertBtn = new JoystickButton(leftJoystick, 2);
-        leftInvertBtn.whileHeld(new InvertDrive());
+        leftInvertBtn.whenPressed(new InvertDrive());
 
 
         // SmartDashboard Buttons
