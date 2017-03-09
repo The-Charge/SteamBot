@@ -418,6 +418,12 @@ public class DriveTrain extends Subsystem {
 		leftFrontMotor.setSetpoint(MAX_TICKS_PER_SECOND * setSpeed);
 		rightFrontMotor.setSetpoint(MAX_TICKS_PER_SECOND * setSpeed);
 	}
+	public void setSpeedPIDL(double setSpeed){
+		leftFrontMotor.setSetpoint(MAX_TICKS_PER_SECOND * setSpeed);
+	}
+	public void setSpeedPIDR(double setSpeed){
+		rightFrontMotor.setSetpoint(MAX_TICKS_PER_SECOND * setSpeed);
+	}
 	
 	public double getCurrent() {
 		return leftFrontMotor.getOutputCurrent();
