@@ -45,13 +45,12 @@ public class ClimbRope extends Command {
 		Robot.ropeClimber.currentLimiting();
 		Robot.cANLights.LightRun(0, 255, 0);
 		Robot.ledBoard.bitmap(3);
-		this.setTimeout(2);
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
 		double time = Timer.getMatchTime();
-		if (/*time <= 30 && */isTimedOut() && !Robot.ropeClimber.isAtPlate()){
+		if (!Robot.ropeClimber.isAtPlate()){
 			Robot.ropeClimber.run(SPEED);
 			//TheChargeDashboard.putString("ClimbRopeDebug", "Can Climb");
 		}
