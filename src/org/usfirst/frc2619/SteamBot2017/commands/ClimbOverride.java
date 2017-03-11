@@ -50,7 +50,7 @@ public class ClimbOverride extends Command {
 
 	// Called once after isFinished returns true
 	protected boolean isFinished(){
-		if(this.isTimedOut() || Robot.oi.buttonBox.getRawButton(6)) return false;
+		if(!this.isTimedOut() || Robot.oi.buttonBox.getRawButton(6)) return false;
 		else return true;
 	}
 	protected void end() {
