@@ -209,6 +209,7 @@ public class DriveTrain extends Subsystem {
 	}
 
 	public void run(double leftSpeed, double rightSpeed) {
+		SmartDashboard.putBoolean("Reversed", isReversed);
 		leftFrontMotor.changeControlMode(TalonControlMode.PercentVbus);
 		rightFrontMotor.changeControlMode(TalonControlMode.PercentVbus);
 		if (!isReversed) {
