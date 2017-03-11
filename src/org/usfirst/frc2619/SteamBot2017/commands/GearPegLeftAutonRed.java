@@ -49,5 +49,7 @@ public class GearPegLeftAutonRed extends CommandGroup {
     	//addSequential(new DeliverGearWithVision());
     	addSequential(new DriveToCurrent(0.1));
     	addSequential(new DeliverGear());
+    	addSequential(new TurnNDegreesAbsolutePID(0));
+    	addSequential(new DriveXFeetMM(35));
     } 
 }
