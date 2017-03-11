@@ -38,7 +38,7 @@ public class ToggleLockStraight extends InstantCommand {
     // Called once when this command runs
     protected void initialize() {
     	
-    	if(Robot.driveTrain.driveLocked = false){
+    	if(Robot.driveTrain.driveLocked == false){
     		Robot.driveTrain.driveLocked = true;
     		//Robot.driveTrain.driveLockAngle = RobotMap.driveTrainAHRS.getYaw();
     	}else{

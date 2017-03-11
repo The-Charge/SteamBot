@@ -214,12 +214,23 @@ public class DriveTrain extends Subsystem {
 	public void run(double leftSpeed, double rightSpeed) {
 		leftFrontMotor.changeControlMode(TalonControlMode.PercentVbus);
 		rightFrontMotor.changeControlMode(TalonControlMode.PercentVbus);
-		if(driveLocked == true){
+		SmartDashboard.putBoolean("ToogleLocked", driveLocked);
+		if(driveLocked){
 			double avSpeed = (leftSpeed + rightSpeed) / 2.0;
 			leftSpeed = avSpeed;
 			rightSpeed = avSpeed;
+			if(!isReversed){
+				leftFrontMotor.set(leftSpeed);
+	
+				rightFrontMotor.set(rightSpeed);
+			}
+			else{
+				leftFrontMotor.set(-1 * rightSpeed);
+
+				rightFrontMotor.set(-1 * leftSpeed);
+			}
 		}
-		if (!isReversed) {
+		else if (!isReversed) {
 			leftFrontMotor.set(leftSpeed);
 
 			rightFrontMotor.set(rightSpeed);
