@@ -56,6 +56,5 @@ public class GearPegLeftAutonBlue extends CommandGroup {
     	addSequential(new DriveToCurrent(0.1));
     	addParallel(new AutonShooter());
     	addSequential(new RunShooter());
- 
     } 
 }
