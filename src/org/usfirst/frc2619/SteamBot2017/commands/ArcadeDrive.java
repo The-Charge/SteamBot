@@ -54,7 +54,7 @@ public class ArcadeDrive extends Command {
 		double dbX = Robot.driveTrain.deadband_x;
 		double dbY = Robot.driveTrain.deadband_y;
 		double power = Robot.driveTrain.delin_pow;
-		
+
 		double forward = MathUtil.deadbandCheck(-1 * Robot.oi.getLeftJoystick().getY(), dbY);
 		double turn = MathUtil.deadbandCheck(Robot.oi.getLeftJoystick().getX(), dbX);
 		forward = MathUtil.delinearize(forward, power);

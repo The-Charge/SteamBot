@@ -44,8 +44,8 @@ public class RunCANLights extends Command {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		Robot.cANLights.LightRun((int)SmartDashboard.getNumber("CANLightRed", 0), (int)SmartDashboard.getNumber("CANLightGreen", 0),
-				(int)SmartDashboard.getNumber("CANLightBlue", 0));
+		Robot.cANLights.LightRun((int) SmartDashboard.getNumber("CANLightRed", 0),
+				(int) SmartDashboard.getNumber("CANLightGreen", 0), (int) SmartDashboard.getNumber("CANLightBlue", 0));
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

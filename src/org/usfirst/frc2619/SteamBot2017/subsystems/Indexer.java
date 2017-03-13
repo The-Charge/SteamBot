@@ -89,12 +89,12 @@ public class Indexer extends Subsystem {
 		indexerMotor.enable();
 		indexerMotor.setSetpoint(MAX_TICKS_PER_SECOND * percentSpeed);
 	}
-	
+
 	public void stop() {
 		indexerMotor.setSetpoint(0);
 		indexerMotor.disable();
 	}
-	
+
 	public boolean isAtDI() {
 		return !indexerDI.get();
 	}

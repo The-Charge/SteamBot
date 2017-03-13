@@ -87,7 +87,7 @@ public class ShooterMotors extends Subsystem {
 		motor.enable();
 		motor.setSetpoint(MAX_TICKS_PER_SECOND * percentSpeed);
 	}
-	
+
 	public void stop() {
 		motor.setSetpoint(0);
 		motor.disable();

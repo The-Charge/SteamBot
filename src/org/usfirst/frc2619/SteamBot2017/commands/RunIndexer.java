@@ -44,12 +44,12 @@ public class RunIndexer extends Command {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		//Robot.indexer.set(Robot.oi.buttonBox.getRawAxis(4));
-		//SmartDashboard.putNumber("IndexerPotValue", Robot.oi.buttonBox.getRawAxis(4));
+		// Robot.indexer.set(Robot.oi.buttonBox.getRawAxis(4));
+		// SmartDashboard.putNumber("IndexerPotValue",
+		// Robot.oi.buttonBox.getRawAxis(4));
 		if (Robot.oi.rightJoystick.getRawButton(10)) {
 			Robot.indexer.set(-SPEED);
-		}
-		else {
+		} else {
 			Robot.indexer.set(SPEED);
 		}
 	}

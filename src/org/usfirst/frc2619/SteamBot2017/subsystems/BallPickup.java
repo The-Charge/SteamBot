@@ -87,7 +87,7 @@ public class BallPickup extends Subsystem {
 		pickupMotor.enable();
 		pickupMotor.setSetpoint(MAX_TICKS_PER_SECOND * percentSpeed);
 	}
-	
+
 	public void stop() {
 		pickupMotor.setSetpoint(0);
 		pickupMotor.disable();

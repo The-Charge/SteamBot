@@ -74,19 +74,20 @@ public class CANLights extends Subsystem {
 	}
 
 	public void blink() {
-		cANLight.writeRegister(1, 0.5, (int)SmartDashboard.getNumber("CANLightRed", 0), (int)SmartDashboard.getNumber("CANLightGreen", 0), (int)SmartDashboard.getNumber("CANLightBlue", 0)); // current
+		cANLight.writeRegister(1, 0.5, (int) SmartDashboard.getNumber("CANLightRed", 0),
+				(int) SmartDashboard.getNumber("CANLightGreen", 0), (int) SmartDashboard.getNumber("CANLightBlue", 0)); // current
 		cANLight.writeRegister(2, 0.5, 0, 0, 0); // off
 		cANLight.cycle(1, 2);
 	}
-	
+
 	public void blink(int r, int g, int b) {
 		cANLight.writeRegister(1, 0.5, r, g, b); // current
-		cANLight.writeRegister(2,  0.5,  0,  0,  0); // off
-		cANLight.cycle(1,  2);
+		cANLight.writeRegister(2, 0.5, 0, 0, 0); // off
+		cANLight.cycle(1, 2);
 	}
-	
-	public void colorAlliance(){
-		
+
+	public void colorAlliance() {
+
 		DriverStation ds = DriverStation.getInstance();
 		if (ds.getAlliance() == DriverStation.Alliance.Red) {
 			Robot.cANLights.LightRun(255, 0, 0);
@@ -98,56 +99,55 @@ public class CANLights extends Subsystem {
 			Robot.cANLights.LightRun(255, 255, 0);
 			Robot.cANLights.displayCANLightValues(255, 255, 0); // yellow
 		}
-		
+
 	}
-	
-	public int[] hslToRGB(double h, double s, double l){
-		
+
+	public int[] hslToRGB(double h, double s, double l) {
+
 		double r = 0, g = 0, b = 0;
-		double chroma =  0.8;	// 0.8 * saturation (int) -> 0.8
-			h = (h + 1) * 180;
-			double x1 = (h/60);		// [0,6]
-			double x2 = chroma * (1-Math.abs((x1 % 2 )- 1));	// chroma * 0 or 1 -> .8 or 0
-			double m = 0.2;
-			if(x1 < 1 && x1 >= 0){	//x2 == 0
-				r = chroma;		//255
-				g = x2;
-				b = 0;
-			}else if(x1 < 2 && x1 >= 1){	//x2 == 1
-				r = x2;
-				g = chroma;		//255
-				b = 0;
-			}else if(x1 < 3 && x1 >= 2){	// x2 == 2
-				r = 0;
-				g = chroma;		//255
-				b = x2;
-			}else if(x1 < 4 && x1 >= 3){	// x2 == 3
-				r = 0;
-				g = x2;
-				b = chroma;		//255
-			}else if(x1 < 5 && x1 >= 4){	// x2 == 4
-				r = x2;
-				g = 0;
-				b = chroma;		//255
-			}else if(x1 <= 6 && x1 >= 5){	// x2 == 5 || x2 == 6
-				r = chroma;		// 255
-				g = 0;
-				b = x2;
-			}
-			r = (r+m)*255;
-			g = (g+m)*255;
-			b = (b+m)*255;
-			displayCANLightValues((int)r,(int)g,(int)b);
-			TheChargeDashboard.putNumber("CANLightHue", h);
-			int[]rgb = {(int)r, (int)g, (int)b};
-			return rgb;
-		
-		
-		
+		double chroma = 0.8; // 0.8 * saturation (int) -> 0.8
+		h = (h + 1) * 180;
+		double x1 = (h / 60); // [0,6]
+		double x2 = chroma * (1 - Math.abs((x1 % 2) - 1)); // chroma * 0 or 1 ->
+															// .8 or 0
+		double m = 0.2;
+		if (x1 < 1 && x1 >= 0) { // x2 == 0
+			r = chroma; // 255
+			g = x2;
+			b = 0;
+		} else if (x1 < 2 && x1 >= 1) { // x2 == 1
+			r = x2;
+			g = chroma; // 255
+			b = 0;
+		} else if (x1 < 3 && x1 >= 2) { // x2 == 2
+			r = 0;
+			g = chroma; // 255
+			b = x2;
+		} else if (x1 < 4 && x1 >= 3) { // x2 == 3
+			r = 0;
+			g = x2;
+			b = chroma; // 255
+		} else if (x1 < 5 && x1 >= 4) { // x2 == 4
+			r = x2;
+			g = 0;
+			b = chroma; // 255
+		} else if (x1 <= 6 && x1 >= 5) { // x2 == 5 || x2 == 6
+			r = chroma; // 255
+			g = 0;
+			b = x2;
+		}
+		r = (r + m) * 255;
+		g = (g + m) * 255;
+		b = (b + m) * 255;
+		displayCANLightValues((int) r, (int) g, (int) b);
+		TheChargeDashboard.putNumber("CANLightHue", h);
+		int[] rgb = { (int) r, (int) g, (int) b };
+		return rgb;
+
 	}
-	
+
 	public void LightRun(int[] rgb) {
 		cANLight.showRGB(rgb[0], rgb[1], rgb[2]);
 	}
-	
+
 }

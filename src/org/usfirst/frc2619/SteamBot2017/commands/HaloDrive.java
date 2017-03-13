@@ -49,11 +49,11 @@ public class HaloDrive extends Command {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		double leftSpeed, rightSpeed; 
+		double leftSpeed, rightSpeed;
 		double dbX = Robot.driveTrain.deadband_x;
 		double dbY = Robot.driveTrain.deadband_y;
 		double power = Robot.driveTrain.delin_pow;
-		
+
 		double forward = MathUtil.deadbandCheck(-1 * Robot.oi.getLeftJoystick().getRawAxis(1), dbY);
 		double turn = MathUtil.deadbandCheck(Robot.oi.getLeftJoystick().getRawAxis(4), dbX);
 		forward = MathUtil.delinearize(forward, power);

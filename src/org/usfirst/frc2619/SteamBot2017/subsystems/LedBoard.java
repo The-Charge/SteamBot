@@ -54,7 +54,7 @@ public class LedBoard extends Subsystem {
 	public void writeDefaultDashboardValues() {
 		TheChargeDashboard.putNumber("LEDOutput", 0);
 	}
-	
+
 	public void bitmap() {
 		choice = (int) SmartDashboard.getNumber("LEDOutput", 0);
 
@@ -76,10 +76,10 @@ public class LedBoard extends Subsystem {
 		else
 			RobotMap.ledBoardLedOutput3.set(false);
 	}
-	
+
 	public void bitmap(int c) {
 		choice = c;
-		
+
 		// bitmapping
 		if ((choice & 0b0001) == 0b0001)
 			RobotMap.ledBoardLedOutput0.set(true);
@@ -98,13 +98,13 @@ public class LedBoard extends Subsystem {
 		else
 			RobotMap.ledBoardLedOutput3.set(false);
 	}
-	
+
 	public void bitmapRandom() {
-		choice = (int)(Math.random() * 7) + 7;
+		choice = (int) (Math.random() * 7) + 7;
 		if (choice == 11) {
 			choice = 0;
 		}
-		
+
 		// bitmapping
 		if ((choice & 0b0001) == 0b0001)
 			RobotMap.ledBoardLedOutput0.set(true);

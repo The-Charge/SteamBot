@@ -41,6 +41,6 @@ public class AllianceColor extends InstantCommand {
 	protected void initialize() {
 
 		Robot.cANLights.colorAlliance();
-		
+
 	}
 }
