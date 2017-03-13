@@ -484,13 +484,13 @@ Children:
           name: Command
           type: Command
           validators: &id015 [TypeDropdownSelected]
-          value: InvertDrive
+          value: DriveInverted
         When to Run: !!robotbuilder.data.properties.ChoicesProperty
           choices: &id016 [whileHeld, whenPressed, whenReleased]
           default: whileHeld
           name: When to Run
           validators: null
-          value: whileHeld
+          value: whenPressed
       Base: Joystick Button
       Name: LeftInvertBtn
     - Children: []
@@ -699,13 +699,13 @@ Children:
           name: Command
           type: Command
           validators: *id015
-          value: InvertDrive
+          value: DriveInverted
         When to Run: !!robotbuilder.data.properties.ChoicesProperty
           choices: *id016
           default: whileHeld
           name: When to Run
           validators: null
-          value: whileHeld
+          value: whenPressed
       Base: Joystick Button
       Name: RightInvertBtn
     - Children: []
@@ -1378,24 +1378,6 @@ Children:
         name: Button on SmartDashboard, validators: null, value: true}
     Base: Timed Command
     Name: DriveXSeconds
-  - Children: []
-    Properties:
-      Parameters: !!robotbuilder.data.properties.ParametersProperty
-        default: []
-        name: Parameters
-        validators: null
-        value: []
-      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
-        name: Requires, type: Subsystem, validators: null, value: None}
-      Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
-        default: []
-        name: Parameter presets
-        validators: null
-        value: []
-      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
-        name: Button on SmartDashboard, validators: null, value: true}
-    Base: Command
-    Name: InvertDrive
   - Children: []
     Properties:
       Parameters: !!robotbuilder.data.properties.ParametersProperty
@@ -2432,14 +2414,32 @@ Children:
       Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Requires, type: Subsystem, validators: null, value: RopeClimber}
       Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
+        default: []
+        name: Parameter presets
+        validators: null
+        value: []
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: true}
+    Base: Command
+    Name: ClimbOverride
+  - Children: []
+    Properties:
+      Parameters: !!robotbuilder.data.properties.ParametersProperty
+        default: []
+        name: Parameters
+        validators: null
+        value: []
+      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Requires, type: Subsystem, validators: null, value: None}
+      Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
         default: &id022 []
         name: Parameter presets
         validators: null
         value: *id022
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
-    Base: Command
-    Name: ClimbOverride
+    Base: Instant Command
+    Name: DriveInverted
   Properties: {}
   Base: Commands
   Name: Commands
