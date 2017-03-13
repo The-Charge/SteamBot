@@ -12,6 +12,8 @@
 package org.usfirst.frc2619.SteamBot2017.commands;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
+
+import org.usfirst.frc2619.SteamBot2017.Robot;
 import org.usfirst.frc2619.SteamBot2017.subsystems.*;
 
 /**

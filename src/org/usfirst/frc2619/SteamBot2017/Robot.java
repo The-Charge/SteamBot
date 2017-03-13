@@ -123,8 +123,8 @@ public class Robot extends IterativeRobot {
 	}
 
 	public void autonomousInit() {
+		Robot.driveTrain.zeroYaw();
 		autonomousCommand = chooser.getSelected();
-		
 
 		// schedule the autonomous command (example)
 		if (autonomousCommand != null)
