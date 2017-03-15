@@ -19,7 +19,7 @@ public class TheChargeDashboard {
 			// "ACCELERATION", "VELOCITY", "DISTANCE",
 			// "SPEED_P", "SPEED_I", "SPEED_D", "SPEED_F",
 			// "IMU_TotalYaw", "IMU_YawRateDPS", "IMU_Connected",
-			// "IMU_IsCalibrating", "IMU_Yaw", "IMU_Pitch", "IMU_Roll",
+			 "IMU_IsCalibrating", "IMU_Yaw", "IMU_Pitch", "IMU_Roll",
 			// "IMU_Byte_Count", "IMU_Update_Count",
 			// "Setpoint",
 			// "LeftSpeed", "RightSpeed", "LeftCurrent",
