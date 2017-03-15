@@ -53,16 +53,16 @@ public class OI {
     public JoystickButton leftInvertBtn;
     public JoystickButton leftShiftLowButton;
     public JoystickButton leftPickupBtn;
-    public JoystickButton left180Btn;
     public JoystickButton leftShiftHighBtn;
     public JoystickButton leftLockStraight;
+    public JoystickButton leftSpeedControl;
     public Joystick leftJoystick;
     public JoystickButton rightShiftHighButton;
     public JoystickButton rightInvertBtn;
     public JoystickButton rightPickupBtn;
-    public JoystickButton right180Btn;
     public JoystickButton rightShiftLowBtn;
     public JoystickButton rightLockStraight;
+    public JoystickButton rightSpeedControl;
     public Joystick rightJoystick;
     public JoystickButton runShooterButton;
     public JoystickButton runPickupButton;
@@ -120,12 +120,12 @@ public class OI {
         runShooterButton.whileHeld(new RunShooter());
         rightJoystick = new Joystick(1);
         
+        rightSpeedControl = new JoystickButton(rightJoystick, 3);
+        rightSpeedControl.whileHeld(new SpeedControl());
         rightLockStraight = new JoystickButton(rightJoystick, 6);
         rightLockStraight.whenPressed(new ToggleLockStraight());
         rightShiftLowBtn = new JoystickButton(rightJoystick, 4);
         rightShiftLowBtn.whenPressed(new ShiftLow());
-        right180Btn = new JoystickButton(rightJoystick, 3);
-        right180Btn.whenPressed(new TurnNDegreesRelativePID(180));
         rightPickupBtn = new JoystickButton(rightJoystick, 1);
         rightPickupBtn.whileHeld(new RunPickup());
         rightInvertBtn = new JoystickButton(rightJoystick, 2);
@@ -134,12 +134,12 @@ public class OI {
         rightShiftHighButton.whenPressed(new ShiftHigh());
         leftJoystick = new Joystick(0);
         
+        leftSpeedControl = new JoystickButton(leftJoystick, 3);
+        leftSpeedControl.whileHeld(new SpeedControl());
         leftLockStraight = new JoystickButton(leftJoystick, 6);
         leftLockStraight.whenPressed(new ToggleLockStraight());
         leftShiftHighBtn = new JoystickButton(leftJoystick, 5);
         leftShiftHighBtn.whenPressed(new ShiftHigh());
-        left180Btn = new JoystickButton(leftJoystick, 3);
-        left180Btn.whenPressed(new TurnNDegreesRelativePID(180));
         leftPickupBtn = new JoystickButton(leftJoystick, 1);
         leftPickupBtn.whileHeld(new RunPickup());
         leftShiftLowButton = new JoystickButton(leftJoystick, 4);
