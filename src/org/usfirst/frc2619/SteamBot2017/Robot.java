@@ -100,6 +100,8 @@ public class Robot extends IterativeRobot {
 		ballPickup.writeDefaultDashboardValues();
 		indexer.writeDefaultDashboardValues();
 		ledBoard.writeDefaultDashboardValues();
+		
+		ledBoard.onLED();
 
 		chooser.addDefault("GearPegMiddleAutonBlue", new GearPegMiddleAutonBlue());
 		chooser.addObject("GearPegMiddleAutonRed", new GearPegMiddleAutonRed());
@@ -130,6 +132,9 @@ public class Robot extends IterativeRobot {
 		// schedule the autonomous command (example)
 		if (autonomousCommand != null)
 			autonomousCommand.start();
+		ledBoard.onLED();
+		Robot.ledBoard.bitmap(1);
+		Robot.cANLights.colorAlliance();
 	}
 
 	/**
@@ -147,6 +152,9 @@ public class Robot extends IterativeRobot {
 		// this line or comment it out.
 		if (autonomousCommand != null)
 			autonomousCommand.cancel();
+		Robot.indexer.stop();
+		Robot.shifters.ShiftHigh();
+		Robot.ledBoard.bitmapRandom();
 	}
 
 	/**

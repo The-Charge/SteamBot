@@ -41,6 +41,7 @@ public class ClimbOverride extends Command {
 		this.setTimeout(.05);
 		Robot.ropeClimber.setMotorModes();
 		Robot.cANLights.LightRun(0, 255, 0);
+		Robot.ledBoard.bitmap(3);
 	}
 
 	// Called repeatedly when this Command is scheduled to run
@@ -58,6 +59,7 @@ public class ClimbOverride extends Command {
 
 	protected void end() {
 		Robot.ropeClimber.stop();
+		Robot.ledBoard.bitmapRandom();
 		Robot.cANLights.colorAlliance();
 	}
 

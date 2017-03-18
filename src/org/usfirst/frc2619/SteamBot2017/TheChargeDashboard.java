@@ -35,7 +35,7 @@ public class TheChargeDashboard {
 			// "driveTrain",
 			"AutoMode",
 			// "CANLightRed", "CANLightGreen", "CANLightBlue", "CANLightHue",
-			// "LEDOutput",
+			"LEDOutput",
 			// "ForwardFactor", "TurnFactor", "TargetLeftSpeed",
 			// "TargetRightSpeed",
 			// "ClimbRopeDebug"

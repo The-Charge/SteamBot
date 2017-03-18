@@ -11,6 +11,7 @@
 package org.usfirst.frc2619.SteamBot2017.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc2619.SteamBot2017.Robot;
 import org.usfirst.frc2619.SteamBot2017.RobotMap;
@@ -43,7 +44,7 @@ public class RunLed extends Command {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		Robot.ledBoard.bitmap();
+		Robot.ledBoard.bitmap((int) SmartDashboard.getNumber("LEDOutput", 0));
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
