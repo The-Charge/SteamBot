@@ -47,8 +47,8 @@ public class RunIndexer extends Command {
 		// Robot.indexer.set(Robot.oi.buttonBox.getRawAxis(4));
 		// SmartDashboard.putNumber("IndexerPotValue",
 		// Robot.oi.buttonBox.getRawAxis(4));
-		SPEED = (Robot.oi.buttonBox.getRawAxis(0) + 1) / 2;
-		SmartDashboard.putNumber("IndexerPotValue", (Robot.oi.buttonBox.getRawAxis(0) + 1) / 2);
+		SPEED = (Robot.oi.buttonBox.getRawAxis(0) - 1) / -2;
+		SmartDashboard.putNumber("IndexerPotValue", (Robot.oi.buttonBox.getRawAxis(0) - 1) / -2);
 		if (Robot.oi.rightJoystick.getRawButton(10)) {
 			Robot.indexer.set(-SPEED);
 		} else {
