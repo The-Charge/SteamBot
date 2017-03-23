@@ -12,6 +12,7 @@
 package org.usfirst.frc2619.SteamBot2017.subsystems;
 
 import org.usfirst.frc2619.SteamBot2017.RobotMap;
+import org.usfirst.frc2619.SteamBot2017.TheChargeDashboard;
 import org.usfirst.frc2619.SteamBot2017.commands.*;
 import edu.wpi.first.wpilibj.Servo;
 
@@ -44,6 +45,15 @@ public class Servos extends Subsystem {
 
         // Set the default command for a subsystem here.
         // setDefaultCommand(new MySpecialCommand());
+    }
+    
+    public void run(double input) {
+    	input = (input + 1) / 2;
+    	agitator.set(input);
+    }
+    
+    public void stop() {
+    	agitator.set(0);
     }
 }
 
