@@ -48,12 +48,11 @@ public class Servos extends Subsystem {
     }
     
     public void run(double input) {
-    	input = (input + 1) / 2;
     	agitator.set(input);
     }
     
     public void stop() {
-    	agitator.set(0);
+    	agitator.set(0.5);
     }
 }
 
