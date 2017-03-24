@@ -2489,15 +2489,15 @@ Children:
         validators: null
         value: []
       Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
-        default: &id022 []
+        default: []
         name: Parameter presets
         validators: null
-        value: *id022
+        value: []
       Commands: !!robotbuilder.data.properties.ListProperty
-        default: &id023 []
+        default: []
         name: Commands
         validators: *id019
-        value: *id023
+        value: []
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
     Base: Command Group
@@ -2510,24 +2510,45 @@ Children:
         validators: null
         value: []
       Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
-        default: &id024 []
+        default: []
         name: Parameter presets
         validators: null
-        value: *id024
+        value: []
       Commands: !!robotbuilder.data.properties.ListProperty
-        default: &id025 []
+        default: []
         name: Commands
         validators: *id019
-        value: *id025
+        value: []
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
     Base: Command Group
     Name: GearPegRightAutonRedShoot
+  - Children: []
+    Properties:
+      Parameters: !!robotbuilder.data.properties.ParametersProperty
+        default: []
+        name: Parameters
+        validators: null
+        value: []
+      Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
+        default: []
+        name: Parameter presets
+        validators: null
+        value: []
+      Commands: !!robotbuilder.data.properties.ListProperty
+        default: []
+        name: Commands
+        validators: *id019
+        value: []
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: true}
+    Base: Command Group
+    Name: IndexAndAgitate
   Properties: {}
   Base: Commands
   Name: Commands
 Properties:
-  Eclipse Workspace: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\ThinkPad\workspace',
+  Eclipse Workspace: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\2619\workspace',
     extension: null, folder: true, name: Eclipse Workspace, validators: null, value: 'C:\workspace'}
   Export Commands: !!robotbuilder.data.properties.BooleanProperty {default: true,
     name: Export Commands, validators: null, value: true}
@@ -2546,7 +2567,7 @@ Properties:
     name: Export Subsystems, validators: null, value: true}
   Simulation World File: !!robotbuilder.data.properties.StringProperty {default: /usr/share/frcsim/worlds/GearsBotDemo.world,
     name: Simulation World File, validators: null, value: /usr/share/frcsim/worlds/GearsBotDemo.world}
-  Wiring file location: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\ThinkPad\',
+  Wiring file location: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\2619\',
     extension: null, folder: true, name: Wiring file location, validators: null, value: 'C:\workspace'}
   Autonomous Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
     name: Autonomous Command, type: Command, validators: null, value: Autonomous Command}

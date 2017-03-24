@@ -40,7 +40,7 @@ public class TheChargeDashboard {
 			// "TargetRightSpeed",
 			// "ClimbRopeDebug",
 			//"AgitatorPosition",
-			"ShooterPotValue"
+			//"ShooterPotValue"
 	};
 
 	public static void putNumber(String key, double value) {
