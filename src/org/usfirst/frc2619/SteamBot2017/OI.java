@@ -206,8 +206,8 @@ public class OI {
         SmartDashboard.putData("ClosePlunge", new ClosePlunge());
         SmartDashboard.putData("GearPegMiddleAutonBlue", new GearPegMiddleAutonBlue());
         SmartDashboard.putData("ClimbOverride", new ClimbOverride());
-        SmartDashboard.putData("DriveInverted", new DriveInverted());
-        SmartDashboard.putData("RunAgitator", new RunAgitator());
+        SmartDashboard.putData("DriveInverted", new DriveInverted());*/
+        SmartDashboard.putData("RunAgitator", new RunAgitator());/*
         SmartDashboard.putData("GearPegLeftAutonBlueShoot", new GearPegLeftAutonBlueShoot());
         SmartDashboard.putData("GearPegRightAutonRedShoot", new GearPegRightAutonRedShoot());*/
 

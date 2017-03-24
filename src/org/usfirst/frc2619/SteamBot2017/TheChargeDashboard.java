@@ -38,8 +38,9 @@ public class TheChargeDashboard {
 			//"LEDOutput",
 			// "ForwardFactor", "TurnFactor", "TargetLeftSpeed",
 			// "TargetRightSpeed",
-			// "ClimbRopeDebug".
-			"AgitatorPosition"
+			// "ClimbRopeDebug",
+			//"AgitatorPosition",
+			"ShooterPotValue"
 	};
 
 	public static void putNumber(String key, double value) {
