@@ -52,7 +52,7 @@ public class LedBoard extends Subsystem {
 
 	public void writeDefaultDashboardValues() {
 		TheChargeDashboard.putNumber("LEDOutput", 0);
-		SmartDashboard.putNumber("Choice", choice);
+		//SmartDashboard.putNumber("Choice", choice);
 	}
 
 	public void bitmap() {
