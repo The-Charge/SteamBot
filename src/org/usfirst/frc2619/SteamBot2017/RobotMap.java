@@ -129,7 +129,7 @@ public class RobotMap {
         ultrasonicUltrasonicSensor = new AnalogInput(1);
         LiveWindow.addSensor("Ultrasonic", "UltrasonicSensor", ultrasonicUltrasonicSensor);
         
-        servosAgitator = new Servo(0);
+        servosAgitator = new Servo(4);
         LiveWindow.addActuator("Servos", "Agitator", servosAgitator);
         
 

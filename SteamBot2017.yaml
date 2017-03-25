@@ -466,7 +466,7 @@ Children:
           default: '0'
           name: Output Channel (PWM)
           validators: [PWMOutput]
-          value: '0'
+          value: '4'
       Base: Servo
       Name: Agitator
     Properties:
@@ -937,7 +937,7 @@ Children:
           name: Command
           type: Command
           validators: *id015
-          value: RunIndexer
+          value: IndexAndAgitate
         When to Run: !!robotbuilder.data.properties.ChoicesProperty
           choices: *id016
           default: whileHeld
@@ -945,7 +945,7 @@ Children:
           validators: null
           value: whileHeld
       Base: Joystick Button
-      Name: RunIndexerButton
+      Name: IndexAndAgitateButton
     - Children: []
       Properties:
         Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,
@@ -966,7 +966,7 @@ Children:
           name: Command
           type: Command
           validators: *id015
-          value: OpenPlunge
+          value: OpenDoors
         When to Run: !!robotbuilder.data.properties.ChoicesProperty
           choices: *id016
           default: whileHeld
@@ -974,7 +974,7 @@ Children:
           validators: null
           value: whenPressed
       Base: Joystick Button
-      Name: OpenPlungeBtn
+      Name: OpenDoorsBtn
     - Children: []
       Properties:
         Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,
@@ -995,7 +995,7 @@ Children:
           name: Command
           type: Command
           validators: *id015
-          value: ClosePlunge
+          value: CloseDoors
         When to Run: !!robotbuilder.data.properties.ChoicesProperty
           choices: *id016
           default: whileHeld
@@ -1003,7 +1003,7 @@ Children:
           validators: null
           value: whenReleased
       Base: Joystick Button
-      Name: ClosePlungeBtn
+      Name: CloseDoorsBtn
     - Children: []
       Properties:
         Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,
@@ -1258,7 +1258,7 @@ Children:
           name: Command
           type: Command
           validators: *id015
-          value: OpenDoors
+          value: ExtendPlunger
         When to Run: !!robotbuilder.data.properties.ChoicesProperty
           choices: *id016
           default: whileHeld
@@ -1266,7 +1266,7 @@ Children:
           validators: null
           value: whenPressed
       Base: Joystick Button
-      Name: OpenDoorsBtn
+      Name: ExtendPlungerBtn
     - Children: []
       Properties:
         Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,
@@ -1287,7 +1287,7 @@ Children:
           name: Command
           type: Command
           validators: *id015
-          value: CloseDoors
+          value: RetractPlunger
         When to Run: !!robotbuilder.data.properties.ChoicesProperty
           choices: *id016
           default: whileHeld
@@ -1295,7 +1295,7 @@ Children:
           validators: null
           value: whenReleased
       Base: Joystick Button
-      Name: CloseDoorsBtn
+      Name: RetractPlungerBtn
     Properties:
       Number: !!robotbuilder.data.properties.ChoicesProperty
         choices: *id017
