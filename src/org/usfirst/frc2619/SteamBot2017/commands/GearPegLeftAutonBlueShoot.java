@@ -50,10 +50,13 @@ public class GearPegLeftAutonBlueShoot extends CommandGroup {
 		addSequential(new DriveToCurrent(0.1));
 		addSequential(new DeliverGear());
     	addSequential(new TurnNDegreesAbsolutePID(-180));
+    	addSequential(new ShiftHigh());
 		addSequential(new DriveXFeetMM(3.5));
+    	addSequential(new ShiftLow());
 		addSequential(new TurnNDegreesAbsolutePID(-135));
-		addSequential(new DriveToCurrent(0.2));
-		addParallel(new RunShooter());
+    	addSequential(new ShiftHigh());
+    	addParallel(new RunShooter());
+    	addParallel(new RunPickup());
 		addSequential(new AutonShooter());
     } 
 }
