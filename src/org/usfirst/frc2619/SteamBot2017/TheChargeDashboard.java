@@ -39,7 +39,6 @@ public class TheChargeDashboard {
 			// "ForwardFactor", "TurnFactor", "TargetLeftSpeed",
 			// "TargetRightSpeed",
 			// "ClimbRopeDebug",
-			//"AgitatorPosition",
 			//"ShooterPotValue"
 	};
 
