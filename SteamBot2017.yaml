@@ -860,7 +860,7 @@ Children:
           validators: null
           value: whileHeld
       Base: Joystick Button
-      Name: RunShooterButton
+      Name: RunShooterBtn
     - Children: []
       Properties:
         Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,
@@ -889,36 +889,7 @@ Children:
           validators: null
           value: whileHeld
       Base: Joystick Button
-      Name: RunPickupButton
-    - Children: []
-      Properties:
-        Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,
-          name: Joystick, validators: null, value: ButtonBox}
-        Parameters: !!robotbuilder.data.properties.ParametersProperty
-          default: []
-          name: Parameters
-          validators: null
-          value: []
-        Button: !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id014
-          default: '1'
-          name: Button
-          validators: null
-          value: '14'
-        Command: !!robotbuilder.data.properties.TypeSelectionProperty
-          default: None
-          name: Command
-          type: Command
-          validators: *id015
-          value: RunIndexer
-        When to Run: !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id016
-          default: whileHeld
-          name: When to Run
-          validators: null
-          value: whileHeld
-      Base: Joystick Button
-      Name: RunIndexerButton
+      Name: RunPickupBtn
     - Children: []
       Properties:
         Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,
@@ -939,7 +910,7 @@ Children:
           name: Command
           type: Command
           validators: *id015
-          value: OpenPlunge
+          value: OpenDoors
         When to Run: !!robotbuilder.data.properties.ChoicesProperty
           choices: *id016
           default: whileHeld
@@ -947,7 +918,7 @@ Children:
           validators: null
           value: whenPressed
       Base: Joystick Button
-      Name: OpenPlungeBtn
+      Name: OpenDoorsBtn
     - Children: []
       Properties:
         Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,
@@ -968,7 +939,7 @@ Children:
           name: Command
           type: Command
           validators: *id015
-          value: ClosePlunge
+          value: CloseDoors
         When to Run: !!robotbuilder.data.properties.ChoicesProperty
           choices: *id016
           default: whileHeld
@@ -976,7 +947,7 @@ Children:
           validators: null
           value: whenReleased
       Base: Joystick Button
-      Name: ClosePlungeBtn
+      Name: CloseDoorsBtn
     - Children: []
       Properties:
         Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,
@@ -1231,7 +1202,7 @@ Children:
           name: Command
           type: Command
           validators: *id015
-          value: OpenDoors
+          value: ExtendPlunger
         When to Run: !!robotbuilder.data.properties.ChoicesProperty
           choices: *id016
           default: whileHeld
@@ -1239,7 +1210,7 @@ Children:
           validators: null
           value: whenPressed
       Base: Joystick Button
-      Name: OpenDoorsBtn
+      Name: ExtendPlungerBtn
     - Children: []
       Properties:
         Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,
@@ -1260,7 +1231,7 @@ Children:
           name: Command
           type: Command
           validators: *id015
-          value: CloseDoors
+          value: RetractPlunger
         When to Run: !!robotbuilder.data.properties.ChoicesProperty
           choices: *id016
           default: whileHeld
@@ -1268,7 +1239,36 @@ Children:
           validators: null
           value: whenReleased
       Base: Joystick Button
-      Name: CloseDoorsBtn
+      Name: RetractPlungerBtn
+    - Children: []
+      Properties:
+        Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,
+          name: Joystick, validators: null, value: ButtonBox}
+        Parameters: !!robotbuilder.data.properties.ParametersProperty
+          default: []
+          name: Parameters
+          validators: null
+          value: []
+        Button: !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id014
+          default: '1'
+          name: Button
+          validators: null
+          value: '14'
+        Command: !!robotbuilder.data.properties.TypeSelectionProperty
+          default: None
+          name: Command
+          type: Command
+          validators: *id015
+          value: RunIndexer
+        When to Run: !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id016
+          default: whileHeld
+          name: When to Run
+          validators: null
+          value: whileHeld
+      Base: Joystick Button
+      Name: RunIndexerBtn
     Properties:
       Number: !!robotbuilder.data.properties.ChoicesProperty
         choices: *id017
@@ -2240,7 +2240,7 @@ Children:
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
     Base: Command Group
-    Name: GearPegLeftAutonBlue
+    Name: GearPegLeftAutonBlueDrive
   - Children: []
     Properties:
       Parameters: !!robotbuilder.data.properties.ParametersProperty
@@ -2261,7 +2261,7 @@ Children:
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
     Base: Command Group
-    Name: GearPegRightAutonRed
+    Name: GearPegRightAutonRedDrive
   - Children: []
     Properties:
       Parameters: !!robotbuilder.data.properties.ParametersProperty
@@ -2436,6 +2436,48 @@ Children:
         name: Button on SmartDashboard, validators: null, value: true}
     Base: Instant Command
     Name: DriveInverted
+  - Children: []
+    Properties:
+      Parameters: !!robotbuilder.data.properties.ParametersProperty
+        default: []
+        name: Parameters
+        validators: null
+        value: []
+      Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
+        default: []
+        name: Parameter presets
+        validators: null
+        value: []
+      Commands: !!robotbuilder.data.properties.ListProperty
+        default: []
+        name: Commands
+        validators: *id019
+        value: []
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: true}
+    Base: Command Group
+    Name: GearPegLeftAutonBlueShoot
+  - Children: []
+    Properties:
+      Parameters: !!robotbuilder.data.properties.ParametersProperty
+        default: []
+        name: Parameters
+        validators: null
+        value: []
+      Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
+        default: []
+        name: Parameter presets
+        validators: null
+        value: []
+      Commands: !!robotbuilder.data.properties.ListProperty
+        default: []
+        name: Commands
+        validators: *id019
+        value: []
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: true}
+    Base: Command Group
+    Name: GearPegRightAutonRedShoot
   Properties: {}
   Base: Commands
   Name: Commands

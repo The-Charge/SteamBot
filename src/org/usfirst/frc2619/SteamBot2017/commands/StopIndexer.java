@@ -38,6 +38,7 @@ public class StopIndexer extends Command {
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
+		this.setTimeout(1.0);
 	}
 
 	// Called repeatedly when this Command is scheduled to run
@@ -48,7 +49,7 @@ public class StopIndexer extends Command {
 
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
-		return !Robot.indexer.isAtDI();
+		return !Robot.indexer.isAtDI() || isTimedOut() ;
 	}
 
 	// Called once after isFinished returns true
