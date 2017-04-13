@@ -50,6 +50,6 @@ public class GearPegMiddleAutonRed extends CommandGroup {
 		addSequential(new TurnNDegreesAbsolutePID(-90));
 		addSequential(new DriveXFeetMM(9));
 		addSequential(new TurnNDegreesAbsolutePID(-4));
-		addSequential(new DriveXFeetMM(38));
+		addSequential(new DriveXFeetMM(36));
 	}
 }
