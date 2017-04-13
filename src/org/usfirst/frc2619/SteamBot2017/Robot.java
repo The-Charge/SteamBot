@@ -103,6 +103,7 @@ public class Robot extends IterativeRobot {
 		
 		ledBoard.onLED();
 
+		chooser.addObject("Blue Shoot Only", new BlueShoot());
 		chooser.addObject("Left Blue Drive", new GearPegLeftAutonBlueDrive());
 		chooser.addObject("Left Blue Shoot", new GearPegLeftAutonBlueShoot());
 		chooser.addObject("Left Red Drive", new GearPegLeftAutonRed());
@@ -111,6 +112,7 @@ public class Robot extends IterativeRobot {
 		chooser.addObject("Right Blue Drive", new GearPegRightAutonBlue());
 		chooser.addObject("Right Red Drive", new GearPegRightAutonRedDrive());
 		chooser.addObject("Right Red Shoot", new GearPegRightAutonRedShoot());
+		chooser.addObject("Red Shoot Only", new RedShoot());
 
 		TheChargeDashboard.putData("AutoMode", chooser);
 	}
