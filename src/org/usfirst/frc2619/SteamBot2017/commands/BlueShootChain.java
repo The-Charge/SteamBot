@@ -48,10 +48,10 @@ public class BlueShootChain extends CommandGroup {
     	addSequential(new ShiftLow());
     	addSequential(new TurnNDegreesAbsolutePID(45));
     	addSequential(new ShiftHigh());
-    	addSequential(new DriveXFeetMM(-4));
+    	addSequential(new DriveXFeetMM(-6));
     	addParallel(new TimedCommand(0.5));
-    	addSequential(new TurnNDegreesRelativePID(-2));
-    	addSequential(new DriveXFeetMM(2000, 1000, 12));
+    	addSequential(new TurnNDegreesRelativePID(-5));
+    	addSequential(new DriveXFeetMM(2000, 1000, 10));
     	addSequential(new DriveToCurrent(0.3));
     	addParallel(new RunShooter());
 		addSequential(new DriveXSeconds(0.5));
