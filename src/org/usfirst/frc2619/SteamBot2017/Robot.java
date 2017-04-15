@@ -103,16 +103,17 @@ public class Robot extends IterativeRobot {
 		
 		ledBoard.onLED();
 
-		chooser.addObject("Blue Shoot Only", new BlueShoot());
+		chooser.addObject("Blue Hopper Shoot", new BlueHopperShoot());
+		chooser.addObject("Blue Shoot Only", new BlueShootOnly());
 		chooser.addObject("Left Blue Drive", new GearPegLeftAutonBlueDrive());
 		chooser.addObject("Left Blue Shoot", new GearPegLeftAutonBlueShoot());
-		chooser.addObject("Left Red Drive", new GearPegLeftAutonRed());
 		chooser.addDefault("Middle Blue", new GearPegMiddleAutonBlue());
 		chooser.addObject("Middle Red", new GearPegMiddleAutonRed());
 		chooser.addObject("Right Blue Drive", new GearPegRightAutonBlue());
 		chooser.addObject("Right Red Drive", new GearPegRightAutonRedDrive());
 		chooser.addObject("Right Red Shoot", new GearPegRightAutonRedShoot());
-		chooser.addObject("Red Shoot Only", new RedShoot());
+		chooser.addObject("Red Shoot Only", new RedShootOnly());
+		chooser.addObject("Red Hopper Shoot", new RedHopperShoot());
 
 		TheChargeDashboard.putData("AutoMode", chooser);
 	}
