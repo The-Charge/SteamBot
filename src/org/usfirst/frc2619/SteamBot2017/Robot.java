@@ -107,6 +107,7 @@ public class Robot extends IterativeRobot {
 		chooser.addObject("Blue Shoot Only", new BlueShootOnly());
 		chooser.addObject("Left Blue Drive", new GearPegLeftAutonBlueDrive());
 		chooser.addObject("Left Blue Shoot", new GearPegLeftAutonBlueShoot());
+		chooser.addObject("Left Red Drive", new GearPegLeftAutonRed());
 		chooser.addDefault("Middle Blue", new GearPegMiddleAutonBlue());
 		chooser.addObject("Middle Red", new GearPegMiddleAutonRed());
 		chooser.addObject("Right Blue Drive", new GearPegRightAutonBlue());
