@@ -13,7 +13,7 @@ package org.usfirst.frc2619.SteamBot2017.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc2619.SteamBot2017.Robot;
 
-import com.ctre.CANTalon;
+import com.ctre.WPI_TalonSRX;
 
 /**
  *
