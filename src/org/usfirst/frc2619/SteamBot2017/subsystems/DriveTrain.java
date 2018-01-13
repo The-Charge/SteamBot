@@ -15,9 +15,6 @@ import org.usfirst.frc2619.SteamBot2017.Robot;
 import org.usfirst.frc2619.SteamBot2017.RobotMap;
 import org.usfirst.frc2619.SteamBot2017.TheChargeDashboard;
 import org.usfirst.frc2619.SteamBot2017.commands.*;
-import com.ctre.WPI_TalonSRX;
-import com.ctre.WPI_TalonSRX.FeedbackDevice;
-import com.ctre.WPI_TalonSRX.TalonControlMode;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.kauailabs.navx.frc.AHRS;
@@ -470,13 +467,12 @@ public class DriveTrain extends Subsystem {
 		// setDefaultCommand(new MySpecialCommand());
 	}
 
-	/*public void setControlMode(WPI_TalonSRX.TalonControlMode controlMode) {
-		leftFrontMotor.changeControlMode(controlMode);
-		rightFrontMotor.changeControlMode(controlMode);
+	/*public void setControlMode(ControlMode controlMode) {
+		leftFrontMotor.set(controlMode,);
+		rightFrontMotor.set(controlMode,);
 		currentControlMode = controlMode;
-	}
-
-	public WPI_TalonSRX.TalonControlMode getControlMode() {
-		return currentControlMode;
 	}*/
+	public ControlMode getControlMode() {
+		return currentControlMode;
+	}
 }
