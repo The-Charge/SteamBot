@@ -13,8 +13,8 @@ package org.usfirst.frc2619.SteamBot2017.subsystems;
 import org.usfirst.frc2619.SteamBot2017.RobotMap;
 import org.usfirst.frc2619.SteamBot2017.TheChargeDashboard;
 import org.usfirst.frc2619.SteamBot2017.commands.*;
-import com.ctre.WPI_TalonSRX;
-import com.ctre.WPI_TalonSRX.TalonControlMode;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.ctre.phoenix.motorcontrol.ControlMode;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -71,32 +71,32 @@ public class BallPickup extends Subsystem {
 		SpeedF = SmartDashboard.getNumber("PickupSpeedF", PICKUP_F_CONSTANT);
 
 		// set WPI_TalonSRX PIDs
-		pickupMotor.setPID(SpeedP, SpeedI, SpeedD, SpeedF, 0, 0, 0);
+		//pickupMotor.setPID(SpeedP, SpeedI, SpeedD, SpeedF, 0, 0, 0);
 	}
 
 	public void initSpeedPercentageMode() {
-		pickupMotor.changeControlMode(TalonControlMode.Speed);
+		//pickupMotor.changeControlMode(ControlMode.Velocity);
 
-		pickupMotor.setProfile(0);
+		//pickupMotor.setProfile(0);
 
-		pickupMotor.configMaxOutputVoltage(12);
+		//pickupMotor.configMaxOutputVoltage(12);
 	}
 
 	public void set(double percentSpeed) {
 		// Sets what speed the motors will run at.
-		pickupMotor.enable();
-		pickupMotor.setSetpoint(MAX_TICKS_PER_SECOND * percentSpeed);
+		//pickupMotor.enable();
+		//pickupMotor.setSetpoint(MAX_TICKS_PER_SECOND * percentSpeed);
 	}
 
 	public void stop() {
-		pickupMotor.setSetpoint(0);
+		//pickupMotor.setSetpoint(0);
 		pickupMotor.disable();
 	}
 
 	public void writeDebugValues() {
-		TheChargeDashboard.putNumber("PickupSetpoint", pickupMotor.getSetpoint());
-		TheChargeDashboard.putNumber("PickupMotorControlSpeed", pickupMotor.getSpeed());
-		TheChargeDashboard.putNumber("PickupMscOutput", pickupMotor.getOutputVoltage());
-		TheChargeDashboard.putNumber("PickupMotorVelocity", pickupMotor.getEncVelocity());
+		//TheChargeDashboard.putNumber("PickupSetpoint", pickupMotor.getSetpoint());
+		//TheChargeDashboard.putNumber("PickupMotorControlSpeed", pickupMotor.getSpeed());
+		//TheChargeDashboard.putNumber("PickupMscOutput", pickupMotor.getOutputVoltage());
+		//TheChargeDashboard.putNumber("PickupMotorVelocity", pickupMotor.getEncVelocity());
 	}
 }

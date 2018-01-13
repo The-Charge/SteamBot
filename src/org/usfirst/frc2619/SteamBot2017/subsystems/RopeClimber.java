@@ -12,8 +12,8 @@ package org.usfirst.frc2619.SteamBot2017.subsystems;
 
 import org.usfirst.frc2619.SteamBot2017.RobotMap;
 import org.usfirst.frc2619.SteamBot2017.commands.*;
-import com.ctre.WPI_TalonSRX;
-import com.ctre.WPI_TalonSRX.TalonControlMode;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.ctre.phoenix.motorcontrol.ControlMode;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -63,8 +63,8 @@ public class RopeClimber extends Subsystem {
 
 	// SET MOTOR MODES
 	public void setMotorModes() {
-		ropeMotor1.changeControlMode(TalonControlMode.PercentVbus);
-		ropeMotor2.changeControlMode(TalonControlMode.PercentVbus);
+		//ropeMotor1.changeControlMode(ControlMode.PercentOutput);
+		//ropeMotor2.changeControlMode(ControlMode.PercentOutput);
 	}
 
 	// CHECK DI
@@ -74,9 +74,9 @@ public class RopeClimber extends Subsystem {
 
 	// CURRENT LIMIT
 	public void currentLimiting() {
-		ropeMotor1.setCurrentLimit(CURRENT_LIMIT);
-		ropeMotor1.EnableCurrentLimit(true);
-		ropeMotor2.setCurrentLimit(CURRENT_LIMIT);
-		ropeMotor2.EnableCurrentLimit(true);
+		//ropeMotor1.setCurrentLimit(CURRENT_LIMIT);
+		//ropeMotor1.EnableCurrentLimit(true);
+		//ropeMotor2.setCurrentLimit(CURRENT_LIMIT);
+		//ropeMotor2.EnableCurrentLimit(true);
 	}
 }

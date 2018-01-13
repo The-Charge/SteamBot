@@ -13,8 +13,8 @@ package org.usfirst.frc2619.SteamBot2017.subsystems;
 import org.usfirst.frc2619.SteamBot2017.RobotMap;
 import org.usfirst.frc2619.SteamBot2017.TheChargeDashboard;
 import org.usfirst.frc2619.SteamBot2017.commands.*;
-import com.ctre.WPI_TalonSRX;
-import com.ctre.WPI_TalonSRX.TalonControlMode;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.ctre.phoenix.motorcontrol.ControlMode;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -73,25 +73,25 @@ public class Indexer extends Subsystem {
 		SpeedF = SmartDashboard.getNumber("IndexerSpeedF", INDEX_F_CONSTANT);
 
 		// set WPI_TalonSRX PIDs
-		indexerMotor.setPID(SpeedP, SpeedI, SpeedD, SpeedF, 0, 0, 0);
+		//indexerMotor.setPID(SpeedP, SpeedI, SpeedD, SpeedF, 0, 0, 0);
 	}
 
 	public void initSpeedPercentageMode() {
-		indexerMotor.changeControlMode(TalonControlMode.Speed);
+		//indexerMotor.changeControlMode(ControlMode.Velocity);
 
-		indexerMotor.setProfile(0);
+		//indexerMotor.setProfile(0);
 
-		indexerMotor.configMaxOutputVoltage(12);
+		//indexerMotor.configMaxOutputVoltage(12);
 	}
 
 	public void set(double percentSpeed) {
 		// Sets what speed the motors will run at.
-		indexerMotor.enable();
-		indexerMotor.setSetpoint(MAX_TICKS_PER_SECOND * percentSpeed);
+		//indexerMotor.enable();
+		//indexerMotor.setSetpoint(MAX_TICKS_PER_SECOND * percentSpeed);
 	}
 
 	public void stop() {
-		indexerMotor.setSetpoint(0);
+		//indexerMotor.setSetpoint(0);
 		indexerMotor.disable();
 	}
 
@@ -100,9 +100,9 @@ public class Indexer extends Subsystem {
 	}
 
 	public void writeDebugValues() {
-		TheChargeDashboard.putNumber("IndexerSetPoint", indexerMotor.getSetpoint());
-		TheChargeDashboard.putNumber("IndexerError", indexerMotor.getError());
-		TheChargeDashboard.putNumber("IndexMeasuredValue", indexerMotor.getEncVelocity());
+		//TheChargeDashboard.putNumber("IndexerSetPoint", indexerMotor.getSetpoint());
+		//TheChargeDashboard.putNumber("IndexerError", indexerMotor.getError());
+		//TheChargeDashboard.putNumber("IndexMeasuredValue", indexerMotor.getEncVelocity());
 		TheChargeDashboard.putBoolean("IndexerDI", isAtDI());
 	}
 }
