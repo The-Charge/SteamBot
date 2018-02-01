@@ -56,9 +56,9 @@ public class Vision extends Subsystem {
 		return table.getNumber("TargetAngle", 0);
 	}
 
-	public int getImageCount() {
-		return table.getInt("ImageCount", 0);
-	}
+	//public int getImageCount() {
+		//return table.getInt("ImageCount", 0);
+	//}
 
 	public double getQuality() {
 		return table.getDouble("Quality", 0);

@@ -183,9 +183,9 @@ public class Robot extends IterativeRobot {
 		driveTrain.writeDebugValues();
 		shooterMotors.readDashboardControlValues();
 		ballPickup.readDashboardControlValues();
-		ballPickup.writeDebugValues();
+		//ballPickup.writeDebugValues();
 		indexer.readDashboardControlValues();
-		indexer.writeDebugValues();
+		//indexer.writeDebugValues();
 		ultrasonic.writeUSDebug();
 	}
 }
