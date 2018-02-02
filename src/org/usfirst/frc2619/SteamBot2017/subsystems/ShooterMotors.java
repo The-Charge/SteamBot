@@ -84,7 +84,7 @@ public class ShooterMotors extends Subsystem {
 
 		motor.selectProfileSlot(0, 0);
 
-		//motor.configMaxOutputVoltage(12);
+		motor.configNominalOutputForward(1, RobotMap.TIMEOUT_MS);
 	}
 
 	public void set(double percentSpeed) {

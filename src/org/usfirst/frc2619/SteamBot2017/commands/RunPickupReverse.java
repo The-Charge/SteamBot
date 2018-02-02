@@ -42,7 +42,7 @@ public class RunPickupReverse extends Command {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		Robot.ballPickup.set(Robot.oi.buttonBox.getRawAxis(1));
+		Robot.ballPickup.setRunning(Robot.oi.buttonBox.getRawAxis(1));
 		// Robot.ballPickup.set(SPEED);
 	}
 

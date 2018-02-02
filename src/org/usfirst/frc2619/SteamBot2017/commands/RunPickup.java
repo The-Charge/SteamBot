@@ -15,6 +15,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc2619.SteamBot2017.Robot;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
+
 /**
  *
  */
@@ -47,10 +49,11 @@ public class RunPickup extends Command {
 		// Robot.ballPickup.set(Robot.oi.buttonBox.getRawAxis(0));
 		// SmartDashboard.putNumber("PickupPotValue",
 		// Robot.oi.buttonBox.getRawAxis(0));
+		System.out.println("Speed:" + SPEED);
 		if (Robot.oi.rightJoystick.getRawButton(11)) {
-			Robot.ballPickup.set(-SPEED);
+			Robot.ballPickup.setRunning(-SPEED);
 		} else {
-			Robot.ballPickup.set(SPEED);
+			Robot.ballPickup.setRunning(SPEED);
 		}
 	}
 

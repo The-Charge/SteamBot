@@ -139,13 +139,13 @@ public class RobotMap {
 		driveTrainRightRearMotor.setInverted(true);
 
 		// Change Right motor to follow mode
-		driveTrainRightRearMotor.set(ControlMode.Follower, 0);
+		driveTrainRightRearMotor.set(ControlMode.Follower, driveTrainRightFrontMotor.getDeviceID());
 		// Set the device to follow the front motor with encoder
-		driveTrainRightRearMotor.set(driveTrainRightFrontMotor.getDeviceID());
+		//driveTrainRightRearMotor.set(driveTrainRightFrontMotor.getDeviceID());
 
 		// Change Left motor to follow mode
-		driveTrainLeftRearMotor.set(ControlMode.Follower, 0);
+		driveTrainLeftRearMotor.set(ControlMode.Follower, driveTrainLeftFrontMotor.getDeviceID());
 		// Set the device to follow the front motor with encoder
-		driveTrainLeftRearMotor.set(driveTrainLeftFrontMotor.getDeviceID());
+		//driveTrainLeftRearMotor.set(driveTrainLeftFrontMotor.getDeviceID());
 	}
 }

@@ -43,7 +43,7 @@ public class ClimbRope extends Command {
 	protected void initialize() {
 		Robot.ropeClimber.setMotorModes();
 		Robot.ropeClimber.currentLimiting();
-		Robot.cANLights.LightRun(0, 255, 0);
+		//Robot.cANLights.LightRun(0, 255, 0);
 		Robot.ledBoard.bitmap(3);
 	}
 
@@ -68,7 +68,7 @@ public class ClimbRope extends Command {
 	protected void end() {
 		Robot.ropeClimber.stop();
 		Robot.ledBoard.bitmapRandom();
-		Robot.cANLights.colorAlliance();
+		//Robot.cANLights.colorAlliance();
 	}
 
 	// Called when another command which requires one or more of the same

@@ -84,11 +84,12 @@ public class BallPickup extends Subsystem {
 
 		pickupMotor.selectProfileSlot(0, 0);
 
-		//pickupMotor.configMaxOutputVoltage(12);
+		pickupMotor.configNominalOutputForward(1, RobotMap.TIMEOUT_MS);
 	}
 
-	public void set(double percentSpeed) {
+	public void setRunning(double percentSpeed) {
 		// Sets what speed the motors will run at.
+		System.out.println("RunningSpeed:" + MAX_TICKS_PER_SECOND * percentSpeed );
 		pickupMotor.set(ControlMode.Velocity, MAX_TICKS_PER_SECOND * percentSpeed);
 	}
 

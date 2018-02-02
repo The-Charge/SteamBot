@@ -46,7 +46,7 @@ public class Robot extends IterativeRobot {
     public static CameraLights cameraLights;
     public static BallPickup ballPickup;
     public static Indexer indexer;
-    public static CANLights cANLights;
+    //public static CANLights cANLights;
     public static Vision vision;
     public static Ultrasonic ultrasonic;
 
@@ -72,7 +72,7 @@ public class Robot extends IterativeRobot {
         cameraLights = new CameraLights();
         ballPickup = new BallPickup();
         indexer = new Indexer();
-        cANLights = new CANLights();
+        //cANLights = new CANLights();
         vision = new Vision();
         ultrasonic = new Ultrasonic();
 
@@ -82,7 +82,7 @@ public class Robot extends IterativeRobot {
 		shooterMotors.initSpeedPercentageMode();
 		ballPickup.initSpeedPercentageMode();
 		indexer.initSpeedPercentageMode();
-		cANLights.displayCANLightValues();
+		//cANLights.displayCANLightValues();
 		// OI must be constructed after subsystems. If the OI creates Commands
 		// (which it very likely will), subsystems are not guaranteed to be
 		// constructed yet. Thus, their requires() statements may grab null
@@ -103,7 +103,7 @@ public class Robot extends IterativeRobot {
 		
 		ledBoard.onLED();
 
-		chooser.addObject("Blue Hopper Shoot", new BlueHopperShoot());
+		//chooser.addObject("Blue Hopper Shoot", new BlueHopperShoot());
 		chooser.addObject("Blue Shoot Only", new BlueShootOnly());
 		chooser.addObject("Left Blue Drive", new GearPegLeftAutonBlueDrive());
 		chooser.addObject("Left Blue Shoot", new GearPegLeftAutonBlueShoot());
@@ -114,7 +114,7 @@ public class Robot extends IterativeRobot {
 		chooser.addObject("Right Red Drive", new GearPegRightAutonRedDrive());
 		chooser.addObject("Right Red Shoot", new GearPegRightAutonRedShoot());
 		chooser.addObject("Red Shoot Only", new RedShootOnly());
-		chooser.addObject("Red Hopper Shoot", new RedHopperShoot());
+		//chooser.addObject("Red Hopper Shoot", new RedHopperShoot());
 
 		TheChargeDashboard.putData("AutoMode", chooser);
 	}
@@ -133,14 +133,14 @@ public class Robot extends IterativeRobot {
 
 	public void autonomousInit() {
 		Robot.driveTrain.zeroYaw();
-		autonomousCommand = chooser.getSelected();
+		autonomousCommand = null;//chooser.getSelected();
 
 		// schedule the autonomous command (example)
 		if (autonomousCommand != null)
 			autonomousCommand.start();
 		ledBoard.onLED();
 		Robot.ledBoard.bitmap(1);
-		Robot.cANLights.colorAlliance();
+		//Robot.cANLights.colorAlliance();
 	}
 
 	/**
@@ -161,6 +161,7 @@ public class Robot extends IterativeRobot {
 		Robot.indexer.stop();
 		Robot.shifters.ShiftHigh();
 		Robot.ledBoard.bitmapRandom();
+		Robot.driveTrain.stop();
 	}
 
 	/**

@@ -42,7 +42,7 @@ public class RunShooter extends Command {
 	// Called just before this Command runs the first time
 	protected void initialize() {
 		Robot.ledBoard.bitmap(4);
-		Robot.cANLights.LightRun(255, 69, 0);
+		//Robot.cANLights.LightRun(255, 69, 0);
 	}
 
 	// Called repeatedly when this Command is scheduled to run
@@ -67,7 +67,7 @@ public class RunShooter extends Command {
 	protected void end() {
 		Robot.shooterMotors.stop();
 		Robot.ledBoard.bitmapRandom();
-		Robot.cANLights.colorAlliance();
+		//Robot.cANLights.colorAlliance();
 	}
 
 	// Called when another command which requires one or more of the same

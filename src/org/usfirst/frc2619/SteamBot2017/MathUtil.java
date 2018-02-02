@@ -10,8 +10,9 @@ public class MathUtil {
 	}
 
 	public static double delinearize(double input, double power, boolean Allow_Delinearization) {
-		if (power == 0)
+		if (power == 0) {
 			power = 1;
+		}
 		double dbY = Robot.driveTrain.deadband_y;
 		double ret;
 		TheChargeDashboard.putNumber("JoystickPosition", input);
