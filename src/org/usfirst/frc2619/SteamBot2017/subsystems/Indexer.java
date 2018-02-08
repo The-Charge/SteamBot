@@ -86,7 +86,8 @@ public class Indexer extends Subsystem {
 
 		indexerMotor.selectProfileSlot(0, 0);
 
-		indexerMotor.configNominalOutputForward(1, RobotMap.TIMEOUT_MS);
+		indexerMotor.configNominalOutputForward(0, 0);
+		indexerMotor.configNominalOutputReverse(0, 0);
 	}
 
 	public void set(double percentSpeed) {

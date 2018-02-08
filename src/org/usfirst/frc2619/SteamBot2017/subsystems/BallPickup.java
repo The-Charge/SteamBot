@@ -84,7 +84,8 @@ public class BallPickup extends Subsystem {
 
 		pickupMotor.selectProfileSlot(0, 0);
 
-		pickupMotor.configNominalOutputForward(1, RobotMap.TIMEOUT_MS);
+		pickupMotor.configNominalOutputForward(0, 0);
+		pickupMotor.configNominalOutputReverse(0, 0);
 	}
 
 	public void setRunning(double percentSpeed) {

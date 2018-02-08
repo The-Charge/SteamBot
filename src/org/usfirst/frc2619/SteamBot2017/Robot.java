@@ -82,6 +82,15 @@ public class Robot extends IterativeRobot {
 		shooterMotors.initSpeedPercentageMode();
 		ballPickup.initSpeedPercentageMode();
 		indexer.initSpeedPercentageMode();
+		RobotMap.driveTrainLeftFrontMotor.configNominalOutputForward(0, 0);
+		RobotMap.driveTrainRightFrontMotor.configNominalOutputForward(0, 0);
+		RobotMap.driveTrainLeftRearMotor.configNominalOutputForward(0, 0);
+		RobotMap.driveTrainRightRearMotor.configNominalOutputForward(0, 0);
+		RobotMap.driveTrainLeftFrontMotor.configNominalOutputReverse(0, 0);
+		RobotMap.driveTrainRightFrontMotor.configNominalOutputReverse(0, 0);
+		RobotMap.driveTrainLeftRearMotor.configNominalOutputReverse(0, 0);
+		RobotMap.driveTrainRightRearMotor.configNominalOutputReverse(0, 0);
+		
 		//cANLights.displayCANLightValues();
 		// OI must be constructed after subsystems. If the OI creates Commands
 		// (which it very likely will), subsystems are not guaranteed to be
