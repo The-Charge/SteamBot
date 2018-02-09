@@ -60,10 +60,10 @@ public class ShooterMotors extends Subsystem {
 	}
 
 	public void writeDefaultDashboardValues() {
-		TheChargeDashboard.putNumber("ShooterSpeedP", SPEED_P_CONSTANT);
-		TheChargeDashboard.putNumber("ShooterSpeedI", SPEED_I_CONSTANT);
-		TheChargeDashboard.putNumber("ShooterSpeedD", SPEED_D_CONSTANT);
-		TheChargeDashboard.putNumber("ShooterSpeedF", SPEED_F_CONSTANT);
+		SmartDashboard.putNumber("ShooterSpeedP", SPEED_P_CONSTANT);
+		SmartDashboard.putNumber("ShooterSpeedI", SPEED_I_CONSTANT);
+		SmartDashboard.putNumber("ShooterSpeedD", SPEED_D_CONSTANT);
+		SmartDashboard.putNumber("ShooterSpeedF", SPEED_F_CONSTANT);
 	}
 
 	public void readDashboardControlValues() {
@@ -82,10 +82,10 @@ public class ShooterMotors extends Subsystem {
 	public void initSpeedPercentageMode() {
 		motor.set(ControlMode.Velocity, 0);
 
-		motor.selectProfileSlot(0, 0);
+		motor.selectProfileSlot(1, 0);
 
-		motor.configNominalOutputForward(0, 0);
-		motor.configNominalOutputReverse(0, 0);
+		motor.configNominalOutputForward(0, RobotMap.TIMEOUT_MS);
+		motor.configNominalOutputReverse(0, RobotMap.TIMEOUT_MS);
 	}
 
 	public void set(double percentSpeed) {

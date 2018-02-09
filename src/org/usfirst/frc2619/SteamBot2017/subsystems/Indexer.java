@@ -62,10 +62,10 @@ public class Indexer extends Subsystem {
 	}
 
 	public void writeDefaultDashboardValues() {
-		TheChargeDashboard.putNumber("IndexerSpeedP", INDEX_P_CONSTANT);
-		TheChargeDashboard.putNumber("IndexerSpeedI", INDEX_I_CONSTANT);
-		TheChargeDashboard.putNumber("IndexerSpeedD", INDEX_D_CONSTANT);
-		TheChargeDashboard.putNumber("IndexerSpeedF", INDEX_F_CONSTANT);
+		SmartDashboard.putNumber("IndexerSpeedP", INDEX_P_CONSTANT);
+		SmartDashboard.putNumber("IndexerSpeedI", INDEX_I_CONSTANT);
+		SmartDashboard.putNumber("IndexerSpeedD", INDEX_D_CONSTANT);
+		SmartDashboard.putNumber("IndexerSpeedF", INDEX_F_CONSTANT);
 	}
 
 	public void readDashboardControlValues() {
@@ -84,10 +84,10 @@ public class Indexer extends Subsystem {
 	public void initSpeedPercentageMode() {
 		indexerMotor.set(ControlMode.Velocity, 0);
 
-		indexerMotor.selectProfileSlot(0, 0);
+		indexerMotor.selectProfileSlot(1, 0);
 
-		indexerMotor.configNominalOutputForward(0, 0);
-		indexerMotor.configNominalOutputReverse(0, 0);
+		indexerMotor.configNominalOutputForward(0, RobotMap.TIMEOUT_MS);
+		indexerMotor.configNominalOutputReverse(0, RobotMap.TIMEOUT_MS);
 	}
 
 	public void set(double percentSpeed) {

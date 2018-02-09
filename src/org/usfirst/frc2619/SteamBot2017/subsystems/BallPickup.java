@@ -60,10 +60,10 @@ public class BallPickup extends Subsystem {
 	}
 
 	public void writeDefaultDashboardValues() {
-		TheChargeDashboard.putNumber("PickupSpeedP", PICKUP_P_CONSTANT);
-		TheChargeDashboard.putNumber("PickupSpeedI", PICKUP_I_CONSTANT);
-		TheChargeDashboard.putNumber("PickupSpeedD", PICKUP_D_CONSTANT);
-		TheChargeDashboard.putNumber("PickupSpeedF", PICKUP_F_CONSTANT);
+		SmartDashboard.putNumber("PickupSpeedP", PICKUP_P_CONSTANT);
+		SmartDashboard.putNumber("PickupSpeedI", PICKUP_I_CONSTANT);
+		SmartDashboard.putNumber("PickupSpeedD", PICKUP_D_CONSTANT);
+		SmartDashboard.putNumber("PickupSpeedF", PICKUP_F_CONSTANT);
 	}
 
 	public void readDashboardControlValues() {
@@ -82,10 +82,10 @@ public class BallPickup extends Subsystem {
 	public void initSpeedPercentageMode() {
 		pickupMotor.set(ControlMode.Velocity, 0);
 
-		pickupMotor.selectProfileSlot(0, 0);
+		pickupMotor.selectProfileSlot(1, 0);
 
-		pickupMotor.configNominalOutputForward(0, 0);
-		pickupMotor.configNominalOutputReverse(0, 0);
+		pickupMotor.configNominalOutputForward(0, RobotMap.TIMEOUT_MS);
+		pickupMotor.configNominalOutputReverse(0, RobotMap.TIMEOUT_MS);
 	}
 
 	public void setRunning(double percentSpeed) {
